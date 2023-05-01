@@ -18,11 +18,11 @@
           <div class="trial-card" *ngFor="let trial of trialList; let i = index">
             <img class="trial-card-img" src="./assets/images/icons/font-awesome-flag-brands.svg" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">{{trial.title}}</h5>
-              <p class="card-text"><a>Patrocinadores</a></p>
-              <p class="card-text"><a>Médicos principales</a></p>
-              <p class="card-text"><a>Médicos miembros</a></p>
-              <p class="card-text"><a>Otros</a></p>
+              <div class="card-title">{{trial.title}}<img (click)="checkTrial(i)" class="point-edit trial-check" src="assets/images/icons/search.svg" alt=""/></div>
+              <div class="card-text"><a>Patrocinadores</a></div>
+              <div class="card-text"><a>Patrocinadores</a></div>
+              <div class="card-text"><a>Patrocinadores</a></div>
+              <div class="card-text"><a>Patrocinadores</a></div>
             </div>
             <div class="card-footer">
               <small class="text-muted">Inició {{trial.startDate}}</small>

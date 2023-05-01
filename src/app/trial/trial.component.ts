@@ -44,7 +44,7 @@ export class TrialComponent implements OnInit {
   }
 
   checkTrial(i: number) {
-
+    console.log("checking %d", i);
   }
 
   checkAdvance() {
