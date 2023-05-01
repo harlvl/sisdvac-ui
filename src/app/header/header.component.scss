@@ -1,12 +1,24 @@
 .header-main-logo {
-
 }
 .user-profile{
+  float: right;
   color: red;
   .img {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
   }
+}
+
+.top-container {
+  horiz-align: left;
+  .top-container-element{
+    width: 300px;
+    float: left;
+  }
+}
+
+.main-nav-container {
+  margin-top: 60px;
 }
 .nav-bar-container {
   list-style-type: none;

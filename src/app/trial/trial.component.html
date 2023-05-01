@@ -5,14 +5,34 @@
   </div>
 
   <!-- START INNER CONTAINER-->
-  <div class="col-sm-12 trial-secondary-container mt-4">
+  <div class="col-sm-12 trial-secondary-container">
 
     <div class="col-sm-12 title-results-search">
       <div class="container">
         <div class="row">
           <div class="col-8"> <span class="activity-table-title">Estudios activos: {{ trialList.length}} </span> </div>
         </div>
+
+        <!-- START DECK -->
+        <div class="trial-card-deck">
+          <div class="trial-card" *ngFor="let trial of trialList; let i = index">
+            <img class="trial-card-img" src="./assets/images/icons/font-awesome-flag-brands.svg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{trial.title}}</h5>
+              <p class="card-text"><a>Patrocinadores</a></p>
+              <p class="card-text"><a>Médicos principales</a></p>
+              <p class="card-text"><a>Médicos miembros</a></p>
+              <p class="card-text"><a>Otros</a></p>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Inició {{trial.startDate}}</small>
+            </div>
+          </div>
+        </div>
+        <!-- END DECK -->
+
       </div>
+
     </div>
 
     <div>
