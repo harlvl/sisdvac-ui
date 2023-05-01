@@ -1,0 +1,36 @@
+.header-main-logo {
+
+}
+.user-profile{
+  color: red;
+  .img {
+    width: 30px;
+    height: 30px;
+  }
+}
+.nav-bar-container {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #147DDD;
+  .nav-bar-element{
+    float: left;
+    border-right: 1px solid #bbb;
+    color: black; // TODO for some reason it's not working
+    .a {
+      display: block;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    .active {
+      background-color: #04AA6D;
+    }
+    :last-child {
+      border-right: none;
+    }
+  }
+
+}

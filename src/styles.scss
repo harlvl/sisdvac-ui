@@ -1,1 +1,733 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./styles/mixins";
+@import "./styles/variables";
+@import "bootstrap/dist/css/bootstrap";
+
+$theme-colors: (
+  primary: $blue-primary
+);
+
+.main-container {
+  margin-top: 26px;
+}
+
+
+.btn {
+  font-family: "Lato";
+  text-align: center;
+  font-size: 14px;
+  border-radius: 4px;
+  font-weight: 700;
+  width: 105px;
+  height: 40px;
+}
+
+.btn-primary {
+  color: #ffffff;
+}
+
+.btn-small {
+  height: 32px;
+  width: 74px;
+  margin-right: 13px;
+}
+
+.btn-large {
+  width: 90%;
+}
+
+.btn-outline-primary {
+  background-color: #fff;
+
+  &:hover {
+    background-color: #fff;
+    color: $blue-primary;
+    border-color: $blue-primary;
+  }
+}
+
+.btn-confirm, .btn-confirm:hover{
+  @include btn-regular-style($color: #FFFFFF, $backgroundColor: $blue-primary);
+  font-weight: 500;
+  border: 1px solid $blue-primary;
+}
+
+.btn-cancel {
+  @include btn-regular-style;
+  font-weight: 500;
+  border: 1px solid $blue-primary;
+}
+
+.select {
+  border: 1px solid $gray-border-input;
+  border-radius: 6px;
+  @include regular-font-style($fontSize: 14px, $color: $black-primary);
+  display: block;
+  padding-left: 14px;
+  padding-right: 30px;
+  box-sizing: border-box;
+  margin: 0;
+  height: 40px !important;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("./assets/images/icons/select_arrow.png");
+  background-repeat: no-repeat, repeat;
+  background-position: right 0.7em top 50%, 0 0;
+  background-size: 1.2em auto, 100%;
+}
+
+
+.alert-primary {
+  background-color: #e0f4ff;
+  border-color: #0093e8;
+  border-radius: 4px;
+}
+
+.body {
+  background-color: #f4f6fc;
+  min-height: 700px;
+  width: 100%;
+}
+
+.navbar {
+  padding: 0.5rem 0px;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+/* Inner Container for layouts */
+
+.inner-container {
+  background-color: white;
+  width: 98%;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 3px 15px 0 rgba(0, 0, 0, 0.19);
+  min-height: 300px;
+  margin: 20px auto;
+  position: relative;
+  padding: 25px 35px;
+}
+
+.default-inner-container {
+  margin: 33px 11px;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+/* Common styles for all layouts */
+
+.title-layout {
+  @include regular-font-style($color: $black-primary, $fontSize: 18px);
+  font-weight: 700;
+  text-align: left;
+}
+
+.error-message {
+  @include regular-font-style($color: $error);
+  letter-spacing: 0;
+  font-weight: 700;
+  text-align: left;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.custom-input-error {
+  border: 1px solid $error;
+}
+
+.custom-col {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.custom-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.custom-row-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.default-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.custom-card {
+  background-color: white;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 3px 15px 0 rgba(0, 0, 0, 0.19);
+  height: 460px;
+}
+
+.custom-card-footer {
+  background-color: white;
+  padding: 22px 10px;
+}
+
+.card-title {
+  @include regular-font-style($fontSize: 18px, $color: $black-primary);
+  font-weight: 400;
+}
+
+.custom-form {
+  input,
+  select {
+    height: 30px;
+    border: 1px solid $gray-border-input;
+    @include regular-font-style($color: $black-primary);
+  }
+
+  textarea {
+    border: 1px solid $gray-border-input;
+    @include regular-font-style($color: $black-primary);
+  }
+}
+
+.form-row {
+  margin-left: 0px;
+}
+
+/* Custom styles for Modals */
+
+.no-border {
+  border: none;
+}
+
+.custom-modal-footer {
+  display: block;
+  flex-wrap: none;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.modal-title-centered {
+  margin: 0 auto;
+}
+
+.modal-body {
+  text-align: center;
+  padding: 0.5rem 1rem;
+
+  span {
+    display: block;
+  }
+
+  .modal-title {
+    @include regular-font-style($fontSize: 24px, $color: $black-primary);
+  }
+
+  .modal-text {
+    margin-top: 20px;
+    @include regular-font-style($fontSize: 16px, $color: $black-primary);
+  }
+}
+
+.modal-sm {
+  max-width: 421px !important;
+}
+
+.btn-modal {
+  width: auto;
+}
+
+.custom-modal-header {
+  padding: 0.4rem 1rem;
+}
+
+.custom-modal-body {
+  text-align: left;
+  padding: 0px 43px;
+
+  span {
+    @include regular-font-style($fontSize: 18px, $color: $black-primary);
+  }
+}
+
+.card-body {
+  padding: 15px 15px;
+}
+
+.custom-nav-link {
+  padding: 0rem 1rem;
+}
+
+.form-title {
+  @include regular-font-style($fontSize: 16px, $color: $black-primary);
+  font-weight: 700;
+}
+
+.form-info {
+  @include regular-font-style($color: $black-primary);
+  font-weight: 400;
+}
+
+.custom-text-area {
+  margin-bottom: 0.1rem;
+}
+
+.custom-danger-alert {
+  border: 1px solid $error;
+  border-radius: 4px;
+  background-color: #f6e7e7;
+
+  span {
+    @include regular-font-style($fontSize: 16px, $color: $error);
+    font-weight: 500;
+  }
+
+  img {
+    margin-right: 10px;
+    padding-bottom: 2px;
+  }
+}
+
+
+.crosswalk-counter-container {
+  text-align: center;
+  @include regular-font-style($fontSize: 21px, $color: $black-primary);
+  font-weight: 700;
+  margin-top: 45px;
+  margin-bottom: 46px;
+
+  .created-info {
+    float: right;
+    margin-right: 57px;
+    .count-created {
+      display: block;
+      @include regular-font-style($fontSize: 36px, $color: $success);
+      text-align: center;
+      line-height: 30px;
+      margin-bottom: 6px;
+    }
+  }
+
+  .errors-info {
+    float: left;
+    margin-left: 57px;
+    .count-errors {
+      display: block;
+      @include regular-font-style($fontSize: 36px, $color: $error);
+      text-align: center;
+      line-height: 30px;
+      margin-bottom: 6px;
+    }
+  }
+}
+
+
+/* Modal */
+
+.modal-delete-ss {
+  max-height: 675px;
+  width: 518px;
+  display: block;
+  height: 100%;
+
+  .modal-close-custom {
+    width: 33px;
+    height: 33px;
+    outline: none !important;
+    box-shadow: none;
+    cursor: pointer;
+    padding: 19px 22px 0 0;
+  }
+
+  .modal-body-ss {
+    margin: 14px 18px 0 18px;
+    padding: 0.5rem 1rem;
+
+    span {
+      display: block;
+    }
+
+    .modal-title {
+      @include regular-font-style($fontSize: 21px, $color: $black-primary);
+      margin-bottom: 24px;
+    }
+
+    .modal-body-inner {
+      margin-left: 70px;
+      margin-right: 70px;
+
+      .modal-message {
+        @include regular-font-style($fontSize: 16px, $color: $black-primary);
+      }
+
+      .modal-text-crosswalk {
+        @include regular-font-style($fontSize: 16px, $color: $black-primary);
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .modal-info {
+        @include regular-font-style($color: $black-primary);
+        text-align: left;
+      }
+
+      .card-body {
+        .table-kcs-all {
+          @include regular-font-style($color: $black-primary);
+          margin-top: 10px;
+
+          tbody {
+            display: block;
+            max-height: 250px;
+            overflow-y: auto;
+          }
+          tr {
+            text-align: left;
+            min-height: 20px;
+            height: 20px;
+          }
+          thead,
+          tbody tr {
+            text-align: left;
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+
+            th {
+              padding: 2px 0px;
+            }
+          }
+          td,
+          th {
+            padding: 10px 0px;
+          }
+        }
+      }
+    }
+
+    .modal-footer {
+      .delete-ss {
+        @include btn-regular-style($color: #ffffff, $backgroundColor: $blue-primary);
+        font-weight: 500;
+        border: 1px solid $blue-primary;
+      }
+
+      .cancel-ss {
+        @include btn-regular-style;
+        font-weight: 500;
+        border: 1px solid $blue-primary;
+      }
+
+      button {
+        height: 40px;
+        width: 191px;
+      }
+    }
+  }
+}
+
+.progress {
+  width: 70% !important;
+  background-color: #e0f4ff;
+  height: 1.5rem !important;
+  border: 1px solid #d5d6da;
+  box-shadow: 0 0 2px 1px #d5d6da;
+  border-radius: 5px;
+
+  .bg-success {
+    background: linear-gradient(to bottom, #639fcc, #286593);
+    background: -prefix-linear-gradient(top, #639fcc, #286593);
+  }
+}
+
+
+// Error Validation
+
+input.ng-touched.ng-invalid,
+textarea.ng-touched.ng-invalid,
+select.ng-touched.ng-invalid {
+  border-color: $error !important;
+  background-color: #fdeaec;
+}
+
+.validation-error {
+  @include regular-font-style($color: $error);
+  margin-top: 3px;
+
+  img {
+    margin-right: 3px;
+    margin-left: 5px;
+  }
+}
+
+.validation-warning {
+  @include regular-font-style($color: #37383B);
+  margin-top: 3px;
+}
+
+.control {
+  box-sizing: border-box;
+  clear: both;
+  font-size: 1rem;
+  position: relative;
+  text-align: left;
+}
+
+.control.is-loading::after {
+  position: absolute !important;
+  right: 0.625em;
+  top: 0.625em;
+  z-index: 4;
+}
+
+.button.is-loading::after,
+.control.is-loading::after,
+.loader,
+.select.is-loading::after {
+  -webkit-animation: 0.5s linear infinite spinAround;
+  animation: 0.5s linear infinite spinAround;
+  border: 2px solid #dbdbdb;
+  border-radius: 290486px;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  content: "";
+  display: block;
+  height: 1em;
+  position: relative;
+  width: 1em;
+}
+
+.card-body-edit-form {
+  overflow-y: auto;
+  max-height: 373px;
+}
+
+.multiselect-dropdown {
+  background-color: white;
+  width: 100% !important;
+
+  .dropdown-list {
+    margin-top: 0px !important;
+  }
+}
+
+.dropdown-btn {
+  @include regular-font-style($fontSize: 14px, $color: $black-primary);
+  padding: 10px 12px !important;
+  height: 40px !important;
+}
+
+.multiselect-dropdown .dropdown-btn .selected-item {
+  height: 25px;
+  align-content: center !important;
+}
+
+.selected-item-container{
+  margin-top: -3.5px;
+}
+
+.selected-item {
+  background: #E3E9F1 !important;
+  border-radius: 4px !important;
+  border-color: $blue-primary;
+  border-width: 1.75px !important;
+  border-style: solid;
+  max-width: 100px;
+  min-width: 80px;
+  vertical-align: middle;
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    width: 80%;
+    color: black !important;
+    font-weight: bold;
+    text-align: center !important;
+  }
+  a {
+    align-self: stretch;
+    background-size: 15px 15px !important;
+    background: url("assets/images/icons/delete_crosswalk.svg") no-repeat;
+    background-position: center !important;
+    display: inline-block;
+    padding-top: 1.5px;
+    padding-left: 10px !important;
+    margin-left: -10px !important;
+    color: transparent !important;
+    float: right;
+  }
+}
+
+.back-link-inner-container-jurisdiction {
+  margin: 10px -10px;
+  position: relative;
+  margin-bottom: 0px;
+  margin-top: -25px;
+  height: 55px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  text-align: center !important;
+  align-self: center !important;
+
+  .sub-link {
+    margin-left: -5px;
+  }
+
+  a {
+    @include regular-font-style;
+    padding: 0 0 0 10px;
+  }
+
+  img {
+    margin-left: 5px;
+  }
+
+  span {
+    @include regular-font-style($color: $black-primary);
+    margin-left: 5px;
+  }
+}
+
+.missing-parameters-info {
+  @include regular-font-style($fontSize: 18px, $color: $black-primary);
+  border-radius: 3px;
+  padding: 10px 20px;
+
+  .main-info {
+    img {
+      margin-right: 10px;
+    }
+  }
+
+  .secondary-info {
+    margin-left: 15px;
+    font-size: 16px;
+  }
+}
+
+.missing-parameters-warning-container {
+  background-color: #FDEAEC;
+  border: 1px solid #A90F14;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: -20px;
+}
+
+.missing-parameters-warning{
+  font-size: 14px;
+  color: #A90F14;
+  font-family: Lato;
+  font-weight: 400;
+  text-align: left;
+  margin-top: -20px;
+  margin-left: 25px;
+}
+
+.container .multiselect-dropdown .dropdown-btn{
+  color: #37383B;
+}
+
+@media (max-width: 1200px) {
+  .search-label {
+    margin-left: 0px !important;
+    font-size: 13px !important;
+  }
+
+  .selected-item {
+    max-width: 60px !important;
+    span {
+      width: 70% !important;
+    }
+  }
+}
+
+.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret:before {
+  border-color: #696a6b transparent !important;
+  top: 70% !important;
+}
+
+.add-sn-uri-container {
+  display: flex;
+  text-align: center;
+
+  background-color: #F3FBFE !important;
+  border-radius: 6px !important;
+  margin-top: 22px;
+  margin-bottom: 12px !important;
+  margin-right: 20px;
+  margin-left: 22px;
+}
+
+.add-sn-uri-column {
+  display: inline;
+  alignment: center;
+  flex:1;
+}
+
+.add-sn-uri-header {
+  font-family: Lato;
+  font-size: 14px;
+  display: inline-block;
+  alignment: center;
+  margin-top: 13px;
+  margin-bottom: 4px;
+}
+
+.add-sn-uri-content {
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+  alignment: center;
+  white-space: pre-line;
+  margin: 4px 5px 16px;
+}
+
+.separator-left {
+  position: relative;
+}
+
+.separator-left:after {
+  content : "";
+  position: absolute;
+  left    : 0;
+  top     : 12%;
+  bottom  : 12%;
+  height  : 76%;
+  width   : 1px;
+  border-right: 1px dashed $blue-primary;
+}
+
+.separator-right {
+  position: relative;
+}
+
+.separator-right:after {
+  content : "";
+  position: absolute;
+  right   : 0;
+  top     : 10%;
+  bottom  : 10%;
+  height  : 80%;
+  width   : 1px;
+  border-left: 1px dashed $blue-primary;
+}
+
+.add-sn-uri-margin {
+  margin-bottom: 3px !important;
+}
+
+.proceed {
+  @include btn-regular-style($color: #FFFFFF, $backgroundColor: $blue-primary);
+  font-weight: 500;
+  border: 1px solid $blue-primary;
+  width: 40%;
+}
+
+.cancel {
+  @include btn-regular-style;
+  font-weight: 500;
+  border: 1px solid $blue-primary;
+  width: 40%;
+}

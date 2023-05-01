@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>delete_crosswalk</title>
+    <desc>Created with Sketch.</desc>
+    <g id="USMO-Search-3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="07_crosswalks_deleted" transform="translate(-703.000000, -346.000000)">
+            <g id="delete_crosswalk" transform="translate(703.000000, 346.000000)">
+                <g id="chip_icon">
+                    <path d="M9.916,0 C15.392,0 19.832,4.44 19.832,9.916 C19.832,15.392 15.392,19.832 9.916,19.832 C4.44,19.832 0,15.392 0,9.916 C0,4.44 4.44,0 9.916,0" id="Fill-1" fill="#006FBF"></path>
+                    <polyline id="Stroke-5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="13.7104 13.5589 9.9014 9.7499 13.7104 5.9409"></polyline>
+                    <polyline id="Stroke-7" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="6.1216 13.5589 9.9306 9.7499 6.1216 5.9409"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

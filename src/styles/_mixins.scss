@@ -1,0 +1,74 @@
+$blue-primary: #006FBF;
+$black-primary: #37383B;
+$success: #69BE27;
+$error: #A90F14;
+$gray-border-input: #BDBDBD;
+$white-cell-table: #E9ECF1;
+
+
+$primaryFontFamily: 'Lato';
+
+@mixin btn-regular-style ($color: $blue-primary, $backgroundColor: transparent ) {
+    font-family: $primaryFontFamily;
+    color: $color;
+    text-align: center;
+    background-color: $backgroundColor;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+@mixin regular-font-style ($fontSize: 14px, $color: $blue-primary) {
+    font-family: $primaryFontFamily;
+    color: $color;
+    font-size: $fontSize;
+}
+
+/*----------------------Animations------------------------- */
+
+/* Shake animation */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+/* webkits */
+
+@-webkit-keyframes spinAround {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+@keyframes spinAround {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+::-webkit-scrollbar {
+    width: 11px;
+}
+
+::-webkit-scrollbar-track {
+    display: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(86, 90, 92, 0.15);
+}
+
+.fa-spin {
+    animation: fa-spin 1s infinite linear !important;
+  }

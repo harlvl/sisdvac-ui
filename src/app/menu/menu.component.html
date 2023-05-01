@@ -1,0 +1,31 @@
+<aside class="main-sidebar" style="height: auto;background-color:  #028484">
+  <!-- 5AC4C4 028484   -->
+
+  <section class="sidebar " style="height: auto;color: antiquewhite;zoom: 90%;">
+    <div class="user-panel" style="height: auto;background-color:  #2d2d2d">
+      <br>
+      <div class="pull-left image">
+        <img ngSrc="assets/dist/img/user_icon.png" class="img-circle" alt="User Image" height="400" width="400">
+      </div>
+      <div class="pull-left info">
+        <p>User: {{userName}}</p>
+        <a style="font-family: 'Baloo Bhaijaan';font-size: 16px"><i class="fa fa-info-circle"></i>Ver perfil</a>
+        <hr color="white">
+      </div>
+    </div>
+
+    <ul class="sidebar-menu" data-widget="tree">
+      <li><a routerLink="welcome"><i class="fa fa-home"></i><span>Principal</span></a></li>
+      <li><a routerLink="trials" [routerLinkActive]="'active'"><i class="fa fa-product-hunt"></i>
+        <span>Evaluaciones</span></a></li>
+<!--      <li><a routerLink="proyectosEvolutivos/list" [routerLinkActive]="'active'"><i class="fa fa-etsy"></i>-->
+<!--        <span>Evolutivos</span></a></li>-->
+<!--      <li><a routerLink="proyectosParticipantes" [routerLinkActive]="'active'"><i class="fa fa-xing-square"></i> <span>-->
+<!--            Proy X Partic</span></a></li>-->
+<!--      <li><a routerLink="workorder/*/list" [routerLinkActive]="'active'"><i class="fa fa-krw"></i>-->
+<!--        <span> Work Order's</span></a></li>-->
+<!--      <li><a mat-button routerLink="pi/list" [routerLinkActive]="'active'"><i class="fa fa-eercast"></i> <span> Programa-->
+<!--            Incremento</span></a></li>-->
+    </ul>
+  </section>
+</aside>

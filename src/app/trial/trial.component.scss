@@ -1,0 +1,21 @@
+@import '../../styles/mixins';
+
+.trial-secondary-container {
+  margin-top: 16px;
+  min-height: 100px;
+  position: relative;
+  padding-bottom: 24px;
+}
+
+.title-results-search {
+  height: 57px;
+  display: flex;
+  align-items: center;
+
+  .activity-table-title {
+    @include regular-font-style($fontSize: 18px, $color: $black-primary);
+    font-weight: 700;
+    vertical-align: middle;
+    margin-left: 10px;
+  }
+}

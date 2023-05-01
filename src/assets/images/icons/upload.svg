@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" height="41px" viewBox="0 0 48 48" width="36px">
+
+<style type="text/css"><![CDATA[
+  .cc-base{fill: #555555;}
+]]></style>
+<path d="M0 0h48v48h-48z" fill="none"/>
+<path class="cc-base" d="M18 32h12v-12h8l-14-14-14 14h8zm-8 4h28v4h-28z"/>
+	
+
+	<metadata>
+		<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+			<rdf:Description about="https://iconscout.com/legal#licenses" dc:title="Upload, File, Recieve, Send, Share" dc:description="Upload, File, Recieve, Send, Share" dc:publisher="Iconscout" dc:date="2016-12-14" dc:format="image/svg+xml" dc:language="en">
+				<dc:creator>
+					<rdf:Bag>
+						<rdf:li>Google Inc.</rdf:li>
+					</rdf:Bag>
+				</dc:creator>
+			</rdf:Description>
+		</rdf:RDF>
+    </metadata></svg>
