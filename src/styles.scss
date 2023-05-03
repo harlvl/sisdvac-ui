@@ -12,10 +12,12 @@ $theme-colors: (
   margin-top: 30px;
   border: 1px solid black; // for testing
   margin-bottom: 30px;
+  min-height: 450px;
 }
 
 .create-element-row {
   border: 1px solid black; // for testing
+  min-height: 25px;
   .bubble-element-col {
     //border: 1px solid red; // for testing
     display: flex;

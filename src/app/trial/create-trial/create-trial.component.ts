@@ -14,13 +14,24 @@ export class CreateTrialComponent implements OnInit{
   public currentStep: number = 1;
 
   constructor(private trialsService: TrialService) {
-
+    this.currentStep = 1;
+    console.log("current step: %d", this.currentStep);
   }
   ngOnInit(): void {
+    this.currentStep = 1;
+    console.log("current step: %d", this.currentStep);
   }
 
   private doCreateTrial(input: any) {
 
+  }
+
+  public nextStep() {
+    this.currentStep = (this.currentStep + 1) % 4;
+    if (this.currentStep == 0) {
+      this.currentStep = 4;
+    }
+    console.log("Current step is now %d", this.currentStep);
   }
 
 }
