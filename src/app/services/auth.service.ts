@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
-import {map, Observable} from "rxjs";
+import {HttpClient, HttpResponse} from "@angular/common/http";
+import {map} from "rxjs";
 import {Credentials} from "../components/interfaces/credentials";
+import {Endpoints} from "../components/constants/endpoints";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private api_host = "http://localhost:8080/sisdvac"
-  private api_version = "/api/v1"
-  private api_url = this.api_host + this.api_version
-
-  private auth_endpoint = "/auth/authenticate"
+  private api_url = Endpoints.apiV1;
+  private auth_endpoint = Endpoints.authenticate;
 
   constructor(private _http: HttpClient) {
     console.log("Using host: %s", this.api_url);

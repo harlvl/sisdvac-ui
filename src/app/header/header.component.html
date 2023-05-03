@@ -19,8 +19,15 @@
 <!--    </a>-->
     <ul class="nav-bar-container" >
       <li class="nav-bar-element"><a routerLink="welcome" style="color: gray">Inicio</a></li>
-      <li class="nav-bar-element"><a routerLink="trial" style="color: gray" [routerLinkActive]="'active'">{{headerContentTrial}}</a></li>
-      <li class="nav-bar-element"><a style="color: gray" >{{headerContentNewTrial}}</a></li>
+
+      <li class="nav-bar-element">
+        <a style="color: gray" routerLink="{{routerNameTrials}}" [routerLinkActive]="'active'">{{headerContentTrial}}</a>
+      </li>
+
+      <li class="nav-bar-element">
+        <a style="color: gray" routerLink="{{routerNameCreateTrial}}" [routerLinkActive]="'active'" >{{headerContentNewTrial}}</a>
+      </li>
+
     </ul>
   </nav>
 </header>

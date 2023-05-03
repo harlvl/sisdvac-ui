@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Endpoints} from "../components/constants/endpoints";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrialService {
-  private api_host = "http://localhost:8080/sisdvac"
-  private api_version = "/api/v1"
-  private api_url = this.api_host + this.api_version
-
-  private trial_endpoint = "/trial"
+  private api_url = Endpoints.apiV1;
+  private trial_endpoint = Endpoints.trial
   private headers = new HttpHeaders({
     // 'Authorization': 'Bearer ' + this.bearer_token
   });
