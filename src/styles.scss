@@ -8,8 +8,35 @@ $theme-colors: (
 );
 
 .main-container {
-  margin-top: 26px;
+  background-color: white;
+  margin-top: 30px;
+  border: 1px solid black; // for testing
+  margin-bottom: 30px;
 }
+
+.create-element-row {
+  border: 1px solid black; // for testing
+  .bubble-element-col {
+    //border: 1px solid red; // for testing
+    display: flex;
+    justify-content: center;
+    height: 25px;
+    width: 25px;
+    clip-path: circle(50% at 50% 50%);
+    background: #BBBABA;
+  }
+  .is-bubble-active {
+    background-color: #147DDD;
+  }
+  .bubble-element-transparent {
+    display: flex;
+    justify-content: center;
+    height: 25px;
+    width: 25px;
+    background: transparent;
+  }
+}
+
 
 
 .btn {
