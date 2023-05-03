@@ -14,6 +14,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
 import {FormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./helpers/auth.interceptor";
+import { CreateTrialComponent } from './trial/create-trial/create-trial.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -25,7 +26,8 @@ import {AuthInterceptor} from "./helpers/auth.interceptor";
     MenuComponent,
     MainComponent,
     TrialComponent,
-    LoginComponent
+    LoginComponent,
+    CreateTrialComponent
   ],
   imports: [
     BrowserModule,

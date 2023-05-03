@@ -30,7 +30,4 @@ export class LoginComponent {
       });
   }
 
-  private getToken(bearerToken: String) {
-
-  }
 }

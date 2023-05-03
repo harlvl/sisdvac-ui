@@ -11,7 +11,6 @@ export class TrialService {
   private api_url = this.api_host + this.api_version
 
   private trial_endpoint = "/trial"
-  private bearer_token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsdWlzLnZpZ3VyaWFAcHVjcC5wZSIsImlhdCI6MTY4MjkwOTA4MywiZXhwIjoxNjgyOTE1MDgzfQ.XQAVZQolfmoFMamzFx1nQj2-X1jshloklgxLrXjtFIs";
   private headers = new HttpHeaders({
     // 'Authorization': 'Bearer ' + this.bearer_token
   });
