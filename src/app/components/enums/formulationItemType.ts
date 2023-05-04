@@ -1,0 +1,7 @@
+export enum FormulationItemType {
+  SIZE = "SIZE",
+  INTEGRITY = "INTEGRITY",
+  COMPOSITION = "COMPOSITION",
+  STERILITY = "STERILITY",
+  OSMOLALITY = "OSMOLALITY",
+}

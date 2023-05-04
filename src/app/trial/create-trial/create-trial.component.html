@@ -13,8 +13,8 @@
     </div>
     <div class="row" style="border: 1px solid black; min-height: 425px">
 
-      <form>
-        <ng-container *ngIf="currentStep == 1">
+      <form #form="ngForm" (ngSubmit)="confirm(form)">
+        <div *ngIf="currentStep == 1">
           <h1 style="border: 1px solid red">Datos del patrocinador </h1>
           <div class="mb-3">
             <label for="sponsor_name">Nombre del patrocinador</label>
@@ -54,9 +54,9 @@
               <option value="aqp">Arequipa</option>
             </select>
           </div>
-        </ng-container>
+        </div>
 
-        <ng-container *ngIf="currentStep == 2">
+        <div *ngIf="currentStep == 2">
           <h1 style="border: 1px solid red">Datos de la vacuna</h1>
           <div class="mb-3">
             <label for="vaccine_name">Nombre de la vacuna</label>
@@ -97,28 +97,28 @@
               <option value="mrna">mRNA</option>
             </select>
           </div>
-        </ng-container>
+        </div>
 
-        <ng-container *ngIf="currentStep == 3">
+        <div *ngIf="currentStep == 3">
           <h1 style="border: 1px solid red">Datos del Perfil de Produto Objetivo</h1>
           <div class="mb-3">
             <label for="tpp_target_population">Población objetivo</label>
-            <input type="text" id="tpp_target_population">
+            <input type="text" id="tpp_target_population" [(ngModel)]="tpp_target_population" name="tpp_target_population">
           </div>
 
           <div class="mb-3">
-            <label for="tpp_eficacy_profile">Perfil deseado de eficacia y seguridad</label>
-            <input type="text" id="tpp_eficacy_profile">
+            <label for="tpp_efficacy_profile">Perfil deseado de eficacia y seguridad</label>
+            <input type="text" id="tpp_efficacy_profile" [(ngModel)]="tpp_efficacy_profile" name="tpp_efficacy_profile">
           </div>
 
           <div class="mb-3">
             <label for="tpp_immuno_response">Respuesta inmunológica deseada</label>
-            <input type="text" id="tpp_immuno_response">
+            <input type="text" id="tpp_immuno_response" [(ngModel)]="tpp_immuno_response" name="tpp_immuno_response">
           </div>
 
           <div class="mb-3">
             <label for="tpp_route_of_administration">Vía de administración</label>
-            <select name="tpp_route_of_administration" id="tpp_route_of_administration">
+            <select name="tpp_route_of_administration" id="tpp_route_of_administration" [(ngModel)]="tpp_route_of_administration">
               <option value="" disabled selected>Seleccionar</option>
               <option value="oral">Oral</option>
               <option value="shot">Inyectable</option>
@@ -127,18 +127,16 @@
 
           <div class="mb-3">
             <label for="tpp_storage_conditions">Condiciones de almacenamiento</label>
-            <input type="text" id="tpp_storage_conditions">
+            <input type="text" id="tpp_storage_conditions" [(ngModel)]="tpp_storage_conditions" name="tpp_storage_conditions">
           </div>
 
           <div class="mb-3">
             <label for="tpp_other">Otras consideraciones</label>
-            <input type="text" id="tpp_other">
+            <input type="text" id="tpp_other" [(ngModel)]="tpp_other" name="tpp_other">
           </div>
+        </div>
 
-        </ng-container>
-
-        <ng-container *ngIf="currentStep == 4">
-
+        <div *ngIf="currentStep == 4">
           <h1 style="border: 1px solid red">Resumen</h1>
           <div class="mb-3">
             <label>Patrocinador</label>
@@ -157,14 +155,14 @@
             <label> (Via de administración deseada)</label>
             <label> (Otros)</label>
           </div>
+        </div>
 
-
-        </ng-container>
-
-        <div *ngIf="currentStep != 4" class="d-grid"><button (click)="nextStep()" class="btn btn-lg btn-primary">Siguiente ></button></div>
-        <div *ngIf="currentStep == 4" class="d-grid"><button (click)="confirm()" class="btn btn-lg btn-primary w-10">Confirmar ></button></div>
+        <div class="d-grid" *ngIf="trialReady"><button class="btn-primary btn btn-lg">Confirmar</button></div>
 
       </form>
+
+      <div *ngIf="currentStep != 4" class="d-grid"><button (click)="nextStep()" class="btn btn-lg btn-primary">Siguiente ></button></div>
+      <div *ngIf="currentStep == 4" class="d-grid"><button (click)="nextStep()" class="btn btn-lg btn-primary w-10">Confirmar ></button></div>
 
     </div>
 
