@@ -100,15 +100,69 @@
         </ng-container>
 
         <ng-container *ngIf="currentStep == 3">
+          <h1 style="border: 1px solid red">Datos del Perfil de Produto Objetivo</h1>
+          <div class="mb-3">
+            <label for="tpp_target_population">Población objetivo</label>
+            <input type="text" id="tpp_target_population">
+          </div>
+
+          <div class="mb-3">
+            <label for="tpp_eficacy_profile">Perfil deseado de eficacia y seguridad</label>
+            <input type="text" id="tpp_eficacy_profile">
+          </div>
+
+          <div class="mb-3">
+            <label for="tpp_immuno_response">Respuesta inmunológica deseada</label>
+            <input type="text" id="tpp_immuno_response">
+          </div>
+
+          <div class="mb-3">
+            <label for="tpp_route_of_administration">Vía de administración</label>
+            <select name="tpp_route_of_administration" id="tpp_route_of_administration">
+              <option value="" disabled selected>Seleccionar</option>
+              <option value="oral">Oral</option>
+              <option value="shot">Inyectable</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="tpp_storage_conditions">Condiciones de almacenamiento</label>
+            <input type="text" id="tpp_storage_conditions">
+          </div>
+
+          <div class="mb-3">
+            <label for="tpp_other">Otras consideraciones</label>
+            <input type="text" id="tpp_other">
+          </div>
 
         </ng-container>
 
         <ng-container *ngIf="currentStep == 4">
 
+          <h1 style="border: 1px solid red">Resumen</h1>
+          <div class="mb-3">
+            <label>Patrocinador</label>
+            <label> (Nombre, Nro. documento, Ciudad)</label>
+          </div>
+
+          <div class="mb-3">
+            <label>Vacuna candidata</label>
+            <label> (Nombre, Infección objetivo, Tipo)</label>
+          </div>
+
+          <div class="mb-3">
+            <label>Perfil de Producto Objetivo</label>
+            <label> (Población objetivo)</label>
+            <label> (Eficacia deseada)</label>
+            <label> (Via de administración deseada)</label>
+            <label> (Otros)</label>
+          </div>
+
+
         </ng-container>
 
         <div *ngIf="currentStep != 4" class="d-grid"><button (click)="nextStep()" class="btn btn-lg btn-primary">Siguiente ></button></div>
-        <div *ngIf="currentStep == 4" class="d-grid"><button class="btn btn-lg btn-primary">Confirmar ></button></div>
+        <div *ngIf="currentStep == 4" class="d-grid"><button (click)="confirm()" class="btn btn-lg btn-primary w-10">Confirmar ></button></div>
 
       </form>
 
