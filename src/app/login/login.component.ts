@@ -4,6 +4,7 @@ import {NgForm} from "@angular/forms";
 import {map} from "rxjs";
 import {Credentials} from "../components/interfaces/credentials";
 import {Router} from "@angular/router";
+import {RouteNames} from "../components/constants/route-names";
 
 @Component({
   selector: 'app-login',
@@ -26,11 +27,8 @@ export class LoginComponent {
     console.log("Form value: %s", form.value);
     this.authService.login(this.credentials)
       .subscribe(response => {
-        this.router.navigate(['welcome']);
+        this.router.navigate([RouteNames.welcome]);
       });
   }
 
-  private getToken(bearerToken: String) {
-
-  }
 }

@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Endpoints} from "../components/constants/endpoints";
+import {Trial} from "../components/interfaces/trial";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrialService {
-  private api_host = "http://localhost:8080/sisdvac"
-  private api_version = "/api/v1"
-  private api_url = this.api_host + this.api_version
-
-  private trial_endpoint = "/trial"
-  private bearer_token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsdWlzLnZpZ3VyaWFAcHVjcC5wZSIsImlhdCI6MTY4MjkwOTA4MywiZXhwIjoxNjgyOTE1MDgzfQ.XQAVZQolfmoFMamzFx1nQj2-X1jshloklgxLrXjtFIs";
+  private api_url = Endpoints.apiV1;
+  private trial_endpoint = Endpoints.trial
   private headers = new HttpHeaders({
     // 'Authorization': 'Bearer ' + this.bearer_token
   });
@@ -19,9 +17,14 @@ export class TrialService {
     console.log("Using host: %s", this.api_url);
   }
 
-  getTrials():Observable<any> {
+  public getTrials():Observable<any> {
     const url = this.api_url + this.trial_endpoint;
-    return this._http.get<any>(url, {headers: this.headers});
+    return this._http.get<HttpResponse<any>>(url, {headers: this.headers, observe: 'response'});
+  }
+
+  public createTrial(trial: Trial) {
+    const url = this.api_url + this.trial_endpoint;
+    return this._http.post<any>(url, trial, {observe: 'response'});
   }
 
 }

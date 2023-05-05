@@ -1,0 +1,171 @@
+<div class="main-container">
+  <div class="container">
+    <div class="row create-element-row">
+
+      <div class="col-sm-9">{{tagCreateNew}}</div>
+      <div class="col-sm-1 bubble-element-col" [ngClass]="{'is-bubble-active': currentStep == 1}">1</div>
+      <div class="col-sm-1 bubble-element-transparent"></div>
+      <div class="col-sm-1 bubble-element-col" [ngClass]="{'is-bubble-active': currentStep == 2}">2</div>
+      <div class="col-sm-1 bubble-element-transparent"></div>
+      <div class="col-sm-1 bubble-element-col" [ngClass]="{'is-bubble-active': currentStep == 3}">3</div>
+      <div class="col-sm-1 bubble-element-transparent"></div>
+      <div class="col-sm-1 bubble-element-col" [ngClass]="{'is-bubble-active': currentStep == 4}">4</div>
+    </div>
+    <div class="row" style="border: 1px solid black; min-height: 425px">
+
+      <form #form="ngForm" (ngSubmit)="confirm(form)">
+        <div *ngIf="currentStep == 1">
+          <h1 style="border: 1px solid red">Datos del patrocinador </h1>
+          <div class="mb-3">
+            <label for="sponsor_name">Nombre del patrocinador</label>
+            <input type="text" id="sponsor_name">
+          </div>
+
+          <div class="mb-3">
+            <label for="sponsor_acronym">Siglas (opcional)</label>
+            <input type="text" id="sponsor_acronym">
+          </div>
+
+          <div class="mb-3">
+            <label for="sponsor_description">Descripción</label>
+            <input type="text" id="sponsor_description">
+          </div>
+
+          <div class="mb-3">
+            <label for="sponsor_doc_type">Tipo de documento</label>
+            <select name="sponsor_doc_type" id="sponsor_doc_type">
+              <option value="" disabled selected>Seleccionar</option>
+              <option value="dni">DNI</option>
+              <option value="ruc">RUC</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="sponsor_doc_number">Número de documento</label>
+            <input type="text" id="sponsor_doc_number">
+          </div>
+
+          <div class="mb-3">
+            <label for="sponsor_city">Ciudad</label>
+            <select name="sponsor_city" id="sponsor_city">
+              <option value="" disabled selected>Seleccionar</option>
+              <option value="lim">Lima</option>
+              <option value="tru">Trujillo</option>
+              <option value="aqp">Arequipa</option>
+            </select>
+          </div>
+        </div>
+
+        <div *ngIf="currentStep == 2">
+          <h1 style="border: 1px solid red">Datos de la vacuna</h1>
+          <div class="mb-3">
+            <label for="vaccine_name">Nombre de la vacuna</label>
+            <input type="text" id="vaccine_name">
+          </div>
+
+          <div class="mb-3">
+            <label for="vaccine_acronym">Siglas (opcional)</label>
+            <input type="text" id="vaccine_acronym">
+          </div>
+
+          <div class="mb-3">
+            <label for="vaccine_description">Descripción</label>
+            <input type="text" id="vaccine_description">
+          </div>
+
+          <div class="mb-3">
+            <label for="vaccine_target_infection_type">Tipo de infección</label>
+            <select name="vaccine_target_infection_type" id="vaccine_target_infection_type">
+              <option value="" disabled selected>Seleccionar</option>
+              <option value="viral">Virus</option>
+              <option value="bacterium">Bacteria</option>
+              <option value="fungi">Hongo</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="vaccine_target_infection_name">Nombre de infección objetivo</label>
+            <input type="text" id="vaccine_target_infection_name">
+          </div>
+
+          <div class="mb-3">
+            <label for="vaccine_type">Ciudad</label>
+            <select name="vaccine_type" id="vaccine_type">
+              <option value="" disabled selected>Seleccionar</option>
+              <option value="attenuated">Viva atenuada</option>
+              <option value="inactivated">Viva inactivada</option>
+              <option value="mrna">mRNA</option>
+            </select>
+          </div>
+        </div>
+
+        <div *ngIf="currentStep == 3">
+          <h1 style="border: 1px solid red">Datos del Perfil de Produto Objetivo</h1>
+          <div class="mb-3">
+            <label for="tpp_target_population">Población objetivo</label>
+            <input type="text" id="tpp_target_population" [(ngModel)]="tpp_target_population" name="tpp_target_population">
+          </div>
+
+          <div class="mb-3">
+            <label for="tpp_efficacy_profile">Perfil deseado de eficacia y seguridad</label>
+            <input type="text" id="tpp_efficacy_profile" [(ngModel)]="tpp_efficacy_profile" name="tpp_efficacy_profile">
+          </div>
+
+          <div class="mb-3">
+            <label for="tpp_immuno_response">Respuesta inmunológica deseada</label>
+            <input type="text" id="tpp_immuno_response" [(ngModel)]="tpp_immuno_response" name="tpp_immuno_response">
+          </div>
+
+          <div class="mb-3">
+            <label for="tpp_route_of_administration">Vía de administración</label>
+            <select name="tpp_route_of_administration" id="tpp_route_of_administration" [(ngModel)]="tpp_route_of_administration">
+              <option value="" disabled selected>Seleccionar</option>
+              <option value="oral">Oral</option>
+              <option value="shot">Inyectable</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="tpp_storage_conditions">Condiciones de almacenamiento</label>
+            <input type="text" id="tpp_storage_conditions" [(ngModel)]="tpp_storage_conditions" name="tpp_storage_conditions">
+          </div>
+
+          <div class="mb-3">
+            <label for="tpp_other">Otras consideraciones</label>
+            <input type="text" id="tpp_other" [(ngModel)]="tpp_other" name="tpp_other">
+          </div>
+        </div>
+
+        <div *ngIf="currentStep == 4">
+          <h1 style="border: 1px solid red">Resumen</h1>
+          <div class="mb-3">
+            <label>Patrocinador</label>
+            <label> (Nombre, Nro. documento, Ciudad)</label>
+          </div>
+
+          <div class="mb-3">
+            <label>Vacuna candidata</label>
+            <label> (Nombre, Infección objetivo, Tipo)</label>
+          </div>
+
+          <div class="mb-3">
+            <label>Perfil de Producto Objetivo</label>
+            <label> (Población objetivo)</label>
+            <label> (Eficacia deseada)</label>
+            <label> (Via de administración deseada)</label>
+            <label> (Otros)</label>
+          </div>
+        </div>
+
+        <div class="d-grid" *ngIf="trialReady"><button class="btn-primary btn btn-lg">Confirmar</button></div>
+
+      </form>
+
+      <div *ngIf="currentStep != 4" class="d-grid"><button (click)="nextStep()" class="btn btn-lg btn-primary">Siguiente ></button></div>
+      <div *ngIf="currentStep == 4" class="d-grid"><button (click)="nextStep()" class="btn btn-lg btn-primary w-10">Confirmar ></button></div>
+
+    </div>
+
+  </div>
+
+</div>
