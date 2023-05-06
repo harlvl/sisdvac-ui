@@ -1,7 +1,6 @@
 import {Component, Injectable} from '@angular/core';
 import {AuthService} from "../services/auth.service";
 import {NgForm} from "@angular/forms";
-import {map} from "rxjs";
 import {Credentials} from "../components/interfaces/credentials";
 import {Router} from "@angular/router";
 import {RouteNames} from "../components/constants/route-names";

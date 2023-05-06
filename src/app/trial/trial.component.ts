@@ -29,8 +29,6 @@ export class TrialComponent implements OnInit {
     this.trialsService.getTrials().pipe(map((res) => {
       return res;
     })).subscribe((response) => {
-      console.log(response.status);
-      console.log(response);
       const hits = response.hits;
       this.trialList = response.body.payload;
     })

@@ -18,7 +18,7 @@ import {map} from "rxjs";
 })
 
 @Injectable({providedIn: 'root'})
-export class CreateTrialComponent implements OnInit{
+export class CreateTrialComponent{
   public tagCreateNew: string = TagNames.trialCreate;
   public currentStep: number = 1;
   public trialReady: boolean = false;
@@ -72,7 +72,8 @@ export class CreateTrialComponent implements OnInit{
     } else if (this.currentStep == 2) {
       // TODO actions
     }else if (this.currentStep == 3) {
-      // TODO figure out why these values are not being retrieved
+      // TODO actions
+    }else if (this.currentStep == 4) {
       console.log("Values updated:")
       console.log(this.tpp_target_population);
       console.log(this.tpp_efficacy_profile);
@@ -82,7 +83,7 @@ export class CreateTrialComponent implements OnInit{
 
       //update object
       this.trialToBeCreated.title = "Test title";
-      this.trialToBeCreated.insNumber = "15876521";
+      this.trialToBeCreated.insNumber = "15871236521121";
       this.trialToBeCreated.stage = TrialStage.PRECLINICAL;
       this.trialToBeCreated.startDate = "2023-05-04";
       this.trialToBeCreated.status = {startDate: "2023-05-04", name: "Estado inicial", endDate: ""};
@@ -94,13 +95,12 @@ export class CreateTrialComponent implements OnInit{
       const storageConditionsItem: TppItem = {type: TppItemType.STORAGE_CONDITION, detail: this.tpp_storage_conditions}
       const tppItems = [];
       tppItems.push(targetPopulationItem, efficacyProfileItem, immunoResponseItem, adminRouteItem, storageConditionsItem);
-      console.log("tpp items: " + tppItems);
+      console.log("tpp items: " + tppItems); // TODO fix printing
       this.trialToBeCreated.tpp = {items: tppItems};
 
       const formulationItem: FormulationItem = {type: FormulationItemType.COMPOSITION, detail: "Biocompatible"};
       this.trialToBeCreated.formulation = {items: [formulationItem]};
-    }else if (this.currentStep == 4) {
-      // TODO actions
+
       this.trialReady = true;
     }
     console.log("Current step is now %d", this.currentStep);

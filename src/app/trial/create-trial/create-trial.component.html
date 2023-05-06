@@ -103,7 +103,7 @@
           <h1 style="border: 1px solid red">Datos del Perfil de Produto Objetivo</h1>
           <div class="mb-3">
             <label for="tpp_target_population">Población objetivo</label>
-            <input type="text" id="tpp_target_population" [(ngModel)]="tpp_target_population" name="tpp_target_population">
+            <input type="text" id="tpp_target_population" [(ngModel)]="tpp_target_population" [ngModelOptions]="{standalone: true}" name="tpp_target_population">
           </div>
 
           <div class="mb-3">
@@ -157,12 +157,12 @@
           </div>
         </div>
 
-        <div class="d-grid" *ngIf="trialReady"><button class="btn-primary btn btn-lg">Confirmar</button></div>
+        <div class="d-grid" *ngIf="trialReady"><button class="btn-primary btn btn-lg w-10">Confirmar ></button></div>
 
       </form>
 
       <div *ngIf="currentStep != 4" class="d-grid"><button (click)="nextStep()" class="btn btn-lg btn-primary">Siguiente ></button></div>
-      <div *ngIf="currentStep == 4" class="d-grid"><button (click)="nextStep()" class="btn btn-lg btn-primary w-10">Confirmar ></button></div>
+<!--      <div *ngIf="currentStep == 4" class="d-grid"><button (click)="nextStep()" class="btn btn-lg btn-primary w-10">Confirmar ></button></div>-->
 
     </div>
 
