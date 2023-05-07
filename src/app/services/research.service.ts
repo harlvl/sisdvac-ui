@@ -16,19 +16,7 @@ export class ResearchService {
     return this._http.get<HttpResponse<any>>(url, {observe: "response"});
   }
 
-  public findUsersByRole(id: any, role: any) {
-    let output;
-    this.findUsersByRoleUtil(id, role).pipe(map((res) => {
-      return res;
-    })).subscribe((response) => {
-      output = response.body.payload;
-      console.log(output);
-    })
-
-    return output;
-  }
-
-  public findUsersByRoleUtil(id: any, role: any): Observable<any> {
+  public findUsersByRole(id: any, role: any): Observable<any> {
     const url =
       this.api_url + Endpoints.research +
       Endpoints.findUsersByRole.replace("{id}", id).replace("{key}", role);
