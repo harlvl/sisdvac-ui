@@ -7,12 +7,15 @@ export class Endpoints {
 
   // user endpoints
   public static user: string = '/user';
-  public static userByRole: string = '/role/';
+  public static usersByRole: string = '/role/';
+  public static usersByDocumentNumber: string = '/document_number/';
+  public static usersByName: string = '/name/';
 
   // trial endpoints
   public static trial: string = '/trial';
 
   // research endpoints
   public static research: string = '/research';
+  public static addUsers: string = '/id/{id}/add_users';
   public static findUsersByRole: string = '/{id}/users/role/{key}';
 }

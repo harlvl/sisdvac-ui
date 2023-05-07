@@ -49,11 +49,9 @@ export class CreateTrialComponent{
 
   constructor(private trialsService: TrialService, private router: Router) {
     this.currentStep = 1;
-    console.log("current step: %d", this.currentStep);
   }
   ngOnInit(): void {
     this.currentStep = 1;
-    console.log("current step: %d", this.currentStep);
   }
 
   private doCreateTrial(input: any) {
@@ -62,7 +60,6 @@ export class CreateTrialComponent{
 
   public nextStep() {
     this.currentStep = (this.currentStep + 1) % 4;
-    console.log("next step current step: %d", this.currentStep);
     if (this.currentStep == 0) {
       this.currentStep = 4;
     }
@@ -74,13 +71,6 @@ export class CreateTrialComponent{
     }else if (this.currentStep == 3) {
       // TODO actions
     }else if (this.currentStep == 4) {
-      console.log("Values updated:")
-      console.log(this.tpp_target_population);
-      console.log(this.tpp_efficacy_profile);
-      console.log(this.tpp_immuno_response);
-      console.log(this.tpp_route_of_administration);
-      console.log(this.tpp_storage_conditions);
-
       //update object
       this.trialToBeCreated.title = "Test title";
       this.trialToBeCreated.insNumber = "15871236521121";

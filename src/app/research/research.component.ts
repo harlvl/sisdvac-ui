@@ -8,6 +8,7 @@ import {Role} from "../components/constants/role";
 import {RoleEnum} from "../components/enums/roleEnum";
 import {UserService} from "../services/user.service";
 import {TagNames} from "../components/constants/tag-names";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-research',
@@ -40,9 +41,19 @@ export class ResearchComponent implements OnInit {
   public userType: string = '';
   public trialView = {} as Trial;
 
+  // for adding members view
+  isViewAddMember: boolean = false;
+
   // for trial view
   public isViewTrials: boolean = false;
   public currentTrialList: Trial [];
+
+  // for searching
+  public searchResults: any = [];
+  public usersToAdd: any = [];
+  public searchKey: string = "Nombre";
+  public searchValue: string = "";
+
 
   constructor(private route: ActivatedRoute,
               private trialsService: TrialService,
@@ -73,38 +84,64 @@ export class ResearchComponent implements OnInit {
     });
   }
 
+  goToAddMember(currentResearch: any) {
+    this.setViewToAddMember();
+  }
+
   goToResearchTrialsView(i: number, id: any) {
     console.log("Trial list length: %d", this.currentTrialList.length);
     this.setViewToTrials();
   }
 
   goToResearchUsersView(i: any, id: any, role: any) {
-    this.researchService.findUsersByRole(id, role).pipe(map((res) => {
-      return res;
-    })).subscribe((response) => {
-      this.currentResearchUserList = response.body.payload;
-      this.currentResearch = this.researchList[i];
-      console.log(this.currentResearchUserList);
-      this.setViewToUsers(role);
-    });
-
+    if (role != null) {
+      // search by role
+      this.researchService.findUsersByRole(id, role).pipe(map((res) => {
+        return res;
+      })).subscribe((response) => {
+        this.currentResearchUserList = response.body.payload;
+        this.currentResearch = this.researchList[i];
+        console.log(this.currentResearchUserList);
+        this.setViewToUsers();
+      });
+    } else {
+      // search all
+      this.researchService.findById(id).pipe(map((res) => {
+        return res;
+      })).subscribe((response) => {
+        this.currentResearchUserList = response.body.payload.users;
+        this.currentResearch = this.researchList[i];
+        console.log(this.currentResearchUserList);
+        this.setViewToUsers();
+      });
+    }
   }
 
-  private setViewToUsers(role: any) {
+  private setViewToUsers() {
     this.isViewUsers = true;
     this.isViewTrials = false;
     this.isViewResearch = false;
+    this.isViewAddMember = false;
   }
 
   private setViewToResearches() {
     this.isViewUsers = false;
     this.isViewTrials = false;
     this.isViewResearch = true;
+    this.isViewAddMember = false;
   }
   private setViewToTrials() {
     this.isViewUsers = false;
     this.isViewTrials = true;
     this.isViewResearch = false;
+    this.isViewAddMember = false;
+  }
+
+  private setViewToAddMember() {
+    this.isViewUsers = false;
+    this.isViewTrials = false;
+    this.isViewResearch = false;
+    this.isViewAddMember = true;
   }
 
   checkTrial(i: number) {
@@ -164,5 +201,44 @@ export class ResearchComponent implements OnInit {
     this.setViewToResearches();
   }
 
+  goBackToMembers() {
+    //TODO refresh members list
+    this.setViewToUsers();
+  }
 
+  doSearch(form: NgForm) {
+    if (this.searchKey == null || this.searchValue == null || this.searchValue == "") {
+      console.log("No search parameters provided!");
+      return;
+    }
+
+    // TODO validations
+    if (this.searchKey == "role") {
+      this.userService.findByRole(this.searchValue).pipe(map((res) => {
+        return res;
+      })).subscribe((response) => {
+        this.searchResults = response.body.payload;
+        this.usersToAdd = this.searchResults; // TODO update to only include selected users
+        console.log("Search results:")
+        console.log(this.searchResults);
+      });
+    }
+  }
+
+  doAddMembers() {
+    if (this.usersToAdd == null || this.usersToAdd.length == 0) {
+      console.log("No users have been selected.");
+      return;
+    }
+
+    // at this point we do have users
+    this.researchService.addUsers(this.currentResearch.id, this.usersToAdd).pipe(map((res) => {
+      return res;
+    })).subscribe((response) => {
+      console.log("Response status: %d", response.status);
+      console.log(response.body.payload);
+    });
+
+    this.goBackToMembers();
+  }
 }

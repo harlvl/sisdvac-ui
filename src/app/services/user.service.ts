@@ -13,6 +13,16 @@ export class UserService {
   constructor(private _http: HttpClient) { }
 
   public findByRole(role: any):Observable<any> {
-    return this._http.get<HttpResponse<any>>(this.userServiceUrl + Endpoints.userByRole + role, {observe: "response"});
+    const url = this.userServiceUrl + Endpoints.usersByRole + role;
+    return this._http.get<HttpResponse<any>>(url, {observe: "response"});
+  }
+
+  public findByDocumentNumber(documentNumber: any): Observable<any> {
+    const url = this.userServiceUrl + Endpoints.usersByDocumentNumber + documentNumber;
+    return this._http.get<HttpResponse<any>>(url, {observe: "response"});
+  }
+  public findByName(key: any): Observable<any> {
+    const url = this.userServiceUrl + Endpoints.usersByName + key;
+    return this._http.get<HttpResponse<any>>(url, {observe: "response"});
   }
 }
