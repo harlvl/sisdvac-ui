@@ -12,7 +12,7 @@ import {FormulationItemType} from "../../components/enums/formulationItemType";
 import {map} from "rxjs";
 
 @Component({
-  selector: 'app-create-trial',
+  selector: 'app-create-research',
   templateUrl: './create-trial.component.html',
   styleUrls: ['./create-trial.component.scss']
 })
@@ -126,7 +126,7 @@ export class CreateTrialComponent{
 
     // TODO show success/error message
 
-    // send user to trial tab
+    // send user to research tab
     this.router.navigate([RouteNames.trials]);
 
   }

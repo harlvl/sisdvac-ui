@@ -13,6 +13,7 @@ import {HeaderNames} from "../components/constants/header-names";
 export class HeaderComponent implements OnInit{
   isLogged: boolean = false;
   headerContentTrial: string = HeaderNames.trials;
+  headerContentResearch: string = HeaderNames.researches;
   headerContentNewTrial: string = HeaderNames.trialCreate;
   routerNameCreateTrial: string = RouteNames.trialCreate;
   routerNameTrials: string = RouteNames.trials;

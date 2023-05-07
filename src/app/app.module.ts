@@ -9,12 +9,12 @@ import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
 import { MainComponent } from './main/main.component';
 import {NgOptimizedImage} from "@angular/common";
-import { TrialComponent } from './trial/trial.component';
+import { ResearchComponent } from './research/research.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
 import {FormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./helpers/auth.interceptor";
-import { CreateTrialComponent } from './trial/create-trial/create-trial.component';
+import { CreateTrialComponent } from './research/create-trial/create-trial.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -25,7 +25,7 @@ import { CreateTrialComponent } from './trial/create-trial/create-trial.componen
     FooterComponent,
     MenuComponent,
     MainComponent,
-    TrialComponent,
+    ResearchComponent,
     LoginComponent,
     CreateTrialComponent
   ],

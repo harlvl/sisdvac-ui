@@ -7,4 +7,7 @@ export class Endpoints {
 
   // trial endpoints
   public static trial: string = '/trial';
+
+  // research endpoints
+  public static research: string = '/research';
 }
