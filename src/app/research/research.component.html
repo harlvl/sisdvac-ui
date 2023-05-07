@@ -27,8 +27,7 @@
                 <div class="card-title">{{research.title}}
                   <img (click)="checkTrials(i)" class="point-edit trial-check" src="assets/images/icons/search.svg" alt=""/>
                 </div>
-                <div class="card-text">{{research.users.length}} miembros
-                  <img (click)="checkUsers(i)" class="point-edit trial-check" src="assets/images/icons/search.svg" alt="">
+                <div class="card-text"><a (click)="goToResearchUsersView(i, research.id, 'DOCTOR_MEMBER')">{{research.users.length}} doctores miembros</a>
                 </div>
                 <div class="card-text">{{research.trials.length}} evaluaciones</div>
               </div>
@@ -94,7 +93,7 @@
   <div class="main-container">
     <span class="title-layout">Equipo de la investigación {{currentResearch.title}}</span>
     <div>
-      <button class="button" (click)="goBack()">Volver</button>
+      <button class="button" (click)="goBackToResearches()">Volver</button>
     </div>
 
     <!-- START INNER CONTAINER-->
@@ -102,17 +101,17 @@
       <div class="col-sm-12 title-results-search">
         <div class="container">
           <div class="row">
-            <div class="col-8"> <span class="activity-table-title">Número de usuarios: {{ currentResearch.users.length}} </span> </div>
+            <div class="col-8"> <span class="activity-table-title">Número de usuarios: {{ currentResearchUserList.length}} </span> </div>
           </div>
 
           <!-- START DECK -->
           <div class="trial-card-deck">
-            <div class="trial-card" *ngFor="let _user of currentResearch.users; let i = index">
+            <div class="trial-card" *ngFor="let _user of currentResearchUserList; let i = index">
               <img class="trial-card-img" src="./assets/images/icons/font-awesome-flag-brands.svg" alt="Card image cap">
               <div class="card-body">
                 <div class="card-title">{{_user.firstName + _user.lastName}}<img (click)="editUser(i)" class="point-edit trial-check" src="assets/images/icons/edit-solid.svg" alt=""/></div>
                 <div class="card-text">{{_user.email}}</div>
-                <div class="card-text">{{getRole(_user.role)}}</div>
+                <div class="card-text">{{getRoleName(_user.role)}}</div>
                 <div class="card-text">Otros</div>
               </div>
               <div class="card-footer">

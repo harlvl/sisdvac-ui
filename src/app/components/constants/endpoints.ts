@@ -5,9 +5,14 @@ export class Endpoints {
   //auth endpoints
   public static authenticate: string = '/auth/authenticate';
 
+  // user endpoints
+  public static user: string = '/user';
+  public static userByRole: string = '/role/';
+
   // trial endpoints
   public static trial: string = '/trial';
 
   // research endpoints
   public static research: string = '/research';
+  public static findUsersByRole: string = '/{id}/users/role/{key}';
 }

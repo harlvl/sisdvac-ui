@@ -6,6 +6,7 @@ import {Trial} from "../components/interfaces/trial";
 import {ResearchService} from "../services/research.service";
 import {Role} from "../components/constants/role";
 import {RoleEnum} from "../components/enums/roleEnum";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-research',
@@ -19,25 +20,31 @@ export class ResearchComponent implements OnInit {
   trialList: Trial [];
   currentUserType: number = 0;
 
+  // for users view
+  public userList: any;
+
   // for research view
   public isViewResearch: boolean = true;
   public isViewTrials: boolean = false;
   currentResearch: any = {};
+  currentResearchUserList: any = [];
+  currentResearchMainDoctors: any = [];
 
   // for view user view
   @Output() goToViewTrialUsersMode = new EventEmitter<any>();
   public isViewUsers: boolean = false;
   public userType: string = '';
   public trialView = {} as Trial;
-  public userListView: any = [];
 
   constructor(private route: ActivatedRoute,
               private trialsService: TrialService,
               private researchService: ResearchService,
+              private userService : UserService,
               private router: Router) {
     this.trialList = [];
     this.researchList = [];
-    this.userListView.push({name: "Luis", role: "DOCTOR", docNumber:"71271921"});
+    this.currentResearchUserList = [];
+    // this.getUsersByRole("ADMIN");
   }
 
   public ngOnInit(): void {
@@ -56,29 +63,51 @@ export class ResearchComponent implements OnInit {
     });
   }
 
-  getTrials() {
-    this.trialsService.getTrials().pipe(map((res) => {
+  goToResearchUsersView(i: any, id: any, role: any) {
+    this.researchService.findUsersByRoleUtil(id, role).pipe(map((res) => {
+      return res;
+    })).subscribe((response) => {
+      this.currentResearchUserList = response.body.payload;
+      this.currentResearch = this.researchList[i];
+      console.log(this.currentResearchUserList);
+      this.setViewToUsers(role);
+    });
+
+  }
+
+  private setViewToUsers(role: any) {
+    this.isViewUsers = true;
+    this.isViewTrials = false;
+    this.isViewResearch = false;
+  }
+
+  private setViewToResearches() {
+    this.isViewUsers = false;
+    this.isViewTrials = false;
+    this.isViewResearch = true;
+  }
+  private setViewToTrials() {
+    this.isViewUsers = false;
+    this.isViewTrials = true;
+    this.isViewResearch = false;
+  }
+
+  findUsersByRole(id: any, role: any) {
+    this.userList = this.researchService.findUsersByRole(id, role);
+  }
+
+  getUsersByRole(role: any) {
+    this.userService.findByRole(role).pipe(map((res) => {
       return res;
     })).subscribe((response) => {
       const hits = response.hits;
-      this.trialList = response.body.payload;
+      this.userList = response.body.payload;
+      console.log(this.userList);
     })
-  }
-
-  onSelectDetalle(project: any) {
-    console.log("onSelectDetalle");
-  }
-
-  onSelectUpdateProject(project: any) {
-    console.log("onSelectUpdateProject");
   }
 
   checkTrial(i: number) {
     console.log("checking %d", i);
-  }
-
-  checkAdvance() {
-
   }
 
   // user types: 1: sponsor, 2: main doctor, 3: member doctor, 4: asistant
@@ -111,31 +140,22 @@ export class ResearchComponent implements OnInit {
     console.log("Editing");
   }
 
-  // returns from user list view
-  goBack() {
-    this.isViewUsers = false;
-  }
-
   checkTrials(i: number) {
     this.isViewResearch = false;
     this.isViewUsers = false;
     this.isViewTrials = true;
   }
 
-  checkUsers(i: number) {
-    this.isViewUsers = true;
-    this.isViewResearch = false;
-    this.isViewTrials = false;
-
-    this.currentResearch = this.researchList[i];
-  }
-
-  getRole(code: string) {
+  getRoleName(code: string) {
     switch (code) {
       case RoleEnum.DOCTOR_MEMBER:
         return Role.doctor_member;
       default:
         return Role.admin;
     }
+  }
+
+  goBackToResearches() {
+    this.setViewToResearches();
   }
 }
