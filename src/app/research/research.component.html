@@ -154,10 +154,6 @@
 <!--      START row for the search bar-->
           <div class="row">
             <form class="mx-auto" #form="ngForm" (ngSubmit)="doSearch(form)">
-              <div class="mb-3 d-grid">
-                <button class="w-10">Buscar</button>
-              </div>
-
               <div class="mb-3">
                 <label for="search_value"></label>
                 <input type="text" id="search_value" class="form-control" [(ngModel)]="searchValue" name="search_value">
@@ -173,17 +169,38 @@
                 </select>
               </div>
 
-              <div class="mb-3">
-                <button class="btn-primary btn btn-lg" (click)="doAddMembers()">Confirmar</button>
+              <div class="mb-3 d-grid">
+                <button class="btn-primary btn btn-lg w-10" >Buscar</button>
               </div>
-
             </form>
+            <div class="mb-3">
+              <button class="btn-primary btn btn-lg" type="button" (click)="doAddMembers()">Confirmar</button>
+            </div>
           </div>
 <!--          END row for the search bar-->
 
 <!--          START row for members added-->
           <div class="row">
+            <table>
+              <tr>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Selección</th>
+              </tr>
 
+<!--              START BODY -->
+              <tr *ngFor="let user of searchResults; let i = index">
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.role}}</td>
+                <td>
+                  <input type="checkbox" id="is_selected" name="is_selected" (change)="handleSelectedUser($event, i)">
+                </td>
+              </tr>
+            </table>
           </div>
 <!--          END row for the members added-->
         </div>

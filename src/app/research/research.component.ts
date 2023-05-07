@@ -50,7 +50,7 @@ export class ResearchComponent implements OnInit {
 
   // for searching
   public searchResults: any = [];
-  public usersToAdd: any = [];
+  public selectedUsers: any = [];
   public searchKey: string = "Nombre";
   public searchValue: string = "";
 
@@ -218,7 +218,7 @@ export class ResearchComponent implements OnInit {
         return res;
       })).subscribe((response) => {
         this.searchResults = response.body.payload;
-        this.usersToAdd = this.searchResults; // TODO update to only include selected users
+        // this.selectedUsers = this.searchResults; // TODO update to only include selected users
         console.log("Search results:")
         console.log(this.searchResults);
       });
@@ -226,13 +226,17 @@ export class ResearchComponent implements OnInit {
   }
 
   doAddMembers() {
-    if (this.usersToAdd == null || this.usersToAdd.length == 0) {
+    if (this.selectedUsers == null || this.selectedUsers.length == 0) {
       console.log("No users have been selected.");
       return;
     }
 
+    let usersToSend = [];
+    for (let i = 0; i < this.selectedUsers.length; i++) {
+      usersToSend.push(this.selectedUsers[i].content);
+    }
     // at this point we do have users
-    this.researchService.addUsers(this.currentResearch.id, this.usersToAdd).pipe(map((res) => {
+    this.researchService.addUsers(this.currentResearch.id, usersToSend).pipe(map((res) => {
       return res;
     })).subscribe((response) => {
       console.log("Response status: %d", response.status);
@@ -240,5 +244,41 @@ export class ResearchComponent implements OnInit {
     });
 
     this.goBackToMembers();
+  }
+
+  handleSelectedUser(event: Event, index: number) {
+    const isChecked = (<HTMLInputElement>event.target).checked;
+    if (isChecked) {
+      console.log("Element checked: %d", index);
+      let currentId = this.searchResults[index].id;
+      let element = {"id": this.searchResults[index].id, "content": this.searchResults[index]};
+      if (this.selectedUsers != null && this.selectedUsers.length == 0) {
+        this.selectedUsers.push(element);
+        console.log("Selected users size: %d", this.selectedUsers.length);
+        console.log(this.selectedUsers);
+        return;
+      }
+
+      for (let i = 0; i < this.selectedUsers.length; i++) {
+        if (currentId == this.selectedUsers[i].id) {
+          break;
+        }
+        this.selectedUsers.push(element);
+      }
+
+      console.log("Selected users size: %d", this.selectedUsers.length);
+      console.log(this.selectedUsers);
+    } else {
+      console.log("Element unchecked: %d", index);
+      let currentId = this.searchResults[index].id;
+      for (let i = 0; i < this.selectedUsers.length; i++) {
+        if (currentId == this.selectedUsers[i].id) {
+          this.selectedUsers.splice(i, 1);
+        }
+      }
+
+      console.log("Selected users size: %d", this.selectedUsers.length);
+      console.log(this.selectedUsers);
+    }
   }
 }
