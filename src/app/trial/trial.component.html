@@ -1,44 +1,56 @@
-<div class="main-container">
-  <span class="title-layout">Mis estudios</span>
-  <div>
-    <span>Nuevo Estudio</span>
-  </div>
+<ng-container *ngIf="trialList">
+  <ng-container *ngIf="!isViewUsers; then viewTrials"></ng-container>
+  <ng-container *ngIf="isViewUsers; then viewUsers"></ng-container>
+</ng-container>
 
-  <!-- START INNER CONTAINER-->
-  <div class="col-sm-12 trial-secondary-container">
+<ng-template #viewTrials>
+  <div class="main-container">
+    <span class="title-layout">Mis estudios</span>
+    <div>
+      <span>Nuevo Estudio</span>
+    </div>
 
-    <div class="col-sm-12 title-results-search">
-      <div class="container">
-        <div class="row">
-          <div class="col-8"> <span class="activity-table-title">Estudios activos: {{ trialList.length}} </span> </div>
-        </div>
+    <!-- START INNER CONTAINER-->
+    <div class="col-sm-12 trial-secondary-container">
+      <div class="col-sm-12 title-results-search">
+        <div class="container">
+          <div class="row">
+            <div class="col-8"> <span class="activity-table-title">Estudios activos: {{ trialList.length}} </span> </div>
+          </div>
 
-        <!-- START DECK -->
-        <div class="trial-card-deck">
-          <div class="trial-card" *ngFor="let trial of trialList; let i = index">
-            <img class="trial-card-img" src="./assets/images/icons/font-awesome-flag-brands.svg" alt="Card image cap">
-            <div class="card-body">
-              <div class="card-title">{{trial.title}}<img (click)="checkTrial(i)" class="point-edit trial-check" src="assets/images/icons/search.svg" alt=""/></div>
-              <div class="card-text"><a>Patrocinadores</a></div>
-              <div class="card-text"><a>Patrocinadores</a></div>
-              <div class="card-text"><a>Patrocinadores</a></div>
-              <div class="card-text"><a>Patrocinadores</a></div>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">Inició {{trial.startDate}}</small>
+          <!-- START DECK -->
+          <div class="trial-card-deck">
+            <div class="trial-card" *ngFor="let trial of trialList; let i = index">
+              <img class="trial-card-img" src="./assets/images/icons/font-awesome-flag-brands.svg" alt="Card image cap">
+              <div class="card-body">
+                <div class="card-title">{{trial.title}}<img (click)="checkTrial(i)" class="point-edit trial-check" src="assets/images/icons/search.svg" alt=""/></div>
+                <div class="card-text"><a (click)="checkUser(1, i)">Patrocinadores</a></div>
+                <div class="card-text"><a (click)="checkUser(2, i)">Doctores principales</a></div>
+                <div class="card-text"><a>Doctores miembros</a></div>
+                <div class="card-text"><a>Patrocinadores</a></div>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Inició {{trial.startDate}}</small>
+              </div>
             </div>
           </div>
+          <!-- END DECK -->
+
         </div>
-        <!-- END DECK -->
 
       </div>
 
     </div>
+    <!-- END INNER CONTAINER-->
+  </div>
 
+</ng-template>
+<ng-template #viewUsers>
+  <div class="main-container">
+    <span class="title-layout">{{userType}} del estudio {{trialView.title}}</span>
     <div>
-
+      <span>Volver</span>
     </div>
 
   </div>
-  <!-- END INNER CONTAINER-->
-</div>
+</ng-template>
