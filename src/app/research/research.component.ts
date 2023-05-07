@@ -148,8 +148,12 @@ export class ResearchComponent implements OnInit {
 
   getRoleName(code: string) {
     switch (code) {
+      case RoleEnum.DOCTOR_MAIN:
+        return Role.doctor_main;
       case RoleEnum.DOCTOR_MEMBER:
         return Role.doctor_member;
+      case RoleEnum.SPONSOR:
+        return Role.sponsor;
       default:
         return Role.admin;
     }
