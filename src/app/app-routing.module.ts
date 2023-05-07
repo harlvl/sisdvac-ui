@@ -11,7 +11,7 @@ const routes: Routes = [
   {path : '', redirectTo: RouteNames.welcome, pathMatch: 'full'},
   {path : RouteNames.login, component: LoginComponent},
   {path : RouteNames.welcome, component: WelcomeComponent, canActivate: [AuthGuard]},
-  {path : RouteNames.trials, component: ResearchComponent, canActivate: [AuthGuard]},
+  {path : RouteNames.researches, component: ResearchComponent, canActivate: [AuthGuard]},
   {path : RouteNames.trialCreate, component: CreateTrialComponent, canActivate: [AuthGuard]},
 ];
 

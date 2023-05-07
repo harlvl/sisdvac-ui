@@ -117,7 +117,7 @@ export class CreateTrialComponent{
     // TODO show success/error message
 
     // send user to research tab
-    this.router.navigate([RouteNames.trials]);
+    this.router.navigate([RouteNames.researches]);
 
   }
 

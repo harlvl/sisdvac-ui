@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit{
   headerContentNewTrial: string = HeaderNames.trialCreate;
   routerNameCreateTrial: string = RouteNames.trialCreate;
   routerNameTrials: string = RouteNames.trials;
+  routerNameResearches: string = RouteNames.researches;
 
   constructor(private authService :AuthService) {
     if (authService.getAccessToken()) {
