@@ -238,6 +238,10 @@ export class ResearchComponent implements OnInit {
     this.setViewToUsers();
   }
 
+  goBackToFormulation() {
+    this.setViewToTrial();
+  }
+
   doSearch(form: NgForm) {
     // clear results table
     this.searchResults = [];

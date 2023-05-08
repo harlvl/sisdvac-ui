@@ -2,6 +2,7 @@
   <ng-container *ngIf="isViewResearch; then viewResearch"></ng-container>
   <ng-container *ngIf="isViewTrials; then viewTrials"></ng-container>
   <ng-container *ngIf="isViewTrial; then viewTrial"></ng-container>
+  <ng-container *ngIf="isViewAddFormulation; then viewAddFormulation"></ng-container>
   <ng-container *ngIf="isViewUsers; then viewUsers"></ng-container>
   <ng-container *ngIf="isViewAddMember; then viewAddMember"></ng-container>
 </ng-container>
@@ -136,8 +137,23 @@
     </div>
     <!-- END INNER CONTAINER-->
   </div>
-
 </ng-template>
+
+<ng-template #viewAddFormulation>
+  <div class="main-container">
+    <div class="container">
+      <div class="row">
+        <div class="title-layout">Crear nueva formulación</div>
+        <div>
+          <button class="button" (click)="goBackToFormulation()">Volver</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</ng-template>
+
 <ng-template #viewUsers>
   <div class="main-container">
     <span class="title-layout">Equipo de la investigación "{{currentResearch.title}}"</span>
