@@ -8,6 +8,9 @@ import {UserService} from "../services/user.service";
 import {TagNames} from "../components/constants/tag-names";
 import {NgForm} from "@angular/forms";
 import {Utils} from "../helpers/utils";
+import {FormulationItemTypeEnum} from "../components/enums/formulationItemTypeEnum";
+import {FormulationItem} from "../components/interfaces/formulationItem";
+import {HttpResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-research',
@@ -57,6 +60,15 @@ export class ResearchComponent implements OnInit {
   public searchKey: string = "Nombre";
   public searchValue: string = "";
   public isViewAddFormulation: boolean = false;
+
+  // for adding new formulation
+  public addFormulationStep: number = 1;
+  isFormulationReady: boolean = false;
+  formulationSize: string = "";
+  formulationIntegrity: string = "";
+  formulationComposition: string = "";
+  formulationSterility: string = "";
+  formulationOsmolality: string = "";
 
   constructor(private route: ActivatedRoute,
               private trialsService: TrialService,
@@ -172,7 +184,7 @@ export class ResearchComponent implements OnInit {
     this.isViewUsers = false;
     this.isViewTrials = false;
     this.isViewResearch = false;
-    this.isViewAddMember = true;
+    this.isViewAddMember = false;
     this.isViewTrial = false;
     this.isViewAddFormulation = true;
   }
@@ -238,7 +250,7 @@ export class ResearchComponent implements OnInit {
     this.setViewToUsers();
   }
 
-  goBackToFormulation() {
+  goBackToTrial() {
     this.setViewToTrial();
   }
 
@@ -348,5 +360,51 @@ export class ResearchComponent implements OnInit {
 
   goToAddFormulation(currentResearch: any, currentTrial: any) {
     this.setViewToAddFormulation();
+  }
+
+  confirmAddFormulation(form: any) {
+    console.log("Confirmada la creación");
+    //TODO add loading icon
+
+    //TODO add validations
+    let items: FormulationItem [] = [];
+
+
+    items.push({
+      type: FormulationItemTypeEnum.SIZE,
+      detail: this.formulationSize,
+    });
+
+    items.push({
+      type: FormulationItemTypeEnum.INTEGRITY,
+      detail: this.formulationIntegrity,
+    });
+
+    items.push({
+      type: FormulationItemTypeEnum.COMPOSITION,
+      detail: this.formulationComposition,
+    });
+
+    items.push({
+      type: FormulationItemTypeEnum.STERILITY,
+      detail: this.formulationSterility,
+    });
+
+    items.push({
+      type: FormulationItemTypeEnum.OSMOLALITY,
+      detail: this.formulationOsmolality,
+    });
+    let payload = {"items": items};
+
+    this.trialsService.addFormulation(this.currentTrial.id, payload).pipe(map((res) => {
+      return res;
+    })).subscribe((response:HttpResponse<any>) => {
+      console.log("Add formulation status code: %d", response.status);
+      console.log(response.body.payload);
+    });
+
+    //TODO add router to navigate
+    this.setViewToTrial();
+
   }
 }

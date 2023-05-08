@@ -144,9 +144,55 @@
     <div class="container">
       <div class="row">
         <div class="title-layout">Crear nueva formulación</div>
-        <div>
-          <button class="button" (click)="goBackToFormulation()">Volver</button>
+        <div class="create-element-row">
+          <div class="col-sm-1 bubble-element-col" [ngClass]="{'is-bubble-active': addFormulationStep == 1}">1</div>
+          <div class="col-sm-1 bubble-element-transparent"></div>
+          <div class="col-sm-1 bubble-element-col" [ngClass]="{'is-bubble-active': addFormulationStep == 2}">2</div>
         </div>
+        <div>
+          <button class="button" (click)="goBackToTrial()">Volver</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <form #form="ngForm" (ngSubmit)="confirmAddFormulation(form)">
+
+          <div *ngIf="addFormulationStep == 1">
+            <h1 style="border: 1px solid red">Datos de la formulación</h1>
+            <div class="mb-3">
+              <label for="size">Tamaño y distribución</label>
+              <input type="text" id="size" [(ngModel)]="formulationSize" name="size">
+            </div>
+
+            <div class="mb-3">
+              <label for="integrity">Integridad</label>
+              <input type="text" id="integrity" [(ngModel)]="formulationIntegrity" name="integrity">
+            </div>
+
+            <div class="mb-3">
+              <label for="composition">Composición</label>
+              <input type="text" id="composition" [(ngModel)]="formulationComposition" name="composition">
+            </div>
+
+            <div class="mb-3">
+              <label for="sterility">Esterilidad y niveles de endotoxinas</label>
+              <input type="text" id="sterility" [(ngModel)]="formulationSterility" name="sterility">
+            </div>
+
+            <div class="mb-3">
+              <label for="osmolality">Osmolidad y pH</label>
+              <input type="text" id="osmolality" [(ngModel)]="formulationOsmolality" name="osmolality">
+            </div>
+          </div>
+
+          <div *ngIf="addFormulationStep == 2">
+<!--            TODO add confirmation screen-->
+          </div>
+
+          <div class="d-grid">
+            <button class="btn-primary btn btn-lg w-10">Confirmar ></button>
+          </div>
+        </form>
       </div>
 
     </div>

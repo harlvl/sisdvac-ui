@@ -1,6 +1,6 @@
-import {FormulationItemType} from "../enums/formulationItemType";
+import {FormulationItemTypeEnum} from "../enums/formulationItemTypeEnum";
 
 export interface FormulationItem {
-  type: FormulationItemType;
+  type: FormulationItemTypeEnum;
   detail: string;
 }

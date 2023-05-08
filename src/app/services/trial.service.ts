@@ -8,6 +8,7 @@ import {Trial} from "../components/interfaces/trial";
   providedIn: 'root'
 })
 export class TrialService {
+  private rootHost = Endpoints.apiV1 + Endpoints.trial;
   private api_url = Endpoints.apiV1;
   private trial_endpoint = Endpoints.trial
   private headers = new HttpHeaders({
@@ -25,6 +26,11 @@ export class TrialService {
   public createTrial(trial: Trial) {
     const url = this.api_url + this.trial_endpoint;
     return this._http.post<any>(url, trial, {observe: 'response'});
+  }
+
+  public addFormulation(id: any, formulation: any) {
+    const url = this.rootHost + Endpoints.addFormulation.replace("{id}", id);
+    return this._http.post(url, formulation, {observe: "response"});
   }
 
 }

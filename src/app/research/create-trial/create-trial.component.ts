@@ -8,7 +8,7 @@ import {TrialStageEnum} from "../../components/enums/trialStageEnum";
 import {TppItem} from "../../components/interfaces/tppItem";
 import {TppItemType} from "../../components/enums/tppItemType";
 import {FormulationItem} from "../../components/interfaces/formulationItem";
-import {FormulationItemType} from "../../components/enums/formulationItemType";
+import {FormulationItemTypeEnum} from "../../components/enums/formulationItemTypeEnum";
 import {map} from "rxjs";
 
 @Component({
@@ -88,7 +88,7 @@ export class CreateTrialComponent{
       console.log("tpp items: " + tppItems); // TODO fix printing
       this.trialToBeCreated.tpp = {items: tppItems};
 
-      const formulationItem: FormulationItem = {type: FormulationItemType.COMPOSITION, detail: "Biocompatible"};
+      const formulationItem: FormulationItem = {type: FormulationItemTypeEnum.COMPOSITION, detail: "Biocompatible"};
       this.trialToBeCreated.formulation = {items: [formulationItem]};
 
       this.trialReady = true;

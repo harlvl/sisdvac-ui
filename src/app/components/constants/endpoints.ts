@@ -13,6 +13,7 @@ export class Endpoints {
 
   // trial endpoints
   public static trial: string = '/trial';
+  public static addFormulation: string = '/{id}/formulation';
 
   // research endpoints
   public static research: string = '/research';

@@ -1,4 +1,4 @@
-export enum FormulationItemType {
+export enum FormulationItemTypeEnum {
   SIZE = "SIZE",
   INTEGRITY = "INTEGRITY",
   COMPOSITION = "COMPOSITION",
