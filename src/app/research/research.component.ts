@@ -192,8 +192,10 @@ export class ResearchComponent implements OnInit {
         return Role.doctor_member;
       case RoleEnum.SPONSOR:
         return Role.sponsor;
+      case RoleEnum.ASSISTANT:
+        return Role.assistant;
       default:
-        return Role.admin;
+        return "Sin rol definido";
     }
   }
 
@@ -207,6 +209,9 @@ export class ResearchComponent implements OnInit {
   }
 
   doSearch(form: NgForm) {
+    // clear results table
+    this.searchResults = [];
+
     if (this.searchKey == null || this.searchValue == null || this.searchValue == "") {
       console.log("No search parameters provided!");
       //TODO add error message when parameters are missing
@@ -215,14 +220,34 @@ export class ResearchComponent implements OnInit {
 
     // TODO validations
     if (this.searchKey == "role") {
-      this.userService.findByRole(this.searchValue).pipe(map((res) => {
+      this.userService.findByRole(this.searchValue.trim()).pipe(map((res) => {
         return res;
       })).subscribe((response) => {
         this.searchResults = response.body.payload;
         // this.selectedUsers = this.searchResults; // TODO update to only include selected users
-        console.log("Search results:")
+        console.log("Search results by role:")
         console.log(this.searchResults);
       });
+    } else if (this.searchKey == 'name') {
+      this.userService.findByName(this.searchValue.trim()).pipe(map((res) => {
+        return res;
+      })).subscribe((response) => {
+        this.searchResults = response.body.payload;
+        // this.selectedUsers = this.searchResults; // TODO update to only include selected users
+        console.log("Search results by name:")
+        console.log(this.searchResults);
+      });
+    }else if (this.searchKey == 'docNumber') {
+      this.userService.findByDocumentNumber(this.searchValue.trim()).pipe(map((res) => {
+        return res;
+      })).subscribe((response) => {
+        this.searchResults = response.body.payload;
+        // this.selectedUsers = this.searchResults; // TODO update to only include selected users
+        console.log("Search results by document number:")
+        console.log(this.searchResults);
+      });
+    } else {
+      console.log("Invalid search key");
     }
   }
 
