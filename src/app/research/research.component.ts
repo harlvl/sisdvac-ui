@@ -43,16 +43,20 @@ export class ResearchComponent implements OnInit {
   // for adding members view
   isViewAddMember: boolean = false;
 
-  // for trial view
+  // for research trials view
   public isViewTrials: boolean = false;
   public currentTrialList: Trial [];
+
+  // for trial view
+  public isViewTrial: boolean = false;
+  public currentTrial: any;
 
   // for searching
   public searchResults: any = [];
   public selectedUsers: any = [];
   public searchKey: string = "Nombre";
   public searchValue: string = "";
-
+  public isViewAddFormulation: boolean = false;
 
   constructor(private route: ActivatedRoute,
               private trialsService: TrialService,
@@ -85,6 +89,11 @@ export class ResearchComponent implements OnInit {
 
   goToAddMember(currentResearch: any) {
     this.setViewToAddMember();
+  }
+
+  goToSingleTrialView(i: number) {
+    this.currentTrial = this.currentTrialList[i];
+    this.setViewToTrial();
   }
 
   goToResearchTrialsView(i: number, id: any) {
@@ -121,6 +130,7 @@ export class ResearchComponent implements OnInit {
     this.isViewTrials = false;
     this.isViewResearch = false;
     this.isViewAddMember = false;
+    this.isViewTrial = false;
   }
 
   private setViewToResearches() {
@@ -128,12 +138,25 @@ export class ResearchComponent implements OnInit {
     this.isViewTrials = false;
     this.isViewResearch = true;
     this.isViewAddMember = false;
+    this.isViewTrial = false;
+    this.isViewAddFormulation = false;
   }
   private setViewToTrials() {
     this.isViewUsers = false;
     this.isViewTrials = true;
     this.isViewResearch = false;
     this.isViewAddMember = false;
+    this.isViewTrial = false;
+    this.isViewAddFormulation = false;
+  }
+
+  private setViewToTrial() {
+    this.isViewUsers = false;
+    this.isViewTrials = false;
+    this.isViewResearch = false;
+    this.isViewAddMember = false;
+    this.isViewTrial = true;
+    this.isViewAddFormulation = false;
   }
 
   private setViewToAddMember() {
@@ -141,6 +164,17 @@ export class ResearchComponent implements OnInit {
     this.isViewTrials = false;
     this.isViewResearch = false;
     this.isViewAddMember = true;
+    this.isViewTrial = false;
+    this.isViewAddFormulation = false;
+  }
+
+  private setViewToAddFormulation() {
+    this.isViewUsers = false;
+    this.isViewTrials = false;
+    this.isViewResearch = false;
+    this.isViewAddMember = true;
+    this.isViewTrial = false;
+    this.isViewAddFormulation = true;
   }
 
   checkTrial(i: number) {
@@ -193,6 +227,10 @@ export class ResearchComponent implements OnInit {
 
   goBackToResearches() {
     this.setViewToResearches();
+  }
+
+  goBackToTrials() {
+    this.setViewToTrials();
   }
 
   goBackToMembers() {
@@ -298,5 +336,13 @@ export class ResearchComponent implements OnInit {
       console.log("Selected users size: %d", this.selectedUsers.length);
       console.log(this.selectedUsers);
     }
+  }
+
+  goToFormulations(formulations: any) {
+
+  }
+
+  goToAddFormulation(currentResearch: any, currentTrial: any) {
+    this.setViewToAddFormulation();
   }
 }
