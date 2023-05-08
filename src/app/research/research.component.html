@@ -142,14 +142,12 @@
 <ng-template #viewAddFormulation>
   <div class="main-container">
     <div class="container">
-      <div class="row">
+      <div class="row create-element-row">
         <div class="title-layout">Crear nueva formulación</div>
-        <div class="create-element-row">
           <div class="col-sm-1 bubble-element-col" [ngClass]="{'is-bubble-active': addFormulationStep == 1}">1</div>
           <div class="col-sm-1 bubble-element-transparent"></div>
           <div class="col-sm-1 bubble-element-col" [ngClass]="{'is-bubble-active': addFormulationStep == 2}">2</div>
-        </div>
-        <div>
+        <div class="col-sm">
           <button class="button" (click)="goBackToTrial()">Volver</button>
         </div>
       </div>
