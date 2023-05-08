@@ -184,6 +184,7 @@
           <div class="row search-results-container">
             <table>
               <tr>
+                <th>Nº</th>
                 <th>Nombres</th>
                 <th>Apellidos</th>
                 <th>Correo</th>
@@ -193,6 +194,7 @@
 
 <!--              START BODY -->
               <tr *ngFor="let user of searchResults; let i = index">
+                <td>{{i + 1}}</td>
                 <td>{{user.firstName}}</td>
                 <td>{{user.lastName}}</td>
                 <td>{{user.email}}</td>
