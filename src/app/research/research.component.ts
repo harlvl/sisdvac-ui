@@ -70,6 +70,9 @@ export class ResearchComponent implements OnInit {
   formulationSterility: string = "";
   formulationOsmolality: string = "";
 
+  // for viewing formulations
+  isViewFormulations: boolean = false;
+
   constructor(private route: ActivatedRoute,
               private trialsService: TrialService,
               private researchService: ResearchService,
@@ -143,6 +146,7 @@ export class ResearchComponent implements OnInit {
     this.isViewResearch = false;
     this.isViewAddMember = false;
     this.isViewTrial = false;
+    this.isViewFormulations = false;
   }
 
   private setViewToResearches() {
@@ -152,6 +156,7 @@ export class ResearchComponent implements OnInit {
     this.isViewAddMember = false;
     this.isViewTrial = false;
     this.isViewAddFormulation = false;
+    this.isViewFormulations = false;
   }
   private setViewToTrials() {
     this.isViewUsers = false;
@@ -160,6 +165,7 @@ export class ResearchComponent implements OnInit {
     this.isViewAddMember = false;
     this.isViewTrial = false;
     this.isViewAddFormulation = false;
+    this.isViewFormulations = false;
   }
 
   private setViewToTrial() {
@@ -169,6 +175,7 @@ export class ResearchComponent implements OnInit {
     this.isViewAddMember = false;
     this.isViewTrial = true;
     this.isViewAddFormulation = false;
+    this.isViewFormulations = false;
   }
 
   private setViewToAddMember() {
@@ -178,6 +185,7 @@ export class ResearchComponent implements OnInit {
     this.isViewAddMember = true;
     this.isViewTrial = false;
     this.isViewAddFormulation = false;
+    this.isViewFormulations = false;
   }
 
   private setViewToAddFormulation() {
@@ -187,6 +195,17 @@ export class ResearchComponent implements OnInit {
     this.isViewAddMember = false;
     this.isViewTrial = false;
     this.isViewAddFormulation = true;
+    this.isViewFormulations = false;
+  }
+
+  public setViewToFormulations() {
+    this.isViewUsers = false;
+    this.isViewTrials = false;
+    this.isViewResearch = false;
+    this.isViewAddMember = false;
+    this.isViewTrial = false;
+    this.isViewAddFormulation = false;
+    this.isViewFormulations = true;
   }
 
   checkTrial(i: number) {
@@ -355,7 +374,7 @@ export class ResearchComponent implements OnInit {
   }
 
   goToFormulations(formulations: any) {
-
+    this.setViewToFormulations();
   }
 
   goToAddFormulation(currentResearch: any, currentTrial: any) {
@@ -406,5 +425,13 @@ export class ResearchComponent implements OnInit {
     //TODO add router to navigate
     this.setViewToTrial();
 
+  }
+
+  getFormulationStatus(status: any) {
+    if (status == 'ACTIVE') {
+      return 'Activa';
+    } else {
+      return 'Inactiva';
+    }
   }
 }

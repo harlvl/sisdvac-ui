@@ -53,6 +53,7 @@
 .trial-card-deck {
   horiz-align: left;
   .trial-card{
+    border: 1px red solid;
     // these 2 lines are for horizontal alignment
     width: 300px;
     float: left;
