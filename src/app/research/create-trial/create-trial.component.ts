@@ -4,7 +4,7 @@ import {TagNames} from "../../components/constants/tag-names";
 import {Router} from "@angular/router";
 import {RouteNames} from "../../components/constants/route-names";
 import {Trial} from "../../components/interfaces/trial";
-import {TrialStage} from "../../components/enums/trialStage";
+import {TrialStageEnum} from "../../components/enums/trialStageEnum";
 import {TppItem} from "../../components/interfaces/tppItem";
 import {TppItemType} from "../../components/enums/tppItemType";
 import {FormulationItem} from "../../components/interfaces/formulationItem";
@@ -74,7 +74,7 @@ export class CreateTrialComponent{
       //update object
       this.trialToBeCreated.title = "Test title";
       this.trialToBeCreated.insNumber = "15871236521121";
-      this.trialToBeCreated.stage = TrialStage.PRECLINICAL;
+      this.trialToBeCreated.stage = TrialStageEnum.PRECLINICAL;
       this.trialToBeCreated.startDate = "2023-05-04";
       this.trialToBeCreated.status = {startDate: "2023-05-04", name: "Estado inicial", endDate: ""};
 

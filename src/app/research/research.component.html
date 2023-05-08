@@ -81,7 +81,7 @@
               <img class="trial-card-img" src="./assets/images/icons/font-awesome-flag-brands.svg" alt="Card image cap">
               <div class="card-body">
                 <div class="card-title">{{trial.title}}<img (click)="checkTrial(i)" class="point-edit trial-check" src="assets/images/icons/search.svg" alt=""/></div>
-                <div class="card-text">Etapa: {{trial.stage}}</div>
+                <div class="card-text">Etapa: {{getTrialStageName(trial.stage)}}</div>
                 <div class="card-text" *ngIf="trial.stage == 'CLINICAL'">Fase: {{trial.phase}}</div>
               </div>
               <div class="card-footer">

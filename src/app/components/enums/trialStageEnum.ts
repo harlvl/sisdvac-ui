@@ -1,4 +1,4 @@
-export enum TrialStage {
+export enum TrialStageEnum {
   PRECLINICAL = "PRECLINICAL",
   CLINICAL = "CLINICAL"
 }

@@ -4,11 +4,10 @@ import {TrialService} from "../services/trial.service";
 import {map} from "rxjs";
 import {Trial} from "../components/interfaces/trial";
 import {ResearchService} from "../services/research.service";
-import {Role} from "../components/constants/role";
-import {RoleEnum} from "../components/enums/roleEnum";
 import {UserService} from "../services/user.service";
 import {TagNames} from "../components/constants/tag-names";
 import {NgForm} from "@angular/forms";
+import {Utils} from "../helpers/utils";
 
 @Component({
   selector: 'app-research',
@@ -185,18 +184,11 @@ export class ResearchComponent implements OnInit {
   }
 
   getRoleName(code: string) {
-    switch (code) {
-      case RoleEnum.DOCTOR_MAIN:
-        return Role.doctor_main;
-      case RoleEnum.DOCTOR_MEMBER:
-        return Role.doctor_member;
-      case RoleEnum.SPONSOR:
-        return Role.sponsor;
-      case RoleEnum.ASSISTANT:
-        return Role.assistant;
-      default:
-        return "Sin rol definido";
-    }
+    return Utils.getRoleName(code);
+  }
+
+  getTrialStageName(code: string) {
+    return Utils.getTrialStage(code);
   }
 
   goBackToResearches() {
