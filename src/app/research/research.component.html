@@ -80,7 +80,7 @@
           <div class="mb-3">{{currentTrial.stage}}</div>
           <div class="mb-3" *ngIf="currentTrial.stage == 'CLINICAL'">{{currentTrial.phase}}</div>
           <div class="mb-3">{{currentTrial.status.name}} desde {{currentTrial.status.startDate}}</div>
-          <div class="mb-3">{{currentTrial.startDate}}</div>
+          <div class="mb-3">Ensayo inició el {{currentTrial.startDate}}</div>
           <div class="mb-3">{{currentTrial.endDate}}</div>
         </div>
         <!-- END DATA CONTAINER -->
@@ -121,7 +121,9 @@
               <div class="card-title">Formulation {{formulation.order}}</div>
               <div class="card-text">Estado: {{getFormulationStatus(formulation.status)}}</div>
               <div class="card-text">Items: {{formulation.items.length}}</div>
-              <div class="card-text" style="font-weight: bold; font-style: italic">Evaluar</div>
+              <div class="card-text" style="font-weight: bold; font-style: italic">
+                <a (click)="goToEvaluateFormulationView(i, currentTrial.id, formulation)">Evaluar</a>
+              </div>
             </div>
             <div class="card-footer">
               <small class="text-muted">Inició {{formulation.createdAt}}</small>
