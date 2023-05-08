@@ -1,10 +1,40 @@
 @import '../../styles/mixins';
 
+.search-bar-container {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  //border: 1px red solid; // for testing
+  .search-bar-element {
+    height: 50px;
+    float: left;
+    //border: 2px solid black; // for testing
+  }
+}
+
+.search-results-container {
+  //border: 2px red solid; // for testing
+}
+
+.search-bar-select {
+  line-height: 2em;
+}
+
+.search-bar-button {
+  //margin-top: 20px;
+}
+
+.search-bar-input {
+
+}
+
 .trial-secondary-container {
   margin-top: 120px;
   min-height: 100px;
   position: relative;
   padding-bottom: 24px;
+  //border: 1px blue solid; // for testing
 }
 
 .title-results-search {

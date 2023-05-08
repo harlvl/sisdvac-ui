@@ -152,16 +152,14 @@
       <div class="col-sm-12 title-results-search">
         <div class="container">
 <!--      START row for the search bar-->
-          <div class="row">
-            <form class="mx-auto" #form="ngForm" (ngSubmit)="doSearch(form)">
-              <div class="mb-3">
-                <label for="search_value"></label>
-                <input type="text" id="search_value" class="form-control" [(ngModel)]="searchValue" name="search_value">
+          <div class="row search-bar-container">
+            <form #form="ngForm" (ngSubmit)="doSearch(form)">
+              <div class="search-bar-element mb-5" style="width: 40%">
+                <input type="text" id="search_value"  [(ngModel)]="searchValue" name="search_value" style="width: 500px">
               </div>
 
-              <div class="mb-3">
-                <label for="search_key"></label>
-                <select name="search_key" id="search_key" [(ngModel)]="searchKey">
+              <div class="search-bar-element mb-3" style="width: 20%">
+                <select class="mt-1" name="search_key" id="search_key" [(ngModel)]="searchKey">
                   <option value="" disabled selected>Seleccionar</option>
                   <option value="role">Rol</option>
                   <option value="name">Nombre</option>
@@ -169,18 +167,21 @@
                 </select>
               </div>
 
-              <div class="mb-3 d-grid">
-                <button class="btn-primary btn btn-lg w-10" >Buscar</button>
+              <div class="search-bar-element mb-3 d-grid" style="width: 20%">
+                <button class="btn-primary btn btn-lg" type="submit">
+                  <img ngSrc="assets/images/icons/search.svg" alt="" height="16" width="16"> Buscar
+                </button>
+              </div>
+
+              <div class="search-bar-element mb-3" style="width: 20%">
+                <button class="btn-primary btn btn-lg" type="button" (click)="doAddMembers()">Confirmar</button>
               </div>
             </form>
-            <div class="mb-3">
-              <button class="btn-primary btn btn-lg" type="button" (click)="doAddMembers()">Confirmar</button>
-            </div>
           </div>
 <!--          END row for the search bar-->
 
 <!--          START row for members added-->
-          <div class="row">
+          <div class="row search-results-container">
             <table>
               <tr>
                 <th>Nombres</th>
@@ -195,7 +196,7 @@
                 <td>{{user.firstName}}</td>
                 <td>{{user.lastName}}</td>
                 <td>{{user.email}}</td>
-                <td>{{user.role}}</td>
+                <td>{{getRoleName(user.role)}}</td>
                 <td>
                   <input type="checkbox" id="is_selected" name="is_selected" (change)="handleSelectedUser($event, i)">
                 </td>

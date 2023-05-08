@@ -209,6 +209,7 @@ export class ResearchComponent implements OnInit {
   doSearch(form: NgForm) {
     if (this.searchKey == null || this.searchValue == null || this.searchValue == "") {
       console.log("No search parameters provided!");
+      //TODO add error message when parameters are missing
       return;
     }
 
@@ -242,7 +243,7 @@ export class ResearchComponent implements OnInit {
       console.log("Response status: %d", response.status);
       console.log(response.body.payload);
     });
-
+  // TODO add success message or toast
     this.goBackToMembers();
   }
 
