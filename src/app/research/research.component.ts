@@ -228,45 +228,8 @@ export class ResearchComponent implements OnInit {
     this.isViewFormulations = false;
     this.isViewEvaluateFormulation = true;
   }
-
-  checkTrial(i: number) {
-    console.log("checking %d", i);
-  }
-
-  // user types: 1: sponsor, 2: main doctor, 3: member doctor, 4: asistant
-  checkUser(userType: number, i: number) {
-    console.log("Editing user type: %d", userType);
-    switch (userType) {
-      case 1:
-        this.isViewUsers = true;
-        this.userType = 'Patrocinadores';
-        // this.goToViewTrialUsersMode.emit(true);
-        this.trialView = this.currentTrialList[i];
-        break;
-      case 2:
-        this.isViewUsers = true;
-        this.userType = 'Doctores principales';
-        // this.goToViewTrialUsersMode.emit(true);
-        this.trialView = this.currentTrialList[i];
-        break;
-      case 3:
-        break;
-      case 4:
-        break;
-      default:
-        console.log("Current user type is not valid: %d", this.currentUserType);
-        break;
-    }
-  }
-
   editUser(i: number) {
     console.log("Editing");
-  }
-
-  checkTrials(i: number) {
-    this.isViewResearch = false;
-    this.isViewUsers = false;
-    this.isViewTrials = true;
   }
 
   getRoleName(code: string) {
@@ -286,7 +249,7 @@ export class ResearchComponent implements OnInit {
   }
 
   goBackToMembers() {
-    //TODO refresh members list
+    //TODO refresh members list (calling the service here does not work)
     this.setViewToUsers();
   }
 

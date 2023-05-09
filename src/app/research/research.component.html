@@ -177,7 +177,6 @@
       </div>
     </div>
 
-
     <!-- START INNER CONTAINER-->
     <div class="col-sm-12 inner-container-content">
       <div class="col-sm-12 title-results-search">
@@ -194,6 +193,7 @@
                 <div class="card-title">{{trial.title}}<img (click)="goToSingleTrialView(i)" class="point-edit trial-check" src="assets/images/icons/search.svg" alt=""/></div>
                 <div class="card-text">Etapa: {{getTrialStageName(trial.stage)}}</div>
                 <div class="card-text" *ngIf="trial.stage == 'CLINICAL'">Fase: {{trial.phase}}</div>
+                <div class="card-text">Estado: {{trial.status.name}}</div>
               </div>
               <div class="card-footer">
                 <small class="text-muted">Inició {{trial.startDate}}</small>
