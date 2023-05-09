@@ -15,7 +15,7 @@
 
       <form #form="ngForm" (ngSubmit)="confirm(form)">
         <div *ngIf="currentStep == 1">
-          <h1 style="border: 1px solid red">Datos del patrocinador </h1>
+          <h1>Datos del patrocinador </h1>
           <div class="mb-3">
             <label for="sponsor_name">Nombre del patrocinador</label>
             <input type="text" id="sponsor_name">
@@ -57,7 +57,7 @@
         </div>
 
         <div *ngIf="currentStep == 2">
-          <h1 style="border: 1px solid red">Datos de la vacuna</h1>
+          <h1>Datos de la vacuna</h1>
           <div class="mb-3">
             <label for="vaccine_name">Nombre de la vacuna</label>
             <input type="text" id="vaccine_name">
@@ -100,7 +100,7 @@
         </div>
 
         <div *ngIf="currentStep == 3">
-          <h1 style="border: 1px solid red">Datos del Perfil de Produto Objetivo</h1>
+          <h1>Datos del Perfil de Produto Objetivo</h1>
           <div class="mb-3">
             <label for="tpp_target_population">Población objetivo</label>
             <input type="text" id="tpp_target_population" [(ngModel)]="tpp_target_population" [ngModelOptions]="{standalone: true}" name="tpp_target_population">
@@ -137,7 +137,7 @@
         </div>
 
         <div *ngIf="currentStep == 4">
-          <h1 style="border: 1px solid red">Resumen</h1>
+          <h1>Resumen</h1>
           <div class="mb-3">
             <label>Patrocinador</label>
             <label> (Nombre, Nro. documento, Ciudad)</label>
