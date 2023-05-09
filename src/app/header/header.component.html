@@ -1,13 +1,19 @@
 <header class="header-main-style">
 <!--   Logo  routerLink="welcome"-->
-  <div class="top-container">
-    <div class=" header-main-logo">
-      <span>SISDVAC</span>
-    </div>
-    <div class="user-profile" *ngIf="isLogged">Doctor principal</div>
-    <div class="user-profile" *ngIf="isLogged">
-      <div>
-        <img ngSrc="assets/dist/img/user_icon.png" class="img img-circle" alt="User Image" height="400" width="400">
+  <div class="container">
+    <div class="row logo-user-container">
+      <div class="col-md header-main-logo">
+        <span style="text-align: left">SISDVAC</span>
+      </div>
+<!--      <div class="col-md user-profile" *ngIf="isLogged">Doctor principal</div>-->
+      <div class="col-md user-profile" *ngIf="isLogged">
+        <div class="row">
+          <div class="col-sm">
+            <img ngSrc="assets/dist/img/user_icon.png" class="img img-circle" alt="User Image" height="400" width="400">
+            <div class="user-profile-data">Abelardo</div>
+            <div class="user-profile-data">Doctor Principal</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

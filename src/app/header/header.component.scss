@@ -1,17 +1,26 @@
+.logo-user-container {
+  height: 1px;
+}
 .header-main-style {
   background-color: #BBBABA;
 }
 .header-main-logo {
+  font-family: "Roboto Light";
   font-size: 20px;
   color: #147DDD;
 }
 .user-profile{
   float: right;
-  color: red;
+  color:  #147DDD;
+  font-family: "Roboto Light";
   .img {
     width: 25px;
     height: 25px;
   }
+}
+
+.user-profile-data {
+  font-size: 10px;
 }
 
 .top-container {
