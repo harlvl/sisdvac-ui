@@ -6,6 +6,7 @@ import {LoginComponent} from "./login/login.component";
 import {AuthGuard} from "./helpers/auth.guard";
 import {RouteNames} from "./components/constants/route-names";
 import {CreateTrialComponent} from "./research/create-trial/create-trial.component";
+import {ResultsComponent} from "./results/results.component";
 
 const routes: Routes = [
   {path : '', redirectTo: RouteNames.welcome, pathMatch: 'full'},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path : RouteNames.welcome, component: WelcomeComponent, canActivate: [AuthGuard]},
   {path : RouteNames.researches, component: ResearchComponent, canActivate: [AuthGuard]},
   {path : RouteNames.trialCreate, component: CreateTrialComponent, canActivate: [AuthGuard]},
+  {path : RouteNames.results, component: ResultsComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

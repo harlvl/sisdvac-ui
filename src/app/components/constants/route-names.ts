@@ -4,4 +4,5 @@ export class RouteNames {
   public static trials: string = 'trial';
   public static researches: string = 'research';
   public static trialCreate: string = 'create-research';
+  public static results: string = 'results';
 }

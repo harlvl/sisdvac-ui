@@ -12,12 +12,15 @@ import {HeaderNames} from "../components/constants/header-names";
 @Injectable({providedIn: 'root'})
 export class HeaderComponent implements OnInit{
   isLogged: boolean = false;
+  headerContentWelcome: string = HeaderNames.welcome;
   headerContentTrial: string = HeaderNames.trials;
   headerContentResearch: string = HeaderNames.researches;
+  headerContentHome: string = HeaderNames.home;
   headerContentNewTrial: string = HeaderNames.trialCreate;
   routerNameCreateTrial: string = RouteNames.trialCreate;
   routerNameTrials: string = RouteNames.trials;
   routerNameResearches: string = RouteNames.researches;
+  routerNameWelcome: string = RouteNames.welcome;
 
   constructor(private authService :AuthService) {
     if (authService.getAccessToken()) {

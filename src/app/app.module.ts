@@ -16,6 +16,7 @@ import {FormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./helpers/auth.interceptor";
 import { CreateTrialComponent } from './research/create-trial/create-trial.component';
 import { AddMemberComponent } from './research/add-member/add-member.component';
+import { ResultsComponent } from './results/results.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -29,7 +30,8 @@ import { AddMemberComponent } from './research/add-member/add-member.component';
     ResearchComponent,
     LoginComponent,
     CreateTrialComponent,
-    AddMemberComponent
+    AddMemberComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,

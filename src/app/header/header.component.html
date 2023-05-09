@@ -25,7 +25,7 @@
 <!--    </a>-->
     <ul class="nav-bar-container" >
       <li class="nav-bar-element">
-        <a routerLink="welcome" style="color: #B8CBDB">Inicio</a>
+        <a style="color: #B8CBDB" routerLink="{{routerNameWelcome}}" [routerLinkActive]="'active'" >{{headerContentHome}}</a>
       </li>
 
       <li class="nav-bar-element">
@@ -34,6 +34,10 @@
 
       <li class="nav-bar-element">
         <a style="color: #B8CBDB" routerLink="{{routerNameCreateTrial}}" [routerLinkActive]="'active'" >{{headerContentNewTrial}}</a>
+      </li>
+
+      <li class="nav-bar-element">
+        <a style="color: #B8CBDB" routerLink="results" [routerLinkActive]="'active'">Resultados</a>
       </li>
 
     </ul>
