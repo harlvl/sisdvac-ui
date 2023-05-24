@@ -3,6 +3,7 @@
   <ng-container *ngIf="isViewTrials; then viewTrials"></ng-container>
   <ng-container *ngIf="isViewTrial; then viewTrial"></ng-container>
   <ng-container *ngIf="isViewFormulations; then viewFormulations"></ng-container>
+  <ng-container *ngIf="isViewEvaluateFormulation; then viewEvaluateFormulation"></ng-container>
   <ng-container *ngIf="isViewAddFormulation; then viewAddFormulation"></ng-container>
   <ng-container *ngIf="isViewUsers; then viewUsers"></ng-container>
   <ng-container *ngIf="isViewAddMember; then viewAddMember"></ng-container>
@@ -132,6 +133,7 @@
   </div>
 </ng-template>
 
+<!-- view formulations -->
 <ng-template #viewFormulations>
   <div class="main-container">
     <div class="container">
@@ -164,6 +166,17 @@
     </div>
   </div>
 </ng-template>
+
+<!-- Evaluate formulation-->
+<ng-template #viewEvaluateFormulation>
+  <app-evaluate-formulation
+    [currentTrial]="currentTrial"
+    (oGoBackToFormulations)="setViewToFormulations()"
+  >
+
+  </app-evaluate-formulation>
+</ng-template>
+
 <!--viewTrials-->
 <ng-template #viewTrials>
   <div class="main-container">

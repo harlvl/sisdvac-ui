@@ -17,6 +17,8 @@ import {AuthInterceptor} from "./helpers/auth.interceptor";
 import { CreateTrialComponent } from './research/create-trial/create-trial.component';
 import { AddMemberComponent } from './research/add-member/add-member.component';
 import { ResultsComponent } from './results/results.component';
+import { EvaluateFormulationComponent } from './components/evaluate-formulation/evaluate-formulation.component';
+import { EvaluationResultsComponent } from './components/evaluation-results/evaluation-results.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -31,7 +33,9 @@ import { ResultsComponent } from './results/results.component';
     LoginComponent,
     CreateTrialComponent,
     AddMemberComponent,
-    ResultsComponent
+    ResultsComponent,
+    EvaluateFormulationComponent,
+    EvaluationResultsComponent
   ],
   imports: [
     BrowserModule,

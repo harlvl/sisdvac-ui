@@ -1,0 +1,78 @@
+<div class="main-container">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-sm title-layout">Evaluación de formulación "{{currentTrial.title}}"</div>
+      <div class="col-sm">
+        <button class="button" (click)="goBackToFormulations()">Volver</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <form #form="ngForm" (ngSubmit)="confirmEvaluation(form)">
+        <h1 style="border: 1px solid red">Parámetros de la evaluación</h1>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <label for="antibodyLevelTestAnimal">Nivel de anticuerpos - animal de prueba</label>
+            </div>
+            <div class="col">
+              <input type="text" id="antibodyLevelTestAnimal" [(ngModel)]="antibodyLevelTestAnimal" name="antibodyLevelTestAnimal">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label for="antibodyLevelControlAnimal">Nivel de anticuerpos - animal de control</label>
+            </div>
+            <div class="col">
+              <input type="text" id="antibodyLevelControlAnimal" [(ngModel)]="antibodyLevelControlAnimal" name="antibodyLevelControlAnimal">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label for="lethalDose">Dosis letal</label>
+            </div>
+            <div class="col">
+              <input type="text" id="lethalDose" [(ngModel)]="lethalDose" name="lethalDose">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label for="effectiveDose">Dosis efectiva</label>
+            </div>
+            <div class="col">
+              <input type="text" id="effectiveDose" [(ngModel)]="effectiveDose" name="effectiveDose">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label for="attackRateUnvaccinatedGroup">Índice de ataque - grupo sin vacunar</label>
+            </div>
+            <div class="col">
+              <input type="text" id="attackRateUnvaccinatedGroup" [(ngModel)]="attackRateUnvaccinatedGroup" name="attackRateUnvaccinatedGroup">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label for="attackRateUnvaccinatedGroup">Índice de ataque - grupo vacunado</label>
+            </div>
+            <div class="col">
+              <input type="text" id="attackRateVaccinatedGroup" [(ngModel)]="attackRateVaccinatedGroup" name="attackRateVaccinatedGroup">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="d-grid">
+          <button class="btn-primary btn btn-lg w-10">Confirmar ></button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>

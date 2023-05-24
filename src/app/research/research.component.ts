@@ -20,6 +20,7 @@ import {HttpResponse} from "@angular/common/http";
 
 @Injectable({providedIn: 'root'})
 export class ResearchComponent implements OnInit {
+  algo = "HOLA";
   // START tags
   tgMyTrials: string = "";
   tgNewTrial: string = "";
@@ -423,5 +424,6 @@ export class ResearchComponent implements OnInit {
     console.log("Starting evaluation for formulation [%d]...", formulation.id);
 
     //TODO create and call evaluate formulation service
+    this.setViewToEvaluateFormulation();
   }
 }
