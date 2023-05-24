@@ -14,6 +14,7 @@ export class Endpoints {
   // trial endpoints
   public static trial: string = '/trial';
   public static addFormulation: string = '/{id}/formulation';
+  public static evaluateFormulation: string = '/{tid}/formulation/{fid}/evaluate';
 
   // research endpoints
   public static research: string = '/research';

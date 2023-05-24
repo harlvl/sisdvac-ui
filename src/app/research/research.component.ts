@@ -76,6 +76,9 @@ export class ResearchComponent implements OnInit {
 
   // for evaluating formulation
   isViewEvaluateFormulation: boolean = false;
+  isViewEvaluationCompleted: boolean = false;
+  currentFormulation: any;
+  evaluationResult: any;
 
   constructor(private route: ActivatedRoute,
               private trialsService: TrialService,
@@ -152,6 +155,7 @@ export class ResearchComponent implements OnInit {
     this.isViewTrial = false;
     this.isViewFormulations = false;
     this.isViewEvaluateFormulation = false;
+    this.isViewEvaluationCompleted = false;
   }
 
   private setViewToResearches() {
@@ -163,6 +167,7 @@ export class ResearchComponent implements OnInit {
     this.isViewAddFormulation = false;
     this.isViewFormulations = false;
     this.isViewEvaluateFormulation = false;
+    this.isViewEvaluationCompleted = false;
   }
   private setViewToTrials() {
     this.isViewUsers = false;
@@ -173,6 +178,7 @@ export class ResearchComponent implements OnInit {
     this.isViewAddFormulation = false;
     this.isViewFormulations = false;
     this.isViewEvaluateFormulation = false;
+    this.isViewEvaluationCompleted = false;
   }
 
   private setViewToTrial() {
@@ -184,6 +190,7 @@ export class ResearchComponent implements OnInit {
     this.isViewAddFormulation = false;
     this.isViewFormulations = false;
     this.isViewEvaluateFormulation = false;
+    this.isViewEvaluationCompleted = false;
   }
 
   private setViewToAddMember() {
@@ -195,6 +202,7 @@ export class ResearchComponent implements OnInit {
     this.isViewAddFormulation = false;
     this.isViewFormulations = false;
     this.isViewEvaluateFormulation = false;
+    this.isViewEvaluationCompleted = false;
   }
 
   private setViewToAddFormulation() {
@@ -206,6 +214,7 @@ export class ResearchComponent implements OnInit {
     this.isViewAddFormulation = true;
     this.isViewFormulations = false;
     this.isViewEvaluateFormulation = false;
+    this.isViewEvaluationCompleted = false;
   }
 
   public setViewToFormulations() {
@@ -217,6 +226,7 @@ export class ResearchComponent implements OnInit {
     this.isViewAddFormulation = false;
     this.isViewFormulations = true;
     this.isViewEvaluateFormulation = false;
+    this.isViewEvaluationCompleted = false;
   }
 
   public setViewToEvaluateFormulation() {
@@ -228,6 +238,19 @@ export class ResearchComponent implements OnInit {
     this.isViewAddFormulation = false;
     this.isViewFormulations = false;
     this.isViewEvaluateFormulation = true;
+    this.isViewEvaluationCompleted = false;
+  }
+
+  private setViewToEvaluationCompleted() {
+    this.isViewUsers = false;
+    this.isViewTrials = false;
+    this.isViewResearch = false;
+    this.isViewAddMember = false;
+    this.isViewTrial = false;
+    this.isViewAddFormulation = false;
+    this.isViewFormulations = false;
+    this.isViewEvaluateFormulation = false;
+    this.isViewEvaluationCompleted = true;
   }
   editUser(i: number) {
     console.log("Editing");
@@ -422,8 +445,14 @@ export class ResearchComponent implements OnInit {
 
   goToEvaluateFormulationView(index: number, id: any, formulation: any) {
     console.log("Starting evaluation for formulation [%d]...", formulation.id);
+    this.currentFormulation = formulation;
 
     //TODO create and call evaluate formulation service
     this.setViewToEvaluateFormulation();
+  }
+
+  retrieveEvaluationResults($event: any) {
+    this.evaluationResult = $event;
+    this.setViewToEvaluationCompleted();
   }
 }

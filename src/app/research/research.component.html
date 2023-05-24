@@ -4,6 +4,7 @@
   <ng-container *ngIf="isViewTrial; then viewTrial"></ng-container>
   <ng-container *ngIf="isViewFormulations; then viewFormulations"></ng-container>
   <ng-container *ngIf="isViewEvaluateFormulation; then viewEvaluateFormulation"></ng-container>
+  <ng-container *ngIf="isViewEvaluationCompleted; then viewEvaluationCompleted"></ng-container>
   <ng-container *ngIf="isViewAddFormulation; then viewAddFormulation"></ng-container>
   <ng-container *ngIf="isViewUsers; then viewUsers"></ng-container>
   <ng-container *ngIf="isViewAddMember; then viewAddMember"></ng-container>
@@ -171,10 +172,20 @@
 <ng-template #viewEvaluateFormulation>
   <app-evaluate-formulation
     [currentTrial]="currentTrial"
+    [currentFormulation]="currentFormulation"
+
+    (oGoBackToFormulations)="setViewToFormulations()"
+    (oGoToEvaluationResult)="retrieveEvaluationResults($event)"
+  >
+  </app-evaluate-formulation>
+</ng-template>
+
+<!-- Evaluation completed-->
+<ng-template #viewEvaluationCompleted>
+  <app-evaluation-results
     (oGoBackToFormulations)="setViewToFormulations()"
   >
-
-  </app-evaluate-formulation>
+  </app-evaluation-results>
 </ng-template>
 
 <!--viewTrials-->
