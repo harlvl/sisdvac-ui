@@ -157,6 +157,9 @@
               <div class="card-text" style="font-weight: bold; font-style: italic">
                 <a (click)="goToEvaluateFormulationView(i, currentTrial.id, formulation)">Evaluar</a>
               </div>
+              <div class="card-text">
+                <a (click)="goToEvaluationResultView(i, currentTrial.id, formulation)">Ver evaluación</a>
+              </div>
             </div>
             <div class="card-footer">
               <small class="text-muted">Inició {{formulation.createdAt}}</small>
@@ -183,6 +186,9 @@
 <!-- Evaluation completed-->
 <ng-template #viewEvaluationCompleted>
   <app-evaluation-results
+    [evaluationResult]="evaluationResult"
+    [events]="eventsSubject.asObservable()"
+
     (oGoBackToFormulations)="setViewToFormulations()"
   >
   </app-evaluation-results>

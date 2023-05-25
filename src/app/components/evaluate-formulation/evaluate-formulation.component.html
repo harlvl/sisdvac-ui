@@ -1,4 +1,12 @@
-<div class="main-container">
+<div *ngIf="evaluationCompleted">
+  <app-evaluation-results
+    [evaluationResult]="evaluationResult"
+
+    (oGoBackToFormulations)="goBackToFormulations()"
+  >
+  </app-evaluation-results>
+</div>
+<div class="main-container" *ngIf="!evaluationCompleted">
   <div class="container">
     <div class="row mb-5">
       <div class="col-sm title-layout">Evaluación de formulación "{{currentTrial.title}}"</div>

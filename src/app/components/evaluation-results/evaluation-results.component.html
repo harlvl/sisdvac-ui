@@ -6,6 +6,23 @@
         <button class="button" (click)="goBackToFormulations()">Volver</button>
       </div>
 
+      <div class="row">
+        <div class="trial-card-deck">
+          <div class="trial-card" *ngFor="let result of resultList; let i = index">
+            <img class="trial-card-img" ngSrc="./assets/images/icons/font-awesome-flag-brands.svg" alt="Card image cap"
+                 height="24" width="21">
+
+            <div class="card-body">
+              <div class="card-title">{{result.key}}</div>
+              <div class="card-text">Resultado: {{result.value}}</div>
+            </div>
+
+            <div class="card-footer">
+              <small class="text-muted">{{footerTpp(result.value)}}</small>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>

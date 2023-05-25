@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Injectable, Input, OnInit, Output} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {TrialService} from "../../services/trial.service";
-import {map} from "rxjs";
+import {map, Subject} from "rxjs";
 import {HttpResponse} from "@angular/common/http";
 
 @Component({
@@ -18,8 +18,11 @@ export class EvaluateFormulationComponent implements  OnInit{
   @Output() oGoBackToFormulations = new EventEmitter<any>();
   @Output() oGoToEvaluationResult = new EventEmitter<any>();
 
-  evaluationResult: any;
+  evaluationResult: any = [];
   evaluationCompleted: boolean = false;
+
+  // for results view
+  eventsSubject: Subject<void> = new Subject<void>();
 
   /*** START INPUT VALUES FOR CALCULATION ***/
   // values for immunogenicity
@@ -43,6 +46,10 @@ export class EvaluateFormulationComponent implements  OnInit{
 
   }
 
+  emitEventToChild() {
+    this.eventsSubject.next();
+  }
+
 
   goBackToFormulations() {
     this.oGoBackToFormulations.emit(true);
@@ -53,17 +60,17 @@ export class EvaluateFormulationComponent implements  OnInit{
   }
 
   confirmEvaluation(form: any) {
-    console.log("Evaluating formulation...");
     // call service
     this.trialService.evaluateFormulation(this.currentTrial.id, this.currentFormulation.id, {"id": 2}).pipe(map((res) => {
       return res;
     })).subscribe((response: HttpResponse<any>) => {
       console.log("Evaluating formulation...");
       this.evaluationResult = response.body.payload;
+      console.log("Evaluation result: ");
       console.log(this.evaluationResult);
 
       this.evaluationCompleted = true;
-      this.oGoToEvaluationResult.emit(this.evaluationResult);
+      // this.oGoToEvaluationResult.emit(this.evaluationResult);
     });
 
   }

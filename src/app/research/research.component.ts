@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Injectable, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {TrialService} from "../services/trial.service";
-import {map} from "rxjs";
+import {map, Subject} from "rxjs";
 import {Trial} from "../components/interfaces/trial";
 import {ResearchService} from "../services/research.service";
 import {UserService} from "../services/user.service";
@@ -20,7 +20,6 @@ import {HttpResponse} from "@angular/common/http";
 
 @Injectable({providedIn: 'root'})
 export class ResearchComponent implements OnInit {
-  algo = "HOLA";
   // START tags
   tgMyTrials: string = "";
   tgNewTrial: string = "";
@@ -79,6 +78,9 @@ export class ResearchComponent implements OnInit {
   isViewEvaluationCompleted: boolean = false;
   currentFormulation: any;
   evaluationResult: any;
+
+  // for results view
+  eventsSubject: Subject<void> = new Subject<void>();
 
   constructor(private route: ActivatedRoute,
               private trialsService: TrialService,
@@ -252,6 +254,7 @@ export class ResearchComponent implements OnInit {
     this.isViewEvaluateFormulation = false;
     this.isViewEvaluationCompleted = true;
   }
+
   editUser(i: number) {
     console.log("Editing");
   }
@@ -451,8 +454,19 @@ export class ResearchComponent implements OnInit {
     this.setViewToEvaluateFormulation();
   }
 
+  // emitEventToChild() {
+  //   this.eventsSubject.next();
+  // }
+
   retrieveEvaluationResults($event: any) {
+    console.log("Retrieving results...");
     this.evaluationResult = $event;
+    console.log($event);
+    this.setViewToEvaluationCompleted();
+    // this.emitEventToChild();
+  }
+
+  goToEvaluationResultView(i: number, id: any, formulation: any) {
     this.setViewToEvaluationCompleted();
   }
 }

@@ -776,3 +776,18 @@ select.ng-touched.ng-invalid {
 .point-edit {
   cursor: pointer;
 }
+
+
+.trial-card-deck {
+  horiz-align: left;
+  .trial-card{
+    border: 2px black solid; // for testing
+    // these 2 lines are for horizontal alignment
+    width: 300px;
+    float: left;
+    .img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
