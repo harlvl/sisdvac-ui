@@ -81,6 +81,9 @@ export class ResearchComponent implements OnInit {
 
   // for results view
   eventsSubject: Subject<void> = new Subject<void>();
+  resultTrialId: any;
+  resultFormulationId: any;
+  formulationTitle: any;
 
   constructor(private route: ActivatedRoute,
               private trialsService: TrialService,
@@ -467,6 +470,10 @@ export class ResearchComponent implements OnInit {
   }
 
   goToEvaluationResultView(i: number, id: any, formulation: any) {
+    console.log("Moving to evaluation result view for trial [%d] and formulation [%d]", id, formulation.id);
+    this.resultTrialId = id;
+    this.resultFormulationId = formulation.id;
+    this.formulationTitle = formulation.title;
     this.setViewToEvaluationCompleted();
   }
 }

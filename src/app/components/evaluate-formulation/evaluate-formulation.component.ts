@@ -20,6 +20,7 @@ export class EvaluateFormulationComponent implements  OnInit{
 
   evaluationResult: any = [];
   evaluationCompleted: boolean = false;
+  formulationTitle: any;
 
   // for results view
   eventsSubject: Subject<void> = new Subject<void>();
@@ -60,6 +61,7 @@ export class EvaluateFormulationComponent implements  OnInit{
   }
 
   confirmEvaluation(form: any) {
+    this.formulationTitle = this.currentFormulation.title;
     // call service
     this.trialService.evaluateFormulation(this.currentTrial.id, this.currentFormulation.id, {"id": 2}).pipe(map((res) => {
       return res;

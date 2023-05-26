@@ -187,7 +187,10 @@
 <ng-template #viewEvaluationCompleted>
   <app-evaluation-results
     [evaluationResult]="evaluationResult"
-    [events]="eventsSubject.asObservable()"
+    [trialId]="resultTrialId"
+    [formulationId]="resultFormulationId"
+    [formulationTitle]="formulationTitle"
+    [isEvaluationView]="true"
 
     (oGoBackToFormulations)="setViewToFormulations()"
   >

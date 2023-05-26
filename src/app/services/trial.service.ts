@@ -38,4 +38,9 @@ export class TrialService {
     return this._http.post(url, body, {observe: "response"});
   }
 
+  public findFormulationEvaluation(trialId: any, formulationId: any) {
+    const url = this.rootHost + Endpoints.findFormulationEvaluationById.replace("{tid}", trialId).replace("{fid}", formulationId);
+    return this._http.get(url, {observe: "response"});
+  }
+
 }

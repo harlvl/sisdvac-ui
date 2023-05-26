@@ -1,6 +1,8 @@
 <div *ngIf="evaluationCompleted">
   <app-evaluation-results
     [evaluationResult]="evaluationResult"
+    [isEvaluationPerformed]="true"
+    [formulationTitle]="formulationTitle"
 
     (oGoBackToFormulations)="goBackToFormulations()"
   >
