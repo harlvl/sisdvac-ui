@@ -1,5 +1,6 @@
 export class RouteNames {
   public static login: string = 'login';
+  public static home: string = 'home';
   public static welcome: string = 'welcome';
   public static trials: string = 'trial';
   public static researches: string = 'research';
@@ -8,4 +9,7 @@ export class RouteNames {
   public static clinicalTrialEvaluation: string = 'ctrial-eval';
   public static trialCreate: string = 'create-research';
   public static results: string = 'results';
+
+  // generic names
+  public static create: string = 'create';
 }

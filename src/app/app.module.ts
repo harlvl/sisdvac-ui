@@ -22,6 +22,7 @@ import { EvaluationResultsComponent } from './components/evaluation-results/eval
 import { AnimalStudiesComponent } from './components/animal-studies/animal-studies.component';
 import { ClinicalTrialDesignComponent } from './components/clinical-trial-design/clinical-trial-design.component';
 import { ClinicalTrialEvaluationComponent } from './components/clinical-trial-evaluation/clinical-trial-evaluation.component';
+import { CreateAnimalStudyComponent } from './components/animal-studies/create-animal-study/create-animal-study.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -39,9 +40,9 @@ import { ClinicalTrialEvaluationComponent } from './components/clinical-trial-ev
     ResultsComponent,
     EvaluateFormulationComponent,
     EvaluationResultsComponent,
-    AnimalStudiesComponent,
     ClinicalTrialDesignComponent,
-    ClinicalTrialEvaluationComponent
+    ClinicalTrialEvaluationComponent,
+    CreateAnimalStudyComponent
   ],
   imports: [
     BrowserModule,
