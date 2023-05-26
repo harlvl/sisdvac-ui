@@ -5,4 +5,7 @@ export class HeaderNames {
   public static trials: string = 'Ensayos';
   public static researches: string = 'Investigaciones';
   public static trialCreate: string = 'Nuevo ensayo';
+  public static animalStudies: string = 'Estudios animales';
+  public static clinicalTrialDesign: string = 'E. Clínico - Diseño';
+  public static clinicalTrialEvaluation: string = 'E. Clínico - Evaluación';
 }
