@@ -12,6 +12,9 @@ import {HeaderNames} from "../components/constants/header-names";
 @Injectable({providedIn: 'root'})
 export class HeaderComponent implements OnInit{
   isLogged: boolean = false;
+  currentUser: any;
+  firstName: any ;
+  role: any;
 
   // header names
   headerContentWelcome: string = HeaderNames.welcome;
@@ -35,6 +38,9 @@ export class HeaderComponent implements OnInit{
   constructor(private authService :AuthService) {
     if (authService.getAccessToken()) {
       this.isLogged = true;
+
+      this.firstName = authService.getFirstName();
+      this.role = authService.getRole();
     }
   }
   ngOnInit(): void {

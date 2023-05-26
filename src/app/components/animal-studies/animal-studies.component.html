@@ -9,10 +9,23 @@
 
     </div>
 
+    <div class="row mb-5">
+      Estudios: {{animalStudies.length}}
+    </div>
+
     <div class="row">
       <!--   START DECK   -->
       <div class="trial-card-deck">
-
+        <div class="trial-card" *ngFor="let study of animalStudies; let i = index">
+          <img class="trial-card-img" src="./assets/images/icons/font-awesome-flag-brands.svg" alt="Card image cap">
+          <div class="card-body">
+            <div class="card-title">Estudio animal {{study.id}}
+            </div>
+            <div class="card-text">Objetivos
+              <img (click)="viewObjectives(i)" class="point-edit trial-check" src="assets/images/icons/search.svg" alt=""/>
+            </div>
+          </div>
+        </div>
       </div>
       <!--   END   DECK   -->
     </div>

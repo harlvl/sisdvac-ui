@@ -25,6 +25,10 @@ export class AuthService {
       const body = response.body;
       localStorage.setItem('access_token', body.access_token);
       localStorage.setItem('refresh_token', body.refresh_token);
+      localStorage.setItem('firstName', body.firstName);
+      localStorage.setItem('lastName', body.lastName);
+      localStorage.setItem('documentNumber', body.documentNumber);
+      localStorage.setItem('role', body.role);
       return response.body;
     }));
   }
@@ -35,6 +39,31 @@ export class AuthService {
 
   public getRefreshToken() {
     return localStorage.getItem('refresh_token')
+  }
+
+  public getFirstName() {
+    if (localStorage.getItem("firstName") != null) {
+      return localStorage.getItem("firstName");
+    } else {
+      return "No output";
+    }
+
+  }
+
+  public getRole() {
+    if (localStorage.getItem("role") != null) {
+      return localStorage.getItem("role");
+    } else {
+      return "No output";
+    }
+  }
+
+  public getDocumentNumber() {
+    if (localStorage.getItem("documentNumber") != null) {
+      return localStorage.getItem("documentNumber");
+    } else {
+      return "No output";
+    }
   }
 
 }

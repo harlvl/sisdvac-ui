@@ -41,8 +41,7 @@ import { CreateAnimalStudyComponent } from './components/animal-studies/create-a
     EvaluateFormulationComponent,
     EvaluationResultsComponent,
     ClinicalTrialDesignComponent,
-    ClinicalTrialEvaluationComponent,
-    CreateAnimalStudyComponent
+    ClinicalTrialEvaluationComponent
   ],
   imports: [
     BrowserModule,

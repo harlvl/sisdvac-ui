@@ -36,4 +36,12 @@ export class ResearchService {
     console.log("Using URI: %s", url);
     return this._http.post(url, {"users": users}, {observe: "response"});
   }
+
+  public findAnimalStudiesByUser(documentNumber: string): Observable<any> {
+    const url = this.rootHost +
+      Endpoints.findAnimalStudiesByUser
+        .replace("{documentNumber}", documentNumber);
+
+    return this._http.get<HttpResponse<any>>(url, {observe: "response"})
+  }
 }

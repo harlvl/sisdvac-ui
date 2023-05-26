@@ -1,5 +1,7 @@
-import {Component, Injectable, OnInit} from '@angular/core';
-import {RouteNames} from "../constants/route-names";
+import {Component, Injectable, Input, OnInit} from '@angular/core';
+import {ResearchService} from "../../services/research.service";
+import {map} from "rxjs";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-animal-studies',
@@ -9,10 +11,35 @@ import {RouteNames} from "../constants/route-names";
 
 @Injectable({providedIn: 'root'})
 export class AnimalStudiesComponent implements OnInit {
-  createNewAnimalStudy() {
 
+  // for displaying animal studies
+  documentNumber: any;
+  @Input() trialId: any;
+  animalStudies: any = [];
+
+  // for viewing objectives
+  isModeViewObjectives = false;
+  animalStudy: any;
+
+  constructor(private researchService: ResearchService,
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
+    // TODO show spinner
+    this.documentNumber = this.authService.getDocumentNumber();
+    console.log("Document number: %s", this.documentNumber);
+    this.researchService.findAnimalStudiesByUser(this.documentNumber).pipe(map((res) => {
+      return res;
+    })).subscribe((response) => {
+      console.log("Response status: %d", response.status);
+      this.animalStudies = response.body.payload;
+    })
+  }
+
+  viewObjectives(i: number) {
+    this.isModeViewObjectives = true;
+    // EMIT A VALUE?
+    this.animalStudy = this.animalStudies[i];
   }
 }

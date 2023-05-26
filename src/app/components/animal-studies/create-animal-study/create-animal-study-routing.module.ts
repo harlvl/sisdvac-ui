@@ -8,7 +8,6 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    CreateAnimalStudyComponent
   ],
   imports: [
     RouterModule.forChild(routes)

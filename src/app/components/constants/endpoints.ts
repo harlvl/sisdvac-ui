@@ -21,4 +21,6 @@ export class Endpoints {
   public static research: string = '/research';
   public static addUsers: string = '/id/{id}/add_users';
   public static findUsersByRole: string = '/{id}/users/role/{key}';
+  public static findAnimalStudiesByUserAndTrial: string = "/user/{documentNumber}/trial/{tid}/animal-studies"
+  public static findAnimalStudiesByUser: string = "/user/{documentNumber}/animal-studies"
 }
