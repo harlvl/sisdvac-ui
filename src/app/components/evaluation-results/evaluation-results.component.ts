@@ -9,7 +9,7 @@ import {
   SimpleChange,
   SimpleChanges
 } from '@angular/core';
-import {map, Observable, Subscription} from "rxjs";
+import {map} from "rxjs";
 import {TrialService} from "../../services/trial.service";
 import {HttpResponse} from "@angular/common/http";
 
@@ -47,7 +47,6 @@ export class EvaluationResultsComponent implements OnInit, OnChanges, OnDestroy 
 
 
   ngOnChanges(changes: SimpleChanges): void {
-    let change: SimpleChange = changes['data'];
   }
 
   ngOnInit(): void {

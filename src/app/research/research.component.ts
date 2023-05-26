@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Injectable, OnInit, Output} from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {TrialService} from "../services/trial.service";
 import {map, Subject} from "rxjs";
@@ -108,7 +108,6 @@ export class ResearchComponent implements OnInit {
     this.researchService.findAll().pipe(map((res) => {
       return res;
     })).subscribe((response) => {
-      const hits = response.hits;
       this.researchList = response.body.payload;
       this.currentTrialList = response.body.payload[0].trials;
     });
