@@ -13,7 +13,7 @@ import {HeaderNames} from "../components/constants/header-names";
 export class HeaderComponent implements OnInit{
   isLogged: boolean = false;
   currentUser: any;
-  firstName: any ;
+  firstName: any;
   role: any;
 
   // header names

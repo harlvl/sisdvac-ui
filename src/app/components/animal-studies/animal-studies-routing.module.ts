@@ -3,6 +3,7 @@ import {AnimalStudiesComponent} from "./animal-studies.component";
 import {NgModule} from "@angular/core";
 import {CreateAnimalStudyComponent} from "./create-animal-study/create-animal-study.component";
 import {NgForOf} from "@angular/common";
+import {FormsModule} from "@angular/forms";
 
 const routes: Routes = [
   {path: '', component: AnimalStudiesComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
   ],
   imports: [
     RouterModule.forChild(routes),
-    NgForOf
+    NgForOf,
+    FormsModule
   ],
 })
 

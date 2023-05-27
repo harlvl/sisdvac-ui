@@ -29,7 +29,7 @@ export class AnimalStudiesComponent implements OnInit {
     // TODO show spinner
     this.documentNumber = this.authService.getDocumentNumber();
     console.log("Document number: %s", this.documentNumber);
-    this.researchService.findAnimalStudiesByUser(this.documentNumber).pipe(map((res) => {
+    this.researchService.findAnimalStudiesByUserDocumentNumber(this.documentNumber).pipe(map((res) => {
       return res;
     })).subscribe((response) => {
       console.log("Response status: %d", response.status);

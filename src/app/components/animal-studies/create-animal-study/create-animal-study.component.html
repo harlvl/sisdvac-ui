@@ -1,1 +1,80 @@
-<p>create-animal-study works!</p>
+<div class="main-container">
+  <div class="container">
+
+    <!--  HEADER  -->
+    <div class="row mb-5">
+      <div class="col-sm title-layout">Crear nuevo estudio animal</div>
+      <div class="col-sm">
+        <button class="button" [routerLink]="['/animal-studies']" type="button">Volver</button>
+      </div>
+    </div>
+
+    <!--  BODY  -->
+    <div class="row">
+      <form #form="ngForm" (ngSubmit)="confirmCreation(form)">
+        <h1>Datos del estudio animal</h1>
+        <div class="container">
+
+          <div class="row mb-3">
+            <div class="col">
+              <label for="trial">Ensayo preclínico</label>
+            </div>
+            <div class="col">
+              <select id="trial" name="trial" [(ngModel)]="chosenTrial" style="height: 30px">
+                <option *ngFor="let trial of trialsSelect" [ngValue]="trial">
+                  {{trial.name}}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col">
+              <label for="objectives">Objetivos</label>
+            </div>
+            <div class="col">
+              <input type="text" id="objectives" [(ngModel)]="animalStudyDto.objectives" name="objectives">
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col">
+              <label for="animalModel">Modelo animal</label>
+            </div>
+            <div class="col">
+              <select name="animalModel" id="animalModel" [(ngModel)]="animalStudyDto.animalModel" style="height: 30px">
+                <option *ngFor="let animal of animalModelSelect" [ngValue]="animal.value">
+                  {{animal.name}}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col">
+              <label for="ethicalGuidelines">Guía de ética</label>
+            </div>
+            <div class="col">
+              <input type="text" id="ethicalGuidelines" [(ngModel)]="animalStudyDto.ethicalGuidelines" name="ethicalGuidelines">
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col">
+              <label for="ethicalGuidelinesUri">URL de la guía de ética</label>
+            </div>
+            <div class="col">
+              <input type="text" id="ethicalGuidelinesUri" [(ngModel)]="animalStudyDto.ethicalGuidelinesUri" name="ethicalGuidelinesUri">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="d-grid">
+          <button class="btn-primary btn btn-lg w-10">Confirmar ></button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

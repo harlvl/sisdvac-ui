@@ -8,24 +8,21 @@ import {map, Observable} from "rxjs";
 })
 export class ResearchService {
   private rootHost = Endpoints.apiV1 + Endpoints.research
-  private api_url = Endpoints.apiV1;
-  private research_path = Endpoints.research;
   constructor(private _http: HttpClient) { }
 
   public findAll(): Observable<any> {
-    const url = this.api_url + this.research_path;
+    const url = this.rootHost;
     return this._http.get<HttpResponse<any>>(url, {observe: "response"});
   }
 
   public findById(id: any): Observable<any> {
-    const url = this.api_url + Endpoints.research + "/" + id;
+    const url = this.rootHost + "/" + id;
     console.log("Using URI: %s", url);
     return this._http.get<HttpResponse<any>>(url, {observe: "response"});
   }
 
   public findUsersByRole(id: any, role: any): Observable<any> {
-    const url =
-      this.api_url + Endpoints.research +
+    const url = this.rootHost +
       Endpoints.findUsersByRole.replace("{id}", id).replace("{key}", role);
     console.log("Using URI: %s", url);
     return this._http.get<HttpResponse<any>>(url, {observe: "response"});
@@ -37,11 +34,18 @@ export class ResearchService {
     return this._http.post(url, {"users": users}, {observe: "response"});
   }
 
-  public findAnimalStudiesByUser(documentNumber: string): Observable<any> {
+  public findAnimalStudiesByUserDocumentNumber(documentNumber: string): Observable<any> {
     const url = this.rootHost +
       Endpoints.findAnimalStudiesByUser
         .replace("{documentNumber}", documentNumber);
 
     return this._http.get<HttpResponse<any>>(url, {observe: "response"})
+  }
+
+  public findTrialsByUserDocumentNumber(documentNumber: string): Observable<any> {
+    const url = this.rootHost +
+      Endpoints.findTrialsByUserDocumentNumber.replace("{documentNumber}", documentNumber);
+    return this._http.get(url, {observe: "response"})
+
   }
 }

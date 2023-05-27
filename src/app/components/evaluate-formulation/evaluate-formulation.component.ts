@@ -47,17 +47,8 @@ export class EvaluateFormulationComponent implements  OnInit{
 
   }
 
-  emitEventToChild() {
-    this.eventsSubject.next();
-  }
-
-
   goBackToFormulations() {
     this.oGoBackToFormulations.emit(true);
-  }
-
-  goToEvaluationCompleted() {
-
   }
 
   confirmEvaluation(form: any) {

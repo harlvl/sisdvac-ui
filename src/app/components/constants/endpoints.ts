@@ -16,11 +16,12 @@ export class Endpoints {
   public static addFormulation: string = '/{id}/formulation';
   public static evaluateFormulation: string = '/{tid}/formulation/{fid}/evaluate';
   public static findFormulationEvaluationById: string = '/{tid}/formulation/{fid}';
+  public static saveAnimalStudy: string = '/{tid}/animal-study';
 
   // research endpoints
   public static research: string = '/research';
   public static addUsers: string = '/id/{id}/add_users';
   public static findUsersByRole: string = '/{id}/users/role/{key}';
-  public static findAnimalStudiesByUserAndTrial: string = "/user/{documentNumber}/trial/{tid}/animal-studies"
   public static findAnimalStudiesByUser: string = "/user/{documentNumber}/animal-studies"
+  public static findTrialsByUserDocumentNumber: string = "/user/document-number/{documentNumber}/trials"
 }
