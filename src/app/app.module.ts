@@ -19,10 +19,10 @@ import { AddMemberComponent } from './research/add-member/add-member.component';
 import { ResultsComponent } from './results/results.component';
 import { EvaluateFormulationComponent } from './components/evaluate-formulation/evaluate-formulation.component';
 import { EvaluationResultsComponent } from './components/evaluation-results/evaluation-results.component';
-import { AnimalStudiesComponent } from './components/animal-studies/animal-studies.component';
 import { ClinicalTrialDesignComponent } from './components/clinical-trial-design/clinical-trial-design.component';
 import { ClinicalTrialEvaluationComponent } from './components/clinical-trial-evaluation/clinical-trial-evaluation.component';
-import { CreateAnimalStudyComponent } from './components/animal-studies/create-animal-study/create-animal-study.component';
+import {NgxSpinnerModule} from "ngx-spinner";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -49,6 +49,8 @@ import { CreateAnimalStudyComponent } from './components/animal-studies/create-a
     NgOptimizedImage,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+    NgxSpinnerModule,
   ],
   providers: [
     {

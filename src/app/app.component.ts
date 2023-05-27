@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,14 @@ export class AppComponent implements OnInit{
   title = 'sisdvac-ui';
   currentUser: any = null;
 
+  constructor(private spinner : NgxSpinnerService) {
+  }
+
   ngOnInit(): void {
+    this.spinner.show();
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 2000);
   }
 }
