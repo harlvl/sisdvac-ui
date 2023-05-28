@@ -16,20 +16,23 @@
     <div class="row">
       <!--   START DECK   -->
       <div class="trial-card-deck">
-        <div class="trial-card" *ngFor="let study of animalStudies; let i = index">
-          <img class="trial-card-img" src="./assets/images/icons/font-awesome-flag-brands.svg" width="5px" height="5px" alt="Card image cap">
+        <div class="card trial-card" style="width: 22%" *ngFor="let study of animalStudies; let i = index">
           <div class="card-body">
-            <div class="card-title">Estudio animal {{study.id}}
+            <div class="card-title">{{study.trialTitle}}
             </div>
-            <div class="card-text">
-              Ensayo: {{study.trialInsNumber}}
+            <div class="card-text custom-card-detail">
+              <b>{{study.trialInsNumber}}</b>
             </div>
-            <div class="card-text">
-              Modelo: {{getAnimalModelName(study.animalModel)}}
+            <div class="card-text custom-card-detail">
+              Modelo animal <em>{{getAnimalModelName(study.animalModel)}}</em>
             </div>
-            <div class="card-text">Objetivos
-              <img (click)="viewObjectives(i)" class="point-edit trial-check" src="assets/images/icons/search.svg" alt=""/>
+            <div class="card-text custom-card-detail">
+              {{study.ethicalGuidelines}}
             </div>
+          </div>
+
+          <div class="card-footer">
+            <small class="text-muted">Inició {{study.startDate}}</small>
           </div>
         </div>
       </div>
