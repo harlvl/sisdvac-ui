@@ -1,14 +1,39 @@
-<div>
-  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="la-ball-clip-rotate-multiple">
-    <div class="la-ball-clip-rotate-multiple">
-      <div></div>
-      <div></div>
-    </div>
-  </ngx-spinner>
-  <app-header></app-header>
-<!--  <app-menu></app-menu>-->
+<div class="container">
   <div>
-    <app-main style="background-color: #EAF9FA"></app-main>
+    <nav *ngIf="isLogged" class="navbar navbar-expand-sm navbar-light bg-white login-nav">
+      <a class="navbar-brand" [routerLink]="['/']">
+        <img src="/assets/dist/img/k12-logo.svg" alt="">
+      </a>
+    </nav>
+
+    <nav *ngIf="isLogged" class="navbar navbar-expand-sm hover-menu custom-nav">
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto top-nav mt-2 mt-lg-0 navbar-menu">
+          <li class="nav-item navbar-li-large">
+            <a class="nav-link custom-nav-link" [routerLinkActive]="['active']" routerLink="{{routerNameResearches}}">{{headerContentResearch}}</a>
+          </li>
+
+          <li class="nav-item navbar-li-large">
+            <a class="nav-link custom-nav-link" [routerLinkActive]="['active']" routerLink="{{routerNameAnimalStudies}}">{{headerContentAnimalStudies}}</a>
+          </li>
+
+          <li class="nav-item navbar-li-large">
+            <a class="nav-link custom-nav-link" [routerLinkActive]="['active']" routerLink="{{routerNameClinicalTrialDesign}}">{{headerContentClinicalTrialDesign}}</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container main-container">
+      <router-outlet></router-outlet>
+      <!--   LOADING SPINNER   -->
+      <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="la-ball-clip-rotate-multiple">
+        <div class="la-ball-clip-rotate-multiple">
+          <div></div>
+          <div></div>
+        </div>
+      </ngx-spinner>
+    </div>
+
   </div>
-  <app-footer></app-footer>
 </div>

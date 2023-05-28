@@ -9,10 +9,60 @@ $theme-colors: (
 
 .main-container {
   background-color: #f4f6fc;
-  margin-top: 30px;
+  //margin-top: 30px;
   //border: 1px solid black; // for testing
   margin-bottom: 30px;
   min-height: 450px;
+  padding-top: 20px;
+}
+
+
+.main-inner-container {
+  //margin: 33px 11px;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.subheader-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -10px;
+  margin-left: -10px;
+  margin-bottom: 20px;
+}
+
+.btn-custom {
+  font-family: "Lato";
+  text-align: center;
+  font-size: 14px;
+  border-radius: 4px;
+  font-weight: 700;
+  width: 105px;
+  height: 40px;
+}
+
+.btn-new-element {
+  @include btn-regular-style($backgroundColor: #FFFFFF);
+  font-weight: 700;
+  height: 40px;
+  border: 1px solid $blue-primary;
+
+  //min-width: 90px;
+  //width: 280px;
+}
+
+// for search results titles
+.title-results-search {
+  height: 57px;
+  display: flex;
+  align-items: center;
+
+  .activity-table-title {
+    @include regular-font-style($fontSize: 18px, $color: $black-primary);
+    font-weight: 700;
+    vertical-align: middle;
+    margin-left: 10px;
+  }
 }
 
 .inner-container-header {

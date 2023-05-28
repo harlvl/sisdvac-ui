@@ -1,3 +1,5 @@
+@import '../../styles/mixins';
+
 .logo-user-container {
   height: 1px;
 }
@@ -75,4 +77,49 @@
     }
   }
 
+}
+
+
+/* Hover Effects for navbar */
+
+.hover-menu ul li a {
+  @include regular-font-style($fontSize: 16px);
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 34px;
+}
+
+.hover-menu ul li a::after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 3px;
+  background: $blue-primary;
+  transition: width .3s;
+}
+
+.hover-menu ul li a:hover, .hover-menu ul li a.active {
+  color: $black-primary;
+  -webkit-text-stroke: 0.5px $black-primary;
+}
+
+.hover-menu ul li a:hover::after,
+.hover-menu ul li a.active::after {
+  width: 100%;
+}
+
+
+/* ------------------------------- */
+
+.custom-nav {
+  padding: 0px 0px 0px 20px;
+}
+
+.navbar-menu {
+  height: 76px;
+}
+
+.navbar-li-large {
+  margin-right: 50px;
 }

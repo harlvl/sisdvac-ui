@@ -11,12 +11,10 @@ import {ClinicalTrialDesignComponent} from "./components/clinical-trial-design/c
 import {
   ClinicalTrialEvaluationComponent
 } from "./components/clinical-trial-evaluation/clinical-trial-evaluation.component";
-import {AppComponent} from "./app.component";
 
 const routes: Routes = [
-  {path : '', redirectTo: RouteNames.welcome, pathMatch: 'full'},
+  {path : '', component: WelcomeComponent},
   {path : RouteNames.login, component: LoginComponent},
-  {path : RouteNames.home, component: AppComponent, canActivate: [AuthGuard]},
   {path : RouteNames.welcome, component: WelcomeComponent, canActivate: [AuthGuard]},
   {path : RouteNames.researches, component: ResearchComponent, canActivate: [AuthGuard]},
   {path : RouteNames.animalStudies,

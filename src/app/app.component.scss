@@ -1,0 +1,129 @@
+@import '../styles/mixins';
+/*  START Effects for header */
+
+.logo-user-container {
+  height: 1px;
+}
+.header-main-style {
+  background-color: #BBBABA;
+}
+.header-main-logo {
+  font-family: "Roboto Light";
+  font-size: 45px;
+  color: #147DDD;
+}
+.user-profile{
+  float: right;
+  color:  #147DDD;
+  font-family: "Roboto Light";
+  .img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.user-profile-data {
+  font-size: 10px;
+}
+
+.top-container {
+  horiz-align: left;
+  .top-container-element{
+    width: 300px;
+    float: left;
+  }
+}
+
+.main-nav-container {
+  margin-top: 60px;
+}
+.nav-bar-container {
+  //width: 300px;
+  //height: 50px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #147DDD;
+  //color: black; // color for li elements must be set inline
+  .nav-bar-element{
+    padding-left: 30px;
+    font-size: 16px;
+    font-family: "Times New Roman", serif;
+    width: 200px;
+    //height: 50px;
+    float: left;
+    //align-content: center;
+    //vertical-align: center;
+    horiz-align: center;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    background-color: transparent;
+    .a {
+      display: block;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      color: black;
+
+    }
+
+    .active {
+      color: white !important;
+    }
+    :last-child {
+      border-right: none;
+    }
+  }
+
+}
+
+
+/* Hover Effects for navbar */
+
+.hover-menu ul li a {
+  @include regular-font-style($fontSize: 16px);
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 34px;
+}
+
+.hover-menu ul li a::after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 3px;
+  background: $blue-primary;
+  transition: width .3s;
+}
+
+.hover-menu ul li a:hover, .hover-menu ul li a.active {
+  color: $black-primary;
+  -webkit-text-stroke: 0.5px $black-primary;
+}
+
+.hover-menu ul li a:hover::after,
+.hover-menu ul li a.active::after {
+  width: 100%;
+}
+
+
+/* ------------------------------- */
+
+.custom-nav {
+  padding: 0px 0px 0px 20px;
+}
+
+.navbar-menu {
+  height: 76px;
+}
+
+.navbar-li-large {
+  margin-right: 50px;
+}
+
+
+/* END EFFECTS FOR HEADER------------------------------- */
