@@ -13,7 +13,7 @@ import {
 } from "./components/clinical-trial-evaluation/clinical-trial-evaluation.component";
 
 const routes: Routes = [
-  {path : '', component: WelcomeComponent},
+  {path : '', component: WelcomeComponent, canActivate: [AuthGuard]},
   {path : RouteNames.login, component: LoginComponent},
   {path : RouteNames.welcome, component: WelcomeComponent, canActivate: [AuthGuard]},
   {path : RouteNames.researches, component: ResearchComponent, canActivate: [AuthGuard]},
