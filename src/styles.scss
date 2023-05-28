@@ -31,14 +31,62 @@ $theme-colors: (
   margin-bottom: 20px;
 }
 
-.btn-custom {
-  font-family: "Lato";
-  text-align: center;
-  font-size: 14px;
-  border-radius: 4px;
+//.btn-custom {
+//  font-family: "Lato";
+//  text-align: center;
+//  font-size: 14px;
+//  border-radius: 4px;
+//  font-weight: 700;
+//  width: 105px;
+//  height: 40px;
+//}
+
+.container-btn{
+  text-align: left !important;
+  display: block;
+  margin-left: 20px !important;
+  .inner-btn-save {
+    @include btn-regular-style($color: white, $backgroundColor: $blue-primary);
+    font-weight: 700;
+    border-radius: 4px;
+    width: 30%;
+    height: 40px;
+  }
+
+  .inner-btn-cancel {
+    @include btn-regular-style($backgroundColor: white);
+    font-weight: 700;
+    width: 30%;
+    height: 40px;
+    border: 1px solid $blue-primary;
+    margin-left: 15px;
+  }
+}
+
+.btn-save-element {
+  @include btn-regular-style($color: white, $backgroundColor: $blue-primary);
   font-weight: 700;
-  width: 105px;
   height: 40px;
+  border: 1px solid $blue-primary;
+  width: auto;
+}
+
+.btn-custom {
+  font-family: $primaryFontFamily;
+  color: $blue-primary;
+  background-color: white;
+  font-size: 16px;
+  font-weight: 700;
+  border:none;
+  padding: 1px 0px !important;
+
+  span {
+    margin-left: 5px;
+  }
+
+  img {
+
+  }
 }
 
 .btn-new-element {
@@ -47,8 +95,7 @@ $theme-colors: (
   height: 40px;
   border: 1px solid $blue-primary;
 
-  //min-width: 90px;
-  //width: 280px;
+  min-width: 150px;
 }
 
 // for search results titles
@@ -202,7 +249,7 @@ a:hover {
 /* Common styles for all layouts */
 
 .title-layout {
-  @include regular-font-style($color: $black-primary, $fontSize: 18px);
+  @include regular-font-style($color: $black-primary, $fontSize: 22px);
   font-weight: 700;
   text-align: left;
 }

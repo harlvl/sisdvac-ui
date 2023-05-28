@@ -84,6 +84,8 @@ export class CreateAnimalStudyComponent implements OnInit {
   }
 
   confirmCreation(form: NgForm) {
+    console.log("form:");
+    console.log(form);
     console.log("AnimalStudyDto:");
     console.log(this.animalStudyDto);
     this.spinner.show();

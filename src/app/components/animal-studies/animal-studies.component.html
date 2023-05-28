@@ -6,7 +6,10 @@
       </div>
 
       <div class="col-sm-2 custom-col">
-        <button class="btn-custom btn-new-element" [routerLink]="['create']" type="button">Nuevo estudio</button>
+        <button class="btn-custom btn-new-element" [routerLink]="['create']" type="button">
+          <img ngSrc="./assets/images/icons/plus.svg" alt="" height="17" width="17">
+          <span>Nuevo estudio</span>
+        </button>
       </div>
 
     </div>
@@ -40,6 +43,9 @@
               <div class="card-text custom-card-detail">
                 {{study.ethicalGuidelines}}
               </div>
+              <button class="btn-custom mt-1" [routerLink]="['evaluate']">
+                <span><em>Evaluar</em></span>
+              </button>
             </div>
 
             <div class="card-footer">

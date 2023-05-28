@@ -1,25 +1,23 @@
-<div class="main-container">
+<div>
   <div class="container">
-
     <!--  HEADER  -->
-    <div class="row mb-5">
-      <div class="col-sm title-layout">Crear nuevo estudio animal</div>
+    <div class="row subheader-row">
+      <div class="col-sm-10 custom-col">
+        <span class="title-layout">Nuevo estudio animal</span>
+      </div>
       <!--   mt-4 is important   -->
-      <div class="col-sm mt-4">
-        <div class="back-link-inner-container">
-          <a class="nav-link active back-link justify-content-center align-self-center text-center" (click)="goBackToAnimalStudies()">
-            <img src="assets/images/icons/icon_chevron_left.png" width="10px" style="fill: #006FBF;margin-right: 10px;"  alt="">
-            Volver
-          </a>
-        </div>
-<!--        <button class="button" [routerLink]="['/animal-studies']" type="button">Volver</button>-->
+      <div class="col-sm-2 custom-col">
+        <button class="btn-custom btn-new-element" [routerLink]="['/animal-studies']" type="button">
+          <img ngSrc="./assets/images/icons/icon_chevron_left.png" alt="" height="15" width="10">
+          <span>Volver</span>
+        </button>
       </div>
     </div>
 
     <!--  BODY  -->
     <div class="row">
       <form #form="ngForm" (ngSubmit)="confirmCreation(form)">
-        <h1>Datos del estudio animal</h1>
+        <h2>Datos del estudio animal</h2>
         <div class="container">
 
           <div class="row mb-3">
@@ -77,8 +75,10 @@
 
         </div>
 
-        <div class="d-grid">
-          <button class="btn-primary btn btn-lg w-10">Confirmar ></button>
+        <div class="container-btn no-border">
+          <div class="col-md-8 mt-2">
+            <button type="submit" class="btn-primary btn inner-btn-save">Confirmar</button>
+          </div>
         </div>
       </form>
     </div>
