@@ -2,6 +2,8 @@ import {Component, Injectable, Input, OnInit} from '@angular/core';
 import {ResearchService} from "../../services/research.service";
 import {map} from "rxjs";
 import {AuthService} from "../../services/auth.service";
+import {NgxSpinnerService} from "ngx-spinner";
+import {Utils} from "../../helpers/utils";
 
 @Component({
   selector: 'app-animal-studies',
@@ -22,11 +24,13 @@ export class AnimalStudiesComponent implements OnInit {
   animalStudy: any;
 
   constructor(private researchService: ResearchService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private spinner: NgxSpinnerService) {
   }
 
   ngOnInit(): void {
     // TODO show spinner
+    this.spinner.show();
     this.documentNumber = this.authService.getDocumentNumber();
     console.log("Document number: %s", this.documentNumber);
     this.researchService.findAnimalStudiesByUserDocumentNumber(this.documentNumber).pipe(map((res) => {
@@ -34,6 +38,7 @@ export class AnimalStudiesComponent implements OnInit {
     })).subscribe((response) => {
       console.log("Response status: %d", response.status);
       this.animalStudies = response.body.payload;
+      this.spinner.hide();
     })
   }
 
@@ -41,5 +46,9 @@ export class AnimalStudiesComponent implements OnInit {
     this.isModeViewObjectives = true;
     // EMIT A VALUE?
     this.animalStudy = this.animalStudies[i];
+  }
+
+  getAnimalModelName(input: any) {
+    return Utils.getAnimalModelName(input);
   }
 }

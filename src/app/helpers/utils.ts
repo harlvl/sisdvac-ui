@@ -4,11 +4,29 @@ import {RoleEnum} from "../components/enums/roleEnum";
 import {Role} from "../components/constants/role";
 import {TrialStageEnum} from "../components/enums/trialStageEnum";
 import {TrialStage} from "../components/constants/trial-stage";
+import {AnimalModelEnum} from "../components/enums/animalModelEnum";
 
 @Injectable()
 export class Utils {
   constructor(private router: Router) {
 
+  }
+
+  public static getAnimalModelName(input: any) {
+    switch (input) {
+      case AnimalModelEnum.MICRO:
+        return 'Microorganismo';
+      case AnimalModelEnum.BIRD:
+        return 'Ave';
+      case AnimalModelEnum.HUMAN:
+        return 'Humano';
+      case AnimalModelEnum.PRIMATE:
+        return 'Primate';
+      case AnimalModelEnum.RODENT:
+        return 'Roedor';
+      default:
+        return "Sin modelo definido";
+    }
   }
 
   public static getRoleName(role: any) {

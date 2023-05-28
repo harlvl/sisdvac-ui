@@ -792,6 +792,27 @@ select.ng-touched.ng-invalid {
   }
 }
 
+.trial-card-img {
+  width: 30px;
+  height: 30px;
+}
+//BACK BUTTON
+.back-link-inner-container {
+  margin: 10px -10px;
+  position: relative;
+  margin-bottom: 0px;
+  margin-top: -25px;
+  height: 55px;
+}
+
+.back-link{
+  @include regular-font-style(20px,  $blue-primary);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  margin-left: -5px;
+}
+
 // SPINNER CSS
 /*!
  * Load Awesome v1.1.0 (http://github.danielcardoso.net/load-awesome/)

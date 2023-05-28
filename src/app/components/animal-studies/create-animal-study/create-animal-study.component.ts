@@ -9,6 +9,7 @@ import {HttpResponse} from "@angular/common/http";
 import {AnimalModelEnum} from "../../enums/animalModelEnum";
 import {Router} from "@angular/router";
 import {RouteNames} from "../../constants/route-names";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-create-animal-study',
@@ -49,18 +50,20 @@ export class CreateAnimalStudyComponent implements OnInit {
   }
 
   constructor(private router: Router,
+              private spinner: NgxSpinnerService,
               private authService: AuthService,
               private trialService: TrialService,
               private researchService: ResearchService) {
     this.documentNumber = authService.getDocumentNumber();
-    console.log("Document number in CreateAnimalStudyComponent constructor: %s", this.documentNumber);
   }
 
   ngOnInit(): void {
+    this.spinner.show();
+
     if (this.documentNumber == null) {
       console.log("WARNING! Document number is null");
     }
-    console.log("Document number in CreateAnimalStudyComponent ngOnInit: %s", this.documentNumber);
+
     this.researchService.findTrialsByUserDocumentNumber(this.documentNumber).pipe(map((res) => {
       return res;
     })).subscribe((response: HttpResponse<any>) => {
@@ -75,21 +78,26 @@ export class CreateAnimalStudyComponent implements OnInit {
       }
 
       console.log("Trials select: ");
-      console.log(this.trialsSelect);
+      console.log(this.trialsSelect)
+      this.spinner.hide();
     });
   }
 
   confirmCreation(form: NgForm) {
-    console.log("Form value:");
-    console.log(form.value);
     console.log("AnimalStudyDto:");
     console.log(this.animalStudyDto);
+    this.spinner.show();
     this.trialService.saveAnimalStudy(this.chosenTrial.id, this.animalStudyDto).pipe(map((res) => {
       return res;
     })).subscribe((response:HttpResponse<any>) => {
       console.log("Response:");
       console.log(response.body.payload);
+      this.spinner.hide();
       this.router.navigate([RouteNames.animalStudies]);
     });
+  }
+
+  goBackToAnimalStudies() {
+    this.router.navigate(['/animal-studies']);
   }
 }
