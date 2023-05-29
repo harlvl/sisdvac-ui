@@ -32,7 +32,9 @@
         <div class="trial-card-deck">
           <div class="card trial-card" style="width: 22%" *ngFor="let study of animalStudies; let i = index">
             <div class="card-body">
-              <div class="card-title">{{study.trialTitle}}
+              <div class="card-title">{{study.trialTitle}}</div>
+              <div class="card-text mb-1 evaluation-status">
+                <small class="text-muted"><b><em>{{getEvaluationStatusLabel(study)}}</em></b></small>
               </div>
               <div class="card-text custom-card-detail">
                 <b>{{study.trialInsNumber}}</b>
@@ -43,8 +45,9 @@
               <div class="card-text custom-card-detail">
                 {{study.ethicalGuidelines}}
               </div>
-              <button class="btn-custom mt-1" [routerLink]="['evaluate']">
-                <span><em>Evaluar</em></span>
+              <button [disabled]="checkIfEvaluated(study)" class="btn-custom mt-1" [routerLink]="['evaluate']">
+                <span [ngClass]="{'text-muted': checkIfEvaluated(study)}"><em>Evaluar</em></span>
+                <span><img ngSrc="./assets/images/icons/arrow_right.svg" alt="" height="12" width="8"></span>
               </button>
             </div>
 

@@ -1,6 +1,8 @@
 export class Endpoints {
-  // base host
+  // local
   public static apiV1: string = 'http://localhost:8080/sisdvac/api/v1';
+  // aws
+  // public static apiV1: string = 'http://sisdvac-services.us-east-1.elasticbeanstalk.com/sisdvac/api/v1';
 
   //auth endpoints
   public static authenticate: string = '/auth/authenticate';

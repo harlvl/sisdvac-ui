@@ -112,6 +112,19 @@ $theme-colors: (
   }
 }
 
+.custom-search-label {
+  @include regular-font-style($fontSize: 16px, $color: $black-primary);
+  display: block;
+  font-weight: 400;
+  padding-top: 12px;
+  margin-left: 16px;
+}
+
+.custom-input-field {
+  width: 180px;
+  margin-left: 30px;
+}
+
 .inner-container-header {
 
 }
@@ -883,7 +896,7 @@ select.ng-touched.ng-invalid {
     width: 300px;
     float: left;
 
-    height: 290px;
+    height: 330px;
 
     margin-right: 15px;
     margin-bottom: 15px;

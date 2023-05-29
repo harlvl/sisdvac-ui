@@ -4,6 +4,7 @@ import {map} from "rxjs";
 import {AuthService} from "../../services/auth.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {Utils} from "../../helpers/utils";
+import {EvaluationStatusEnum} from "../enums/evaluation-status-enum";
 
 @Component({
   selector: 'app-animal-studies',
@@ -50,5 +51,17 @@ export class AnimalStudiesComponent implements OnInit {
 
   getAnimalModelName(input: any) {
     return Utils.getAnimalModelName(input);
+  }
+
+  getEvaluationStatusLabel(study: any) {
+    if (study.evaluation != null) {
+      return EvaluationStatusEnum.EVALUATED;
+    } else {
+      return EvaluationStatusEnum.NOT_EVALUATED;
+    }
+  }
+
+  checkIfEvaluated(study: any) {
+    return this.getEvaluationStatusLabel(study) == EvaluationStatusEnum.EVALUATED;
   }
 }

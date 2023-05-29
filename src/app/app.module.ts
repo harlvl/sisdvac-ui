@@ -12,7 +12,7 @@ import {NgOptimizedImage} from "@angular/common";
 import { ResearchComponent } from './research/research.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./helpers/auth.interceptor";
 import { CreateTrialComponent } from './research/create-trial/create-trial.component';
 import { AddMemberComponent } from './research/add-member/add-member.component';
@@ -45,15 +45,16 @@ import { EvaluateStudyComponent } from './components/animal-studies/evaluate-stu
     ClinicalTrialEvaluationComponent,
     EvaluateStudyComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgOptimizedImage,
-    HttpClientModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    NgxSpinnerModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NgOptimizedImage,
+        HttpClientModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        NgxSpinnerModule,
+        ReactiveFormsModule,
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true,
