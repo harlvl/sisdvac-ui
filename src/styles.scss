@@ -121,8 +121,12 @@ $theme-colors: (
 }
 
 .custom-input-field {
-  width: 180px;
+  width: 300px;
   margin-left: 30px;
+}
+
+.error-message-container {
+
 }
 
 .inner-container-header {
@@ -593,8 +597,8 @@ select.ng-touched.ng-invalid {
 }
 
 .validation-error {
-  @include regular-font-style($color: $error);
-  margin-top: 3px;
+  @include regular-font-style($fontSize: 13px, $color: $error);
+  margin-top: 7px;
 
   img {
     margin-right: 3px;

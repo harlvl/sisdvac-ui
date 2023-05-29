@@ -33,10 +33,10 @@ export class EvaluateStudyComponent implements OnInit{
 
     this.evaluateForm = this.formBuilder.group({
       totalVaccinatedAnimals: [
-        null, {validators: [Validators.required]}
+        null, {validators: [],}
       ],
       animalsWithDetectableImmuneResponse: [
-        null, {validators: [Validators.required]}
+        null, {validators: [],}
       ],
     });
   }
@@ -58,23 +58,61 @@ export class EvaluateStudyComponent implements OnInit{
   confirmEvaluation() {
     this.errorMessage = null;
     this.spinner.show();
-    this.animalsWithDetectableImmuneResponse = this.evaluateForm.value.animalsWithDetectableImmuneResponse;
-    this.totalVaccinatedAnimals = this.evaluateForm.value.totalVaccinatedAnimals;
+    let a = this.evaluateForm.get('totalVaccinatedAnimals');
+    let b = this.evaluateForm.get('animalsWithDetectableImmuneResponse');
 
-    console.log("totalVaccinatedAnimals");
-    console.log(this.totalVaccinatedAnimals);
-    console.log("animalsWithDetectableImmuneResponse");
-    console.log(this.animalsWithDetectableImmuneResponse);
-    setTimeout(() => {
-      /** spinner ends after 5 seconds */
+    a?.setValidators(Validators.required);
+    b?.setValidators(Validators.required);
+
+    a?.updateValueAndValidity();
+    b?.updateValueAndValidity();
+
+    if (a?.valid && b?.valid) {
+      console.log("Values are valid");
+      let data = this.evaluateForm.getRawValue();
+      data.totalVaccinatedAnimals = data.totalVaccinatedAnimals.trim();
+      data.animalsWithDetectableImmuneResponse = data.animalsWithDetectableImmuneResponse.trim();
+      console.log("totalVaccinatedAnimals");
+      console.log(data.totalVaccinatedAnimals);
+      console.log("animalsWithDetectableImmuneResponse");
+      console.log(data.animalsWithDetectableImmuneResponse);
+      // call services
       this.spinner.hide();
       this.router.navigate(['/animal-studies']);
-    }, 2000);
-
+    } else {
+      console.log("Fields are invalid");
+      if (!a?.valid) {
+        a?.markAsTouched();
+      }
+      if (!b?.valid) {
+        b?.markAsTouched();
+      }
+      this.spinner.hide();
+    }
+    a?.clearValidators();
+    b?.clearValidators();
   }
 
-  // public get form() {
-  //   return this.evaluateForm.controls;
+  // confirmEvaluation() {
+  //   this.errorMessage = null;
+  //   this.spinner.show();
+  //   this.animalsWithDetectableImmuneResponse = this.evaluateForm.value.animalsWithDetectableImmuneResponse;
+  //   this.totalVaccinatedAnimals = this.evaluateForm.value.totalVaccinatedAnimals;
+  //
+  //   console.log("totalVaccinatedAnimals");
+  //   console.log(this.totalVaccinatedAnimals);
+  //   console.log("animalsWithDetectableImmuneResponse");
+  //   console.log(this.animalsWithDetectableImmuneResponse);
+  //   setTimeout(() => {
+  //     /** spinner ends after 5 seconds */
+  //     this.spinner.hide();
+  //     this.router.navigate(['/animal-studies']);
+  //   }, 2000);
+  //
   // }
+
+  public get form() {
+    return this.evaluateForm.controls;
+  }
 
 }

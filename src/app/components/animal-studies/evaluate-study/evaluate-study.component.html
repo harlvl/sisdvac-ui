@@ -21,19 +21,39 @@
 
         <div class="row mb-3">
           <div class="row mb-1">
-            <label class="search-label custom-search-label" for="totalVaccinatedAnimals">Total de animales vacunados</label>
+            <label class="search-label custom-search-label" for="totalVaccinatedAnimals">
+              Total de animales vacunados
+            </label>
           </div>
           <div class="row">
-            <input formControlName="totalVaccinatedAnimals" class="form-control custom-input-field" type="text" id="totalVaccinatedAnimals" name="totalVaccinatedAnimals" placeholder="ex. 100">
+            <div class="col-sm-4">
+              <input formControlName="totalVaccinatedAnimals" class="form-control custom-input-field" type="text" id="totalVaccinatedAnimals" name="totalVaccinatedAnimals" placeholder="ex. 100">
+            </div>
+            <div class="col-sm-3">
+              <div *ngIf="form['totalVaccinatedAnimals'].invalid" class="validation-error float-right mb-2">
+                <img ngSrc="./assets/images/icons/exclamation-solid.svg" alt="" height="15" width="16">
+                Campo requerido
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-3 mt-2">
           <div class="row mb-1">
-            <label class="search-label custom-search-label" for="animalsWithDetectableImmuneResponse">Número de animales con respuesta inmune detectable</label>
+            <label class="search-label custom-search-label" for="animalsWithDetectableImmuneResponse">
+              Número de animales con respuesta inmune detectable
+            </label>
           </div>
           <div class="row">
-            <input formControlName="animalsWithDetectableImmuneResponse" class="form-control custom-input-field" type="text" id="animalsWithDetectableImmuneResponse" name="animalsWithDetectableImmuneResponse" placeholder="ex. 50">
+            <div class="col-sm-4">
+              <input formControlName="animalsWithDetectableImmuneResponse" class="form-control custom-input-field" type="text" id="animalsWithDetectableImmuneResponse" name="animalsWithDetectableImmuneResponse" placeholder="ex. 50">
+            </div>
+            <div class="col-sm-3">
+              <div *ngIf="form['animalsWithDetectableImmuneResponse'].invalid" class="validation-error float-right mb-2">
+                <img ngSrc="./assets/images/icons/exclamation-solid.svg" alt="" height="15" width="16">
+                Campo requerido
+              </div>
+            </div>
           </div>
         </div>
 
@@ -41,7 +61,7 @@
 
       <div class="container-btn no-border">
         <div class="col-md-8 mt-2">
-          <button type="submit" class="btn-primary btn inner-btn-save btn-evaluate-study" [disabled]="evaluateForm.invalid" (click)="confirmEvaluation()">Confirmar</button>
+          <button type="submit" class="btn-primary btn inner-btn-save btn-evaluate-study" (click)="confirmEvaluation()">Confirmar</button>
         </div>
       </div>
     </form>
