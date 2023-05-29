@@ -15,31 +15,25 @@
 
   <!--  BODY-->
   <div class="row">
-    <form #form="ngForm" (ngSubmit)="confirmAction(form)">
+    <form [formGroup]="evaluateForm">
       <h2>Parámetros de la evaluación</h2>
       <div class="container">
 
         <div class="row mb-3">
           <div class="row mb-1">
             <label class="search-label custom-search-label" for="totalVaccinatedAnimals">Total de animales vacunados</label>
-<!--            <div *ngIf="form.touched && form.invalid" class="validation-error float-right">-->
-<!--              Campo es requerido-->
-<!--            </div>-->
           </div>
           <div class="row">
-            <input class="form-control custom-input-field" type="text" [(ngModel)]="totalVaccinatedAnimals"  id="totalVaccinatedAnimals" name="totalVaccinatedAnimals" placeholder="ex. 100">
+            <input formControlName="totalVaccinatedAnimals" class="form-control custom-input-field" type="text" id="totalVaccinatedAnimals" name="totalVaccinatedAnimals" placeholder="ex. 100">
           </div>
         </div>
 
         <div class="row mb-3">
           <div class="row mb-1">
             <label class="search-label custom-search-label" for="animalsWithDetectableImmuneResponse">Número de animales con respuesta inmune detectable</label>
-<!--            <div *ngIf="form.touched && form.invalid" class="validation-error float-right">-->
-<!--              Campo es requerido-->
-<!--            </div>-->
           </div>
           <div class="row">
-            <input class="form-control custom-input-field" type="text" [(ngModel)]="animalsWithDetectableImmuneResponse"  id="animalsWithDetectableImmuneResponse" name="animalsWithDetectableImmuneResponse" placeholder="ex. 50">
+            <input formControlName="animalsWithDetectableImmuneResponse" class="form-control custom-input-field" type="text" id="animalsWithDetectableImmuneResponse" name="animalsWithDetectableImmuneResponse" placeholder="ex. 50">
           </div>
         </div>
 
@@ -47,7 +41,7 @@
 
       <div class="container-btn no-border">
         <div class="col-md-8 mt-2">
-          <button type="submit" class="btn-primary btn inner-btn-save">Confirmar</button>
+          <button type="submit" class="btn-primary btn inner-btn-save btn-evaluate-study" [disabled]="evaluateForm.invalid" (click)="confirmEvaluation()">Confirmar</button>
         </div>
       </div>
     </form>

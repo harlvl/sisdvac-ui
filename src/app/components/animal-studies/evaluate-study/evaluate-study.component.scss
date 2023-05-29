@@ -1,0 +1,8 @@
+@import '../../../../styles/mixins';
+
+.btn-evaluate-study {
+  margin-top: 32px;
+  @include btn-regular-style($color: #FFFFFF, $backgroundColor: $blue-primary);
+  font-weight: 700;
+  border-style: 1px solid;
+}

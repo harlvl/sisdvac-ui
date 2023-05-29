@@ -10,10 +10,10 @@ import {Router} from "@angular/router";
   styleUrls: ['./evaluate-study.component.scss']
 })
 export class EvaluateStudyComponent implements OnInit{
-  errorMessage: string = "";
+  errorMessage: any;
 
   // for evaluating animal study
-  // evaluateForm: FormGroup;
+  evaluateForm: FormGroup;
   totalVaccinatedAnimals: any;
   animalsWithDetectableImmuneResponse: any;
 
@@ -31,14 +31,14 @@ export class EvaluateStudyComponent implements OnInit{
               private spinner: NgxSpinnerService,
               private formBuilder: FormBuilder) {
 
-    // this.evaluateForm = this.formBuilder.group({
-    //   totalVaccinatedAnimals: [
-    //     this.animalEvaluationRequest.totalVaccinatedAnimals, {validators: [Validators.required]}
-    //   ],
-    //   animalsWithDetectableImmuneResponse: [
-    //     this.animalEvaluationRequest.animalsWithDetectableImmuneResponse, {validators: [Validators.required]}
-    //   ],
-    // });
+    this.evaluateForm = this.formBuilder.group({
+      totalVaccinatedAnimals: [
+        null, {validators: [Validators.required]}
+      ],
+      animalsWithDetectableImmuneResponse: [
+        null, {validators: [Validators.required]}
+      ],
+    });
   }
 
   ngOnInit(): void {
@@ -46,7 +46,8 @@ export class EvaluateStudyComponent implements OnInit{
 
   confirmAction(form: any) {
     console.log("Accion confirmada");
-    this.spinner.show();setTimeout(() => {
+    this.spinner.show();
+    setTimeout(() => {
       /** spinner ends after 5 seconds */
       this.spinner.hide();
       this.router.navigate(['/animal-studies']);
@@ -54,7 +55,22 @@ export class EvaluateStudyComponent implements OnInit{
 
   }
 
-  confirmEvaluation(form: any) {
+  confirmEvaluation() {
+    this.errorMessage = null;
+    this.spinner.show();
+    this.animalsWithDetectableImmuneResponse = this.evaluateForm.value.animalsWithDetectableImmuneResponse;
+    this.totalVaccinatedAnimals = this.evaluateForm.value.totalVaccinatedAnimals;
+
+    console.log("totalVaccinatedAnimals");
+    console.log(this.totalVaccinatedAnimals);
+    console.log("animalsWithDetectableImmuneResponse");
+    console.log(this.animalsWithDetectableImmuneResponse);
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+      this.router.navigate(['/animal-studies']);
+    }, 2000);
+
   }
 
   // public get form() {
