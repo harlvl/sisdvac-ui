@@ -2,7 +2,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {AnimalStudiesComponent} from "./animal-studies.component";
 import {NgModule} from "@angular/core";
 import {CreateAnimalStudyComponent} from "./create-animal-study/create-animal-study.component";
-import {NgClass, NgForOf, NgOptimizedImage} from "@angular/common";
+import {NgClass, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 
 const routes: Routes = [
@@ -27,13 +27,14 @@ const routes: Routes = [
     AnimalStudiesComponent,
     CreateAnimalStudyComponent
   ],
-    imports: [
-        RouterModule.forChild(routes),
-        NgForOf,
-        FormsModule,
-        NgOptimizedImage,
-        NgClass
-    ],
+  imports: [
+    RouterModule.forChild(routes),
+    NgForOf,
+    FormsModule,
+    NgOptimizedImage,
+    NgClass,
+    NgIf
+  ],
 })
 
 export class AnimalStudiesRoutingModule {
