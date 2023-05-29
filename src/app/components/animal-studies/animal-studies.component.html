@@ -45,7 +45,8 @@
               <div class="card-text custom-card-detail">
                 {{study.ethicalGuidelines}}
               </div>
-              <button [disabled]="checkIfEvaluated(study)" class="btn-custom mt-1" [routerLink]="['evaluate']">
+              <button [disabled]="checkIfEvaluated(study)" class="btn-custom mt-1"
+                      [routerLink]="['evaluate']" [queryParams]="{tid: study.trialId, aid: study.advanceId}">
                 <span [ngClass]="{'text-muted': checkIfEvaluated(study)}"><em>Evaluar</em></span>
                 <span><img ngSrc="./assets/images/icons/arrow_right.svg" alt="" height="12" width="8"></span>
               </button>

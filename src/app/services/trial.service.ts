@@ -3,6 +3,7 @@ import {HttpClient, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Endpoints} from "../components/constants/endpoints";
 import {Trial} from "../components/interfaces/trial";
+import {AnimalStudyEvaluationRequest} from "../components/interfaces/animalStudyEvaluationRequest";
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,12 @@ export class TrialService {
   public saveAnimalStudy(trialId: any, animalStudy: any) {
     const url = this.rootHost + Endpoints.saveAnimalStudy.replace("{tid}", trialId);
     return this.httpClient.post(url, animalStudy, {observe: "response"});
+  }
+
+  public evaluateAnimalStudy(trialId: any, advanceId: any, request: AnimalStudyEvaluationRequest) {
+    const url = this.rootHost +
+      Endpoints.evaluateAnimalStudy.replace("{tid}", trialId).replace("{aid}", advanceId);
+    return this.httpClient.post(url, request, {observe: "response"});
   }
 
 }

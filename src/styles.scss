@@ -16,6 +16,10 @@ $theme-colors: (
   padding-top: 20px;
 }
 
+.error-message-star {
+  color: darkred;
+}
+
 
 .main-inner-container {
   //margin: 33px 11px;
@@ -604,6 +608,11 @@ select.ng-touched.ng-invalid {
     margin-right: 3px;
     margin-left: 5px;
   }
+}
+
+.container-label-input {
+  margin-bottom: 3px;
+  margin-top: 2px;
 }
 
 .validation-warning {

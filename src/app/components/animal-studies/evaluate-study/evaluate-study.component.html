@@ -1,4 +1,5 @@
-<div class="container">
+<!-- pb-3 important so the button is not at the very edge -->
+<div class="container pb-3">
   <!--  HEADER  -->
   <div class="row subheader-row">
     <div class="col-sm-10 custom-col">
@@ -22,17 +23,17 @@
         <div class="row mb-3">
           <div class="row mb-1">
             <label class="search-label custom-search-label" for="totalVaccinatedAnimals">
-              Total de animales vacunados
+              Total de animales vacunados<span class="error-message-star"> *</span>
             </label>
           </div>
           <div class="row">
             <div class="col-sm-4">
               <input formControlName="totalVaccinatedAnimals" class="form-control custom-input-field" type="text" id="totalVaccinatedAnimals" name="totalVaccinatedAnimals" placeholder="ex. 100">
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <div *ngIf="form['totalVaccinatedAnimals'].invalid" class="validation-error float-right mb-2">
                 <img ngSrc="./assets/images/icons/exclamation-solid.svg" alt="" height="15" width="16">
-                Campo requerido
+                {{errorMessageRequired}}
               </div>
             </div>
           </div>
@@ -41,17 +42,112 @@
         <div class="row mb-3 mt-2">
           <div class="row mb-1">
             <label class="search-label custom-search-label" for="animalsWithDetectableImmuneResponse">
-              Número de animales con respuesta inmune detectable
+              Número de animales con respuesta inmune detectable<span class="error-message-star"> *</span>
             </label>
           </div>
           <div class="row">
             <div class="col-sm-4">
               <input formControlName="animalsWithDetectableImmuneResponse" class="form-control custom-input-field" type="text" id="animalsWithDetectableImmuneResponse" name="animalsWithDetectableImmuneResponse" placeholder="ex. 50">
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <div *ngIf="form['animalsWithDetectableImmuneResponse'].invalid" class="validation-error float-right mb-2">
                 <img ngSrc="./assets/images/icons/exclamation-solid.svg" alt="" height="15" width="16">
-                Campo requerido
+                {{errorMessageRequired}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3 mt-2">
+          <div class="row mb-1">
+            <label class="search-label custom-search-label" for="attackRateUnvaccinatedGroup">
+              Tasa de ataque - Grupo no vacunado<span class="error-message-star"> *</span>
+            </label>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <input formControlName="attackRateUnvaccinatedGroup" class="form-control custom-input-field" type="text" id="attackRateUnvaccinatedGroup" name="attackRateUnvaccinatedGroup" placeholder="ex. 0.3">
+            </div>
+            <div class="col-sm-2">
+              <div *ngIf="form['attackRateUnvaccinatedGroup'].invalid" class="validation-error float-right mb-2">
+                <img ngSrc="./assets/images/icons/exclamation-solid.svg" alt="" height="15" width="16">
+                {{errorMessageRequired}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3 mt-2">
+          <div class="row mb-1">
+            <label class="search-label custom-search-label" for="attackRateVaccinatedGroup">
+              Tasa de ataque - Grupo vacunado<span class="error-message-star"> *</span>
+            </label>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <input formControlName="attackRateVaccinatedGroup" class="form-control custom-input-field" type="text" id="attackRateVaccinatedGroup" name="attackRateVaccinatedGroup" placeholder="ex. 0.3">
+            </div>
+            <div class="col-sm-2">
+              <div *ngIf="form['attackRateVaccinatedGroup'].invalid" class="validation-error float-right mb-2">
+                <img ngSrc="./assets/images/icons/exclamation-solid.svg" alt="" height="15" width="16">
+                {{errorMessageRequired}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3 mt-2">
+          <div class="row mb-1">
+            <label class="search-label custom-search-label" for="lethalDose">
+              Dosis letal<span class="error-message-star"> *</span>
+            </label>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <input formControlName="lethalDose" class="form-control custom-input-field" type="text" id="lethalDose" name="lethalDose" placeholder="ex. 0.3">
+            </div>
+            <div class="col-sm-2">
+              <div *ngIf="form['lethalDose'].invalid" class="validation-error float-right mb-2">
+                <img ngSrc="./assets/images/icons/exclamation-solid.svg" alt="" height="15" width="16">
+                {{errorMessageRequired}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3 mt-2">
+          <div class="row mb-1">
+            <label class="search-label custom-search-label" for="effectiveDose">
+              Dosis efectiva<span class="error-message-star"> *</span>
+            </label>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <input formControlName="effectiveDose" class="form-control custom-input-field" type="text" id="effectiveDose" name="effectiveDose" placeholder="ex. 0.3">
+            </div>
+            <div class="col-sm-2">
+              <div *ngIf="form['effectiveDose'].invalid" class="validation-error float-right mb-2">
+                <img ngSrc="./assets/images/icons/exclamation-solid.svg" alt="" height="15" width="16">
+                {{errorMessageRequired}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3 mt-2">
+          <div class="row mb-1">
+            <label class="search-label custom-search-label" for="adverseEventsVaccinatedGroup">
+              Eventos adversos (grupo vacunado)<span class="error-message-star"> *</span>
+            </label>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <input formControlName="adverseEventsVaccinatedGroup" class="form-control custom-input-field" type="text" id="adverseEventsVaccinatedGroup" name="adverseEventsVaccinatedGroup" placeholder="ex. 20">
+            </div>
+            <div class="col-sm-2">
+              <div *ngIf="form['adverseEventsVaccinatedGroup'].invalid" class="validation-error float-right mb-2">
+                <img ngSrc="./assets/images/icons/exclamation-solid.svg" alt="" height="15" width="16">
+                {{errorMessageRequired}}
               </div>
             </div>
           </div>
@@ -61,7 +157,9 @@
 
       <div class="container-btn no-border">
         <div class="col-md-8 mt-2">
-          <button type="submit" class="btn-primary btn inner-btn-save btn-evaluate-study" (click)="confirmEvaluation()">Confirmar</button>
+          <button type="submit" class="btn-primary btn inner-btn-save btn-evaluate-study"
+                  (click)="confirmEvaluation()">Confirmar
+          </button>
         </div>
       </div>
     </form>
