@@ -1,72 +1,66 @@
-<div>
-  <div class="container">
-    <div class="row subheader-row">
-      <div class="col-sm-10 custom-col">
-        <span class="title-layout">Estudios animales</span>
-      </div>
-
-      <div class="col-sm-2 custom-col">
-        <button class="btn-custom btn-new-element" [routerLink]="['create']" type="button">
-          <img ngSrc="./assets/images/icons/plus.svg" alt="" height="17" width="17">
-          <span>Nuevo estudio</span>
-        </button>
-      </div>
-
+<div class="container">
+  <div class="row subheader-row">
+    <div class="col-sm-10 custom-col">
+      <span class="title-layout">Estudios animales</span>
     </div>
 
-    <div class="row mb-5">
-      <div class="col-sm-12 title-results-search">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <span class="activity-table-title">Estudios en los que participas:  <em>{{animalStudies.length}}</em></span>
-            </div>
+    <div class="col-sm-2 custom-col">
+      <button class="btn-custom btn-new-element" [routerLink]="['create']" type="button">
+        <img ngSrc="./assets/images/icons/plus.svg" alt="" height="17" width="17">
+        <span>Nuevo estudio</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-sm-12 title-results-search">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <span class="activity-table-title">Estudios en los que participas:  <em>{{animalStudies.length}}</em></span>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="col-sm-12">
-      <div class="row">
-        <!--   START DECK   -->
-        <div class="trial-card-deck">
-          <div class="card trial-card" style="width: 22%" *ngFor="let study of animalStudies; let i = index">
-            <div class="card-body">
-              <div class="card-title">{{study.trialTitle}}</div>
-              <div class="card-text mb-1 evaluation-status">
-                <small class="text-muted"><b><em>{{getEvaluationStatusLabel(study)}}</em></b></small>
-              </div>
-              <div class="card-text custom-card-detail">
-                <b>{{study.trialInsNumber}}</b>
-              </div>
-              <div class="card-text custom-card-detail">
-                Modelo animal <em>{{getAnimalModelName(study.animalModel)}}</em>
-              </div>
-              <div class="card-text custom-card-detail">
-                {{study.ethicalGuidelines}}
-              </div>
-              <button *ngIf="!checkIfEvaluated(study)" [disabled]="checkIfEvaluated(study)" class="btn-custom mt-1"
-                      [routerLink]="['evaluate']" [queryParams]="{tid: study.trialId, aid: study.advanceId}">
-                <span [ngClass]="{'text-muted': checkIfEvaluated(study)}"><em>Evaluar</em></span>
-                <span><img ngSrc="./assets/images/icons/arrow_right.svg" alt="" height="12" width="8"></span>
-              </button>
-              <button *ngIf="checkIfEvaluated(study)" class="btn-custom mt-1"
-                      [routerLink]="['evaluate']" [queryParams]="{tid: study.trialId, aid: study.advanceId}">
-                <span><em>Ver resultados</em></span>
-                <span><img ngSrc="./assets/images/icons/arrow_right.svg" alt="" height="12" width="8"></span>
-              </button>
+  <div class="col-sm-12">
+    <div class="row">
+      <!--   START DECK   -->
+      <div class="trial-card-deck">
+        <div class="card trial-card" style="width: 22%" *ngFor="let study of animalStudies; let i = index">
+          <div class="card-body">
+            <div class="card-title">{{study.trialTitle}}</div>
+            <div class="card-text mb-1 evaluation-status">
+              <small class="text-muted"><b><em>{{getEvaluationStatusLabel(study)}}</em></b></small>
             </div>
+            <div class="card-text custom-card-detail">
+              <b>{{study.trialInsNumber}}</b>
+            </div>
+            <div class="card-text custom-card-detail">
+              Modelo animal <em>{{getAnimalModelName(study.animalModel)}}</em>
+            </div>
+            <div class="card-text custom-card-detail">
+              {{study.ethicalGuidelines}}
+            </div>
+            <button *ngIf="!checkIfEvaluated(study)" [disabled]="checkIfEvaluated(study)" class="btn-custom mt-1"
+                    [routerLink]="['evaluate']" [queryParams]="{tid: study.trialId, aid: study.advanceId}">
+              <span [ngClass]="{'text-muted': checkIfEvaluated(study)}"><em>Evaluar</em></span>
+              <span><img ngSrc="./assets/images/icons/arrow_right.svg" alt="" height="12" width="8"></span>
+            </button>
+            <button *ngIf="checkIfEvaluated(study)" class="btn-custom mt-1"
+                    [routerLink]="['evaluate']" [queryParams]="{tid: study.trialId, aid: study.advanceId}">
+              <span><em>Ver resultados</em></span>
+              <span><img ngSrc="./assets/images/icons/arrow_right.svg" alt="" height="12" width="8"></span>
+            </button>
+          </div>
 
-            <div class="card-footer">
-              <small class="text-muted">Inició {{study.startDate}}</small>
-            </div>
+          <div class="card-footer">
+            <small class="text-muted">Inició {{study.startDate}}</small>
           </div>
         </div>
-        <!--   END   DECK   -->
       </div>
+      <!--   END   DECK   -->
     </div>
-
-
-
   </div>
 </div>
