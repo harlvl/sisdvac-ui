@@ -321,10 +321,21 @@ a:hover {
   padding: 22px 10px;
 }
 
-//.card-title {
-//  @include regular-font-style($fontSize: 18px, $color: $black-primary);
-//  font-weight: 400;
-//}
+.card-title {
+  @include regular-font-style (25px, $black-primary);
+  font-weight: 400 !important;
+  border-bottom: gray solid 1px;
+  //text-align: center;
+}
+
+.evaluation-status {
+  text-align: right;
+}
+
+.study-phase {
+  text-align: left;
+}
+
 
 .custom-form {
   input,

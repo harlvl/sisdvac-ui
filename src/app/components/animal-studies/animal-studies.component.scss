@@ -1,14 +1,14 @@
 @import '../../../styles/mixins';
-
-.card-title {
-  @include regular-font-style (25px, $black-primary);
-  font-weight: 400 !important;
-  border-bottom: gray solid 1px;
-  //text-align: center;
-}
-
-.evaluation-status {
-  text-align: right;
-}
-
+//
+//.card-title {
+//  @include regular-font-style (25px, $black-primary);
+//  font-weight: 400 !important;
+//  border-bottom: gray solid 1px;
+//  //text-align: center;
+//}
+//
+//.evaluation-status {
+//  text-align: right;
+//}
+//
 

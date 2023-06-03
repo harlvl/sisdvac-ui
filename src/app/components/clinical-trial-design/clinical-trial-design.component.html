@@ -19,10 +19,51 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <span class="activity-table-title">Estudios en los que participas:  <em>2</em></span>
+            <span class="activity-table-title">Estudios en los que participas:  <em>{{studies.length}}</em></span>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <div class="row">
+      <!--   START DECK   -->
+      <div class="trial-card-deck">
+        <div class="card trial-card" style="width: 22%" *ngFor="let study of studies; let i = index">
+          <div class="card-body">
+            <div class="card-title">{{study.trialTitle}}</div>
+            <div class="row">
+              <div class="col">
+                <div class="card-text mb-1">
+                  {{getStudyPhase(study.phase)}}
+                </div>
+              </div>
+              <div class="col">
+                <div class="card-text mb-1 evaluation-status">
+                  <small class="text-muted"><b><em>{{getEvaluationStatusLabel(study)}}</em></b></small>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-text custom-card-detail">
+              <b>{{study.trialInsNumber}}</b>
+            </div>
+            <div class="card-text custom-card-detail">
+              {{study.subjectsTotal}} participantes
+            </div>
+            <div class="card-text custom-card-detail">
+              {{study.ethicalGuidelines}}
+            </div>
+
+          </div>
+
+          <div class="card-footer">
+            <small class="text-muted">Inició {{study.startDate}}</small>
+          </div>
+        </div>
+      </div>
+      <!--   END   DECK   -->
     </div>
   </div>
 </div>

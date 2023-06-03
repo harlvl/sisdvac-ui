@@ -30,14 +30,11 @@ export class AnimalStudiesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // TODO show spinner
     this.spinner.show();
     this.documentNumber = this.authService.getDocumentNumber();
-    console.log("Document number: %s", this.documentNumber);
     this.researchService.findAnimalStudiesByUserDocumentNumber(this.documentNumber).pipe(map((res) => {
       return res;
     })).subscribe((response) => {
-      console.log("Response status: %d", response.status);
       this.animalStudies = response.body.payload;
       this.spinner.hide();
     })

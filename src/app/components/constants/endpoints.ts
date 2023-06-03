@@ -26,5 +26,6 @@ export class Endpoints {
   public static addUsers: string = '/id/{id}/add_users';
   public static findUsersByRole: string = '/{id}/users/role/{key}';
   public static findAnimalStudiesByUser: string = "/user/{documentNumber}/animal-studies"
+  public static findClinicalStudiesByUser: string = "/user/{documentNumber}/clinical-studies"
   public static findTrialsByUserDocumentNumber: string = "/user/document-number/{documentNumber}/trials"
 }
