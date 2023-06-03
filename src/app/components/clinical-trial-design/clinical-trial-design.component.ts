@@ -4,6 +4,7 @@ import {AuthService} from "../../services/auth.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {map} from "rxjs";
 import {EvaluationStatusEnum} from "../enums/evaluation-status-enum";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-clinical-trial-design',
@@ -18,6 +19,7 @@ export class ClinicalTrialDesignComponent implements OnInit {
   studies: any = [];
 
   constructor(private researchService: ResearchService,
+              private router: Router,
               private authService: AuthService,
               private spinner: NgxSpinnerService) {
   }
@@ -29,6 +31,16 @@ export class ClinicalTrialDesignComponent implements OnInit {
     })).subscribe((response) => {
       this.studies = response.body.payload;
       this.spinner.hide();
+    }, (error) => {
+      console.log("Error encountered at researchService.findClinicalStudiesByUserDocumentNumber service call: ", error);
+      this.spinner.hide();
+      if (error.status == 403) {
+        console.log("Invalid token.");
+        this.authService.clearLocalStorage();
+        alert("Su sesión ha finalizado, por favor ingrese sus credenciales nuevamente.");
+        this.authService.updateResult(false);
+        this.router.navigate(['login']);
+      }
     })
   }
 

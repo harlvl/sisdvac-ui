@@ -49,11 +49,14 @@ export class AppComponent implements OnInit{
     if (authService.getAccessToken()) {
       console.log("We have token");
       this.authService.updateResult(true);
-      this.authService.result$.subscribe(result => {
+      this.authService.result$.subscribe((result) => {
         console.log("Result: ", result);
         this.isLogged = result;
         this.firstName = authService.getFirstName();
         this.role = authService.getRole();
+        this.spinner.hide();
+      }, (error) => {
+        console.log("Error encountered at main app constructor: ", error);
         this.spinner.hide();
       });
     } else {

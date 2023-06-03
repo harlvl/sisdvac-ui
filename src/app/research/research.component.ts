@@ -11,6 +11,7 @@ import {Utils} from "../helpers/utils";
 import {FormulationItemTypeEnum} from "../components/enums/formulationItemTypeEnum";
 import {FormulationItem} from "../components/interfaces/formulationItem";
 import {HttpResponse} from "@angular/common/http";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-research',
@@ -86,6 +87,7 @@ export class ResearchComponent implements OnInit {
   formulationTitle: any;
 
   constructor(private route: ActivatedRoute,
+              private authService: AuthService,
               private trialsService: TrialService,
               private researchService: ResearchService,
               private userService : UserService,
@@ -110,6 +112,15 @@ export class ResearchComponent implements OnInit {
     })).subscribe((response) => {
       this.researchList = response.body.payload;
       this.currentTrialList = response.body.payload[0].trials;
+    }, (error) => {
+      console.log("Error encountered at researchService.findAll service call: ", error);
+      if (error.status == 403) {
+        console.log("Invalid token.");
+        this.authService.clearLocalStorage();
+        alert("Su sesión ha finalizado, por favor ingrese sus credenciales nuevamente.");
+        this.authService.updateResult(false);
+        this.router.navigate(['login']);
+      }
     });
   }
 

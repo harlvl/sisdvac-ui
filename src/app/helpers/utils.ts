@@ -12,6 +12,10 @@ export class Utils {
 
   }
 
+  public static getErrorMessage(input: any) {
+
+  }
+
   public static getAnimalModelName(input: any) {
     switch (input) {
       case AnimalModelEnum.MICRO:

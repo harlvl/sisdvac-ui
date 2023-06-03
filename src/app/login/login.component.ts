@@ -23,11 +23,13 @@ export class LoginComponent {
   }
 
   public login(form: NgForm) {
-    console.log("Form value: %s", form.value);
+    console.log("Logging in...");
     this.authService.login(this.credentials)
-      .subscribe(response => {
+      .subscribe((response) => {
         this.authService.updateResult(true);
         this.router.navigate([RouteNames.welcome]);
+      }, (error) => {
+        console.log("Error encountered at login: ", error);
       });
   }
 

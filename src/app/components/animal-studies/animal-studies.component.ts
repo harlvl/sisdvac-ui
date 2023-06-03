@@ -5,6 +5,7 @@ import {AuthService} from "../../services/auth.service";
 import {NgxSpinnerService} from "ngx-spinner";
 import {Utils} from "../../helpers/utils";
 import {EvaluationStatusEnum} from "../enums/evaluation-status-enum";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-animal-studies',
@@ -25,6 +26,7 @@ export class AnimalStudiesComponent implements OnInit {
   animalStudy: any;
 
   constructor(private researchService: ResearchService,
+              private router: Router,
               private authService: AuthService,
               private spinner: NgxSpinnerService) {
   }
@@ -37,6 +39,16 @@ export class AnimalStudiesComponent implements OnInit {
     })).subscribe((response) => {
       this.animalStudies = response.body.payload;
       this.spinner.hide();
+    }, (error) => {
+      console.log("Error encountered at findAnimalStudiesByUserDocumentNumber service call: ", error);
+      this.spinner.hide();
+      if (error.status == 403) {
+        console.log("Invalid token.");
+        this.authService.clearLocalStorage();
+        alert("Su sesión ha finalizado, por favor ingrese sus credenciales nuevamente.");
+        this.authService.updateResult(false);
+        this.router.navigate(['login']);
+      }
     })
   }
 
