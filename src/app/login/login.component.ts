@@ -26,6 +26,7 @@ export class LoginComponent {
     console.log("Form value: %s", form.value);
     this.authService.login(this.credentials)
       .subscribe(response => {
+        this.authService.updateResult(true);
         this.router.navigate([RouteNames.welcome]);
       });
   }

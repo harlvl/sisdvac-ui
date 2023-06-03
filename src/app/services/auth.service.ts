@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpResponse} from "@angular/common/http";
-import {map} from "rxjs";
+import {BehaviorSubject, map, Observable} from "rxjs";
 import {Credentials} from "../components/interfaces/credentials";
 import {Endpoints} from "../components/constants/endpoints";
 
@@ -10,6 +10,14 @@ import {Endpoints} from "../components/constants/endpoints";
 export class AuthService {
   private api_url = Endpoints.apiV1;
   private auth_endpoint = Endpoints.authenticate;
+
+  private result: BehaviorSubject<any> = new BehaviorSubject<any>(false);
+  public result$: Observable<any> = this.result.asObservable();
+
+  public updateResult(updatedValue: any) {
+    this.result.next(updatedValue);
+
+  }
 
   constructor(private _http: HttpClient) {
     console.log("Using host: %s", this.api_url);

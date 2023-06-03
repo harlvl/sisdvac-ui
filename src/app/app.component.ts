@@ -3,6 +3,7 @@ import {NgxSpinnerService} from "ngx-spinner";
 import {AuthService} from "./services/auth.service";
 import {HeaderNames} from "./components/constants/header-names";
 import {RouteNames} from "./components/constants/route-names";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ import {RouteNames} from "./components/constants/route-names";
 export class AppComponent implements OnInit{
   title = 'sisdvac-ui';
   isLogged = false;
+  keycode: any;
 
   firstName: any;
   role: any;
@@ -38,20 +40,34 @@ export class AppComponent implements OnInit{
 
 
   constructor(private authService :AuthService,
+              private route: ActivatedRoute,
               private spinner : NgxSpinnerService) {
+    this.spinner.show();
+    console.log("We are at constructor");
+    let token = authService.getAccessToken();
+    console.log("token: ", token);
     if (authService.getAccessToken()) {
-      this.isLogged = true;
-
-      this.firstName = authService.getFirstName();
-      this.role = authService.getRole();
+      console.log("We have token");
+      this.authService.updateResult(true);
+      this.authService.result$.subscribe(result => {
+        console.log("Result: ", result);
+        this.isLogged = result;
+        this.firstName = authService.getFirstName();
+        this.role = authService.getRole();
+        this.spinner.hide();
+      });
+    } else {
+      this.spinner.hide();
     }
   }
 
   ngOnInit(): void {
+    console.log("We are at on init");
     this.spinner.show();
-    setTimeout(() => {
-      /** spinner ends after 5 seconds */
+    this.authService.result$.subscribe(result => {
+      console.log("Result: ", result);
+      this.isLogged = result;
       this.spinner.hide();
-    }, 1000);
+    });
   }
 }
