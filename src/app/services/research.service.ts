@@ -15,16 +15,24 @@ export class ResearchService {
     return this.client.get<HttpResponse<any>>(url, {observe: "response"});
   }
 
+  public findResearchesByUserDocumentNumber(input: any) {
+    const url = this.rootHost + Endpoints.findResearchesByUserDocumentNumber.replace("{dn}", input);
+    return this.client.get(url, {observe: "response"});
+  }
+
   public findById(id: any): Observable<any> {
     const url = this.rootHost + "/" + id;
-    console.log("Using URI: %s", url);
     return this.client.get<HttpResponse<any>>(url, {observe: "response"});
   }
 
   public findUsersByRole(id: any, role: any): Observable<any> {
     const url = this.rootHost +
       Endpoints.findUsersByRole.replace("{id}", id).replace("{key}", role);
-    console.log("Using URI: %s", url);
+    return this.client.get<HttpResponse<any>>(url, {observe: "response"});
+  }
+  public findResearchUsers(id: any): Observable<any> {
+    const url = this.rootHost +
+      Endpoints.findResearchUsers.replace("{id}", id);
     return this.client.get<HttpResponse<any>>(url, {observe: "response"});
   }
 

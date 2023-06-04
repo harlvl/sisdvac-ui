@@ -3,6 +3,7 @@ export class HeaderNames {
   public static welcome: string = 'Bienvenido';
   public static home: string = 'Inicio';
   public static trials: string = 'Ensayos';
+  public static research: string = 'Investigaciones';
   public static researches: string = 'Investigaciones';
   public static trialCreate: string = 'Nuevo ensayo';
   public static animalStudies: string = 'Estudios animales';

@@ -24,6 +24,9 @@ import { ClinicalTrialEvaluationComponent } from './components/clinical-trial-ev
 import {NgxSpinnerModule} from "ngx-spinner";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { EvaluateStudyComponent } from './components/animal-studies/evaluate-study/evaluate-study.component';
+import { ResearchesComponent } from './components/researches/researches.component';
+import { MembersComponent } from './components/researches/members/members.component';
+import { AddMembersComponent } from './components/researches/members/add-members/add-members.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -43,7 +46,10 @@ import { EvaluateStudyComponent } from './components/animal-studies/evaluate-stu
     EvaluationResultsComponent,
     ClinicalTrialDesignComponent,
     ClinicalTrialEvaluationComponent,
-    EvaluateStudyComponent
+    EvaluateStudyComponent,
+    ResearchesComponent,
+    MembersComponent,
+    AddMembersComponent
   ],
     imports: [
         BrowserModule,

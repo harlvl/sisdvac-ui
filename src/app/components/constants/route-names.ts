@@ -3,7 +3,8 @@ export class RouteNames {
   public static home: string = 'home';
   public static welcome: string = 'welcome';
   public static trials: string = 'trial';
-  public static researches: string = 'research';
+  public static research: string = 'research';
+  public static researches: string = 'researches';
   public static animalStudies: string = 'animal-studies';
   public static clinicalTrialDesign: string = 'ctrial-design';
   public static clinicalTrialEvaluation: string = 'ctrial-eval';

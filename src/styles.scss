@@ -93,6 +93,42 @@ $theme-colors: (
   }
 }
 
+.search-results-container {
+}
+
+.search-results-row{
+  margin-left: 10px;
+}
+
+.search-results-col1 {
+  @include regular-font-style($fontSize: 16px, $color: $black-primary);
+  width: 10px;
+}
+.search-results-col2 {
+  @include regular-font-style($fontSize: 16px, $color: $black-primary);
+  width: 20px;
+}
+.search-results-col3 {
+  @include regular-font-style($fontSize: 16px, $color: $black-primary);
+  width: 20px;
+}
+.search-results-col4 {
+  @include regular-font-style($fontSize: 16px, $color: $black-primary);
+  width: 10px;
+}
+.search-results-col5 {
+  @include regular-font-style($fontSize: 16px, $color: $black-primary);
+  width: 5px;
+}
+.search-results-col6 {
+  @include regular-font-style($fontSize: 16px, $color: $black-primary);
+  width: 5px;
+}
+
+.search-result-header {
+  @include regular-font-style($fontSize: 16px, $color: $black-primary);
+}
+
 .btn-new-element {
   @include btn-regular-style($backgroundColor: #FFFFFF);
   font-weight: 700;

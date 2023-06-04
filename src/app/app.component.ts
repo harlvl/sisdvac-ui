@@ -22,7 +22,8 @@ export class AppComponent implements OnInit{
   // header names
   headerContentWelcome: string = HeaderNames.welcome;
   headerContentTrial: string = HeaderNames.trials;
-  headerContentResearch: string = HeaderNames.researches;
+  headerContentResearch: string = HeaderNames.research;
+  headerContentResearches: string = HeaderNames.researches;
   headerContentHome: string = HeaderNames.home;
   headerContentNewTrial: string = HeaderNames.trialCreate;
   headerContentAnimalStudies: string = HeaderNames.animalStudies;
@@ -32,6 +33,7 @@ export class AppComponent implements OnInit{
   // router names
   routerNameCreateTrial: string = RouteNames.trialCreate;
   routerNameTrials: string = RouteNames.trials;
+  routerNameResearch: string = RouteNames.research;
   routerNameResearches: string = RouteNames.researches;
   routerNameAnimalStudies: string = RouteNames.animalStudies;
   routerNameWelcome: string = RouteNames.welcome;

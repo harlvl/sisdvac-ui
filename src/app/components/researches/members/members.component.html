@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row subheader-row">
+    <div class="col-sm-8 custom-col">
+      <span class="title-layout">Miembros de la investigación TITULO</span>
+    </div>
+
+    <div class="col-sm-2 custom-col">
+      <button class="btn-custom btn-new-element" [routerLink]="['add']" type="button">
+        <img ngSrc="./assets/images/icons/plus.svg" alt="" height="17" width="17">
+        <span>Agregar</span>
+      </button>
+    </div>
+
+    <div class="col-sm-2 custom-col">
+      <button class="btn-custom btn-new-element" [routerLink]="[previousPath]" type="button">
+        <img ngSrc="./assets/images/icons/icon_chevron_left.png" alt="" height="15" width="10">
+        <span>Volver</span>
+      </button>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-sm-12 title-results-search">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <span class="activity-table-title">Miembros del equipo:  <em>{{cardList.length}}</em></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="row">
+        <!--   START DECK   -->
+        <div class="trial-card-deck">
+          <div class="card trial-card" style="width: 22%" *ngFor="let cardItem of cardList; let i = index">
+            <div class="card-body">
+              <div class="card-title">{{cardItem.lastName}}, {{cardItem.firstName}}</div>
+
+              <div class="card-text custom-card-detail">
+                Dr./Dra. {{cardItem.firstName}} {{cardItem.lastName}}
+              </div>
+              <div class="card-text custom-card-detail">
+                {{cardItem.email}}
+              </div>
+              <div class="card-text custom-card-detail">
+                {{getRoleName(cardItem.role)}}
+              </div>
+
+            </div>
+
+
+            <div class="card-footer">
+              <small class="text-muted">Usuario activo</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

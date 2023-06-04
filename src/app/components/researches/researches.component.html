@@ -1,0 +1,58 @@
+<div class="container">
+  <!-- START HEADER -->
+  <div class="row subheader-row">
+    <div class="col-sm-10 custom-col">
+      <span class="title-layout">Investigaciones</span>
+    </div>
+
+    <div class="col-sm-2 custom-col">
+      <button class="btn-custom btn-new-element" type="button">
+        <img ngSrc="../../../assets/images/icons/plus.svg" alt="" height="17" width="17">
+        <span>Nueva investigación</span>
+      </button>
+    </div>
+
+  </div>
+  <!-- END HEADER -->
+
+  <div class="row mb-5">
+    <div class="col-sm-12 title-results-search">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <span class="activity-table-title">Investigaciones en las que participas:  <em>{{cardList.length}}</em></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <div class="row">
+      <!--   START DECK   -->
+      <div class="trial-card-deck">
+        <div class="card trial-card" style="width: 22%" *ngFor="let cardItem of cardList; let i = index">
+          <div class="card-body">
+            <div class="card-title">{{cardItem.title}}</div>
+
+            <div class="card-text custom-card-detail">
+              <b>{{cardItem.insNumber}}</b>
+            </div>
+            <div class="card-text custom-card-detail">
+              <a [routerLink]="[cardItem.id, 'members']">{{cardItem.users.length}} miembros</a>
+
+            </div>
+            <div class="card-text custom-card-detail">
+              {{cardItem.trials.length}} ensayos
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <small class="text-muted">Inició {{cardItem.startDate}}</small>
+          </div>
+        </div>
+      </div>
+      <!--   END DECK   -->
+    </div>
+  </div>
+</div>

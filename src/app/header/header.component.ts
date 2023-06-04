@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit{
   // router names
   routerNameCreateTrial: string = RouteNames.trialCreate;
   routerNameTrials: string = RouteNames.trials;
-  routerNameResearches: string = RouteNames.researches;
+  routerNameResearches: string = RouteNames.research;
   routerNameAnimalStudies: string = RouteNames.animalStudies;
   routerNameWelcome: string = RouteNames.welcome;
   routerNameClinicalTrialDesign: string = RouteNames.clinicalTrialDesign;

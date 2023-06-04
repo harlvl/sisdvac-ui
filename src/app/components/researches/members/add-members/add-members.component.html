@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row subheader-row">
+    <div class="col-sm-8 custom-col">
+      <span class="title-layout">Agregar miembros a la investigación</span>
+    </div>
+
+    <div class="col-sm-2 custom-col">
+      <button class="btn-custom btn-new-element" [routerLink]="['..']" type="button">
+        <img ngSrc="./assets/images/icons/icon_chevron_left.png" alt="" height="15" width="10">
+        <span>Volver</span>
+      </button>
+    </div>
+  </div>
+
+  <!--  BODY  -->
+  <div class="row">
+    <!--      START row for the search bar-->
+    <div class="row search-bar-container">
+      <form [formGroup]="searchForm">
+        <div class="row mb-3">
+          <div class="col-sm-2">
+            <select class="custom-select mr-sm-2 select" formControlName="searchKey" name="searchKey" id="searchKey">
+              <option value="" disabled selected hidden>Seleccione</option>
+              <option *ngFor="let val of searchParams" [value]="val.key">{{val.value}}</option>
+            </select>
+          </div>
+          <div class="col-sm-4">
+            <input class="form-control custom-input-field" type="text" id="name" placeholder="Ingrese un valor" formControlName="searchValue" name="name">
+          </div>
+          <div class="col-sm-2" style="margin-left: 15px">
+            <button class="btn-custom btn-new-element" type="submit" (click)="onSubmit()">Buscar</button>
+          </div>
+          <div class="col-sm-2">
+            <button class="btn-custom btn-new-element" type="button" [disabled]="selectedUsers == null || selectedUsers.length == 0" (click)="doAddMembers()">Confirmar</button>
+          </div>
+        </div>
+
+        <ng-container *ngIf="invalidSearchForm">
+          <span class="missing-parameters-warning">Debe ingresar ambos parámetros para la búsqueda.</span>
+        </ng-container>
+
+      </form>
+    </div>
+    <!--      END row for the search bar-->
+
+    <!--          START row for members added-->
+    <div class="row search-results-container">
+      <table style="margin-left: 15px">
+        <tr class="search-results-row">
+          <th class="search-result-header search-results-col1">Nº</th>
+          <th class="search-result-header search-results-col2">Nombres</th>
+          <th class="search-result-header search-results-col3">Apellidos</th>
+          <th class="search-result-header search-results-col4">Correo</th>
+          <th class="search-result-header search-results-col5">Rol</th>
+          <th class="search-result-header search-results-col6">Selección</th>
+        </tr>
+        <tr *ngFor="let result of searchResults; let i = index" class="search-results-row">
+          <td class="search-results-col1">{{i + 1}}</td>
+          <td class="search-results-col2">{{result.firstName}}</td>
+          <td class="search-results-col3">{{result.lastName}}</td>
+          <td class="search-results-col4">{{result.email}}</td>
+          <td class="search-results-col5">{{getRoleName(result.role)}}</td>
+          <td class="search-results-col6">
+            <input type="checkbox" id="is_selected" name="is_selected" (change)="handleSelectedUser($event, i)">
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!--          END row for the members added-->
+
+  </div>
+
+</div>

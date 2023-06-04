@@ -9,16 +9,23 @@
     <nav *ngIf="isLogged" class="navbar navbar-expand-sm hover-menu custom-nav">
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto top-nav mt-2 mt-lg-0 navbar-menu">
+
           <li class="nav-item navbar-li-large">
-            <a class="nav-link custom-nav-link" [routerLinkActive]="['active']" routerLink="{{routerNameResearches}}">{{headerContentResearch}}</a>
+            <a class="nav-link custom-nav-link" [routerLinkActive]="['active']"
+               routerLink="{{routerNameResearches}}">{{headerContentResearches}}
+            </a>
           </li>
 
           <li class="nav-item navbar-li-large">
-            <a class="nav-link custom-nav-link" [routerLinkActive]="['active']" routerLink="{{routerNameAnimalStudies}}">{{headerContentAnimalStudies}}</a>
+            <a class="nav-link custom-nav-link" [routerLinkActive]="['active']"
+               routerLink="{{routerNameAnimalStudies}}">{{headerContentAnimalStudies}}
+            </a>
           </li>
 
           <li class="nav-item navbar-li-large">
-            <a class="nav-link custom-nav-link" [routerLinkActive]="['active']" routerLink="{{routerNameClinicalTrialDesign}}">{{headerContentClinicalTrialDesign}}</a>
+            <a class="nav-link custom-nav-link" [routerLinkActive]="['active']"
+               routerLink="{{routerNameClinicalTrialDesign}}">{{headerContentClinicalTrialDesign}}
+            </a>
           </li>
         </ul>
       </div>

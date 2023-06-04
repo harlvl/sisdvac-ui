@@ -16,10 +16,18 @@ const routes: Routes = [
   {path : '', component: WelcomeComponent, canActivate: [AuthGuard]},
   {path : RouteNames.login, component: LoginComponent},
   {path : RouteNames.welcome, component: WelcomeComponent, canActivate: [AuthGuard]},
-  {path : RouteNames.researches, component: ResearchComponent, canActivate: [AuthGuard]},
-  {path : RouteNames.animalStudies,
+  {
+    path: RouteNames.researches,
+    canActivate: [AuthGuard],
+    loadChildren: () => import("./components/researches/researches-routing.module")
+      .then(m => m.ResearchesRoutingModule),
+  },
+  {
+    path : RouteNames.animalStudies,
+    canActivate: [AuthGuard],
     loadChildren: () => import("./components/animal-studies/animal-studies-routing.module")
-      .then(m => m.AnimalStudiesRoutingModule)},
+      .then(m => m.AnimalStudiesRoutingModule)
+  },
   {path : RouteNames.clinicalTrialDesign, component: ClinicalTrialDesignComponent, canActivate: [AuthGuard]},
   {path : RouteNames.clinicalTrialEvaluation, component: ClinicalTrialEvaluationComponent, canActivate: [AuthGuard]},
   {path : RouteNames.trialCreate, component: CreateTrialComponent, canActivate: [AuthGuard]},
