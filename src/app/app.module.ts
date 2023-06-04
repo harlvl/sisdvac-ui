@@ -27,6 +27,7 @@ import { EvaluateStudyComponent } from './components/animal-studies/evaluate-stu
 import { ResearchesComponent } from './components/researches/researches.component';
 import { MembersComponent } from './components/researches/members/members.component';
 import { AddMembersComponent } from './components/researches/members/add-members/add-members.component';
+import { AddDesignComponent } from './components/clinical-trial-design/add-design/add-design.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -49,7 +50,8 @@ import { AddMembersComponent } from './components/researches/members/add-members
     EvaluateStudyComponent,
     ResearchesComponent,
     MembersComponent,
-    AddMembersComponent
+    AddMembersComponent,
+    AddDesignComponent
   ],
     imports: [
         BrowserModule,

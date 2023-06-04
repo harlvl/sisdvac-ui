@@ -19,6 +19,7 @@ export class Endpoints {
   public static evaluateFormulation: string = '/{tid}/formulation/{fid}/evaluate';
   public static findFormulationEvaluationById: string = '/{tid}/formulation/{fid}';
   public static saveAnimalStudy: string = '/{tid}/animal-study';
+  public static saveClinicalStudyDesign: string = '/{tid}/clinical-study';
   public static evaluateAnimalStudy: string = '/{tid}/advance/{aid}/animal-study/evaluate';
 
   // research endpoints
@@ -30,4 +31,5 @@ export class Endpoints {
   public static findAnimalStudiesByUser: string = "/user/{documentNumber}/animal-studies"
   public static findClinicalStudiesByUser: string = "/user/{documentNumber}/clinical-studies"
   public static findTrialsByUserDocumentNumber: string = "/user/document-number/{documentNumber}/trials"
+  public static findClinicalTrialsByUserDocumentNumber: string = "/user/document-number/{documentNumber}/clinical-trials"
 }

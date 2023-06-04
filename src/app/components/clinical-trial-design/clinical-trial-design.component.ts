@@ -2,10 +2,10 @@ import {Component, Injectable, OnInit} from '@angular/core';
 import {ResearchService} from "../../services/research.service";
 import {AuthService} from "../../services/auth.service";
 import {NgxSpinnerService} from "ngx-spinner";
-import {map} from "rxjs";
 import {EvaluationStatusEnum} from "../enums/evaluation-status-enum";
 import {Router} from "@angular/router";
 import {HttpResponse} from "@angular/common/http";
+import {RouteNames} from "../constants/route-names";
 
 @Component({
   selector: 'app-clinical-trial-design',
@@ -18,6 +18,9 @@ export class ClinicalTrialDesignComponent implements OnInit {
   // for displaying studies
   documentNumber: any;
   studies: any = [];
+
+  //routing names
+  routeCreate: string = RouteNames.create;
 
   constructor(private researchService: ResearchService,
               private router: Router,
@@ -37,11 +40,7 @@ export class ClinicalTrialDesignComponent implements OnInit {
           console.log("Error encountered at researchService.findClinicalStudiesByUserDocumentNumber service call: ", err);
           this.spinner.hide();
           if (err.status == 403) {
-            console.log("Invalid token.");
-            this.authService.clearLocalStorage();
-            alert("Su sesión ha finalizado, por favor ingrese sus credenciales nuevamente.");
-            this.authService.updateResult(false);
-            this.router.navigate(['login']);
+            this.handleTokenInvalidError();
           }
         }
       }
@@ -62,6 +61,14 @@ export class ClinicalTrialDesignComponent implements OnInit {
     } else {
       return "";
     }
+  }
+
+  handleTokenInvalidError() {
+    console.log("Invalid token.");
+    this.authService.clearLocalStorage();
+    alert("Su sesión ha finalizado, por favor ingrese sus credenciales nuevamente.");
+    this.authService.updateResult(false);
+    this.router.navigate(['login']);
   }
 
 }

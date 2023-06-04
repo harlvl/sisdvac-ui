@@ -1,0 +1,161 @@
+<div class="container">
+  <!--  START HEADER -->
+  <div class="row subheader-row">
+    <div class="col-sm-10 custom-col">
+      <span class="title-layout">Nuevo diseño</span>
+    </div>
+
+    <div class="col-sm-2 custom-col">
+      <button class="btn-custom btn-new-element" [routerLink]="['..']" type="button">
+        <img ngSrc="./assets/images/icons/icon_chevron_left.png" alt="" height="15" width="10">
+        <span>Volver</span>
+      </button>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <form [formGroup]="mainForm">
+      <h2>Datos del diseño clínico</h2>
+      <div class="container">
+
+        <div class="row mb-3">
+          <div class="row mb-1">
+            <label class="search-label custom-search-label" for="trialId">
+              Ensayo clínico<span class="error-message-star"> *</span>
+            </label>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <select formControlName="trialId" class="form-control custom-input-field custom-select mr-sm-2 select" style="margin-left: 30px" name="trialId" id="trialId">
+                <option value="" disabled selected hidden>Seleccione</option>
+                <option *ngFor="let item of trialList" [value]="item.id">{{item.insNumber}}</option>
+              </select>
+            </div>
+
+            <div class="col-sm-2">
+              <div *ngIf="form['phase'].invalid" class="validation-error float-right mb-2">
+                <img ngSrc="./assets/images/icons/exclamation-solid.svg" alt="" height="15" width="16">
+                {{errorMessageRequired}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3 mt-2">
+          <div class="row mb-1">
+            <label class="search-label custom-search-label" for="phase">
+              Fase<span class="error-message-star"> *</span>
+            </label>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <select formControlName="phase" class="form-control custom-input-field custom-select mr-sm-2 select" style="margin-left: 30px" name="phase" id="phase">
+                <option value="" disabled selected hidden>Seleccione</option>
+                <option *ngFor="let item of phasesList" [value]="item.value">{{item.name}}</option>
+              </select>
+            </div>
+
+            <div class="col-sm-2">
+              <div *ngIf="form['phase'].invalid" class="validation-error float-right mb-2">
+                <img ngSrc="./assets/images/icons/exclamation-solid.svg" alt="" height="15" width="16">
+                {{errorMessageRequired}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="row mb-1">
+            <label class="search-label custom-search-label" for="sampleSize">
+              Objetivos<span class="error-message-star"> *</span>
+            </label>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <input formControlName="objectives" class="form-control custom-input-field" type="text" id="objectives" name="objectives">
+            </div>
+
+            <div class="col-sm-2">
+              <div *ngIf="form['objectives'].invalid" class="validation-error float-right mb-2">
+                <img ngSrc="./assets/images/icons/exclamation-solid.svg" alt="" height="15" width="16">
+                {{errorMessageRequired}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3 mt-2">
+          <div class="row mb-1">
+            <label class="search-label custom-search-label" for="sampleSize">
+              Tamaño de la muestra<span class="error-message-star"> *</span>
+            </label>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <input formControlName="sampleSize" class="form-control custom-input-field" type="text" id="sampleSize" name="sampleSize" placeholder="ex. 100">
+            </div>
+
+            <div class="col-sm-2">
+              <div *ngIf="form['sampleSize'].invalid" class="validation-error float-right mb-2">
+                <img ngSrc="./assets/images/icons/exclamation-solid.svg" alt="" height="15" width="16">
+                {{errorMessageRequired}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3 mt-2">
+          <div class="row mb-1">
+            <label class="search-label custom-search-label" for="ethicalGuide">
+              Lineamientos éticos - Título<span class="error-message-star"> *</span>
+            </label>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4">
+              <input formControlName="ethicalGuide" class="form-control custom-input-field" type="text" id="ethicalGuide" name="ethicalGuide" placeholder="ex. Guía REPEC">
+            </div>
+            <div class="col-sm-2">
+              <div *ngIf="form['ethicalGuide'].invalid" class="validation-error float-right mb-2">
+                <img ngSrc="./assets/images/icons/exclamation-solid.svg" alt="" height="15" width="16">
+                {{errorMessageRequired}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3 mt-2">
+          <div class="row mb-1">
+            <label class="search-label custom-search-label" for="ethicalGuideUri">
+              Lineamientos éticos - URL<span class="error-message-star"> *</span>
+            </label>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4">
+              <input formControlName="ethicalGuideUri" class="form-control custom-input-field" type="text" id="ethicalGuideUri" name="ethicalGuideUri" placeholder="ex. https://minsa.gob.pe/lineamientos.pdf">
+            </div>
+            <div class="col-sm-2">
+              <div *ngIf="form['ethicalGuideUri'].invalid" class="validation-error float-right mb-2">
+                <img ngSrc="./assets/images/icons/exclamation-solid.svg" alt="" height="15" width="16">
+                {{errorMessageRequired}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="container-btn no-border">
+        <div class="col-md-8 mt-2">
+          <button type="submit" class="btn-primary btn inner-btn-save" (click)="onSubmit()">Confirmar</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+
+</div>
