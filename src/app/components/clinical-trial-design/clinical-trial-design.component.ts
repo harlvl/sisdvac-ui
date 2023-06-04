@@ -5,6 +5,7 @@ import {NgxSpinnerService} from "ngx-spinner";
 import {map} from "rxjs";
 import {EvaluationStatusEnum} from "../enums/evaluation-status-enum";
 import {Router} from "@angular/router";
+import {HttpResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-clinical-trial-design',
@@ -26,22 +27,25 @@ export class ClinicalTrialDesignComponent implements OnInit {
   ngOnInit(): void {
     this.spinner.show();
     this.documentNumber = this.authService.getDocumentNumber();
-    this.researchService.findClinicalStudiesByUserDocumentNumber(this.documentNumber).pipe(map((res) =>{
-      return res;
-    })).subscribe((response) => {
-      this.studies = response.body.payload;
-      this.spinner.hide();
-    }, (error) => {
-      console.log("Error encountered at researchService.findClinicalStudiesByUserDocumentNumber service call: ", error);
-      this.spinner.hide();
-      if (error.status == 403) {
-        console.log("Invalid token.");
-        this.authService.clearLocalStorage();
-        alert("Su sesión ha finalizado, por favor ingrese sus credenciales nuevamente.");
-        this.authService.updateResult(false);
-        this.router.navigate(['login']);
+    this.researchService.findClinicalStudiesByUserDocumentNumber(this.documentNumber).subscribe(
+      {
+        next: (response:HttpResponse<any>) => {
+          this.studies = response.body.payload;
+          this.spinner.hide();
+        },
+        error: (err) => {
+          console.log("Error encountered at researchService.findClinicalStudiesByUserDocumentNumber service call: ", err);
+          this.spinner.hide();
+          if (err.status == 403) {
+            console.log("Invalid token.");
+            this.authService.clearLocalStorage();
+            alert("Su sesión ha finalizado, por favor ingrese sus credenciales nuevamente.");
+            this.authService.updateResult(false);
+            this.router.navigate(['login']);
+          }
+        }
       }
-    })
+    );
   }
 
   getEvaluationStatusLabel(study: any) {
