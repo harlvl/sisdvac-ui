@@ -1,0 +1,32 @@
+<div class="container pb-3">
+  <!--  HEADER  -->
+  <div class="row subheader-row">
+    <div class="col-sm-10 custom-col">
+      <span class="title-layout">Resultados de la evaluación</span>
+    </div>
+
+    <div class="col-sm-2 custom-col">
+      <button class="btn-custom btn-new-element" [routerLink]="['..']" type="button">
+        <img ngSrc="./assets/images/icons/icon_chevron_left.png" alt="" height="15" width="10">
+        <span>Volver</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="trial-card-deck">
+      <div class="card trial-card" style="width: 22%" *ngFor="let result of resultList; let i = index">
+        <div class="card-body">
+          <div class="card-title">{{result.key}}</div>
+          <div class="card-text custom-card-detail">
+            Resultado: <b>{{result.value}}</b>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <small class="text-muted">{{footerTpp(result.value)}}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

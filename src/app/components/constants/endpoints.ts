@@ -1,8 +1,8 @@
 export class Endpoints {
   // local
-  public static apiV1: string = 'http://localhost:8080/sisdvac/api/v1';
+  // public static apiV1: string = 'http://localhost:8080/sisdvac/api/v1';
   // aws
-  // public static apiV1: string = 'http://sisdvac-services.us-east-1.elasticbeanstalk.com/sisdvac/api/v1';
+  public static apiV1: string = 'http://sisdvac-services.us-east-1.elasticbeanstalk.com/sisdvac/api/v1';
 
   //auth endpoints
   public static authenticate: string = '/auth/authenticate';
@@ -19,6 +19,7 @@ export class Endpoints {
   public static evaluateFormulation: string = '/{tid}/formulation/{fid}/evaluate';
   public static findFormulationEvaluationById: string = '/{tid}/formulation/{fid}';
   public static saveAnimalStudy: string = '/{tid}/animal-study';
+  public static findAnimalStudyEvaluation: string = '/{tid}/advance/{aid}';
   public static saveClinicalStudyDesign: string = '/{tid}/clinical-study';
   public static evaluateAnimalStudy: string = '/{tid}/advance/{aid}/animal-study/evaluate';
 
@@ -31,5 +32,6 @@ export class Endpoints {
   public static findAnimalStudiesByUser: string = "/user/{documentNumber}/animal-studies"
   public static findClinicalStudiesByUser: string = "/user/{documentNumber}/clinical-studies"
   public static findTrialsByUserDocumentNumber: string = "/user/document-number/{documentNumber}/trials"
+  public static findPreclinicalTrialsByUserDocumentNumber: string = "/user/document-number/{documentNumber}/preclinical-trials"
   public static findClinicalTrialsByUserDocumentNumber: string = "/user/document-number/{documentNumber}/clinical-trials"
 }

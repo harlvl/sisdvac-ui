@@ -64,7 +64,7 @@ export class CreateAnimalStudyComponent implements OnInit {
       console.log("WARNING! Document number is null");
     }
 
-    this.researchService.findTrialsByUserDocumentNumber(this.documentNumber).pipe(map((res) => {
+    this.researchService.findPreclinicalTrialsByUserDocumentNumber(this.documentNumber).pipe(map((res) => {
       return res;
     })).subscribe((response: HttpResponse<any>) => {
       console.log("Trials found: %d", response.body.hits);

@@ -35,6 +35,9 @@ const routes: Routes = [
   {path : RouteNames.clinicalTrialEvaluation, component: ClinicalTrialEvaluationComponent, canActivate: [AuthGuard]},
   {path : RouteNames.trialCreate, component: CreateTrialComponent, canActivate: [AuthGuard]},
   {path : RouteNames.results, component: ResultsComponent, canActivate: [AuthGuard]},
+  {
+    path: '**', redirectTo: ''
+  },
 ];
 
 @NgModule({

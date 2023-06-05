@@ -60,6 +60,12 @@ export class ResearchService {
     return this.client.get(url, {observe: "response"})
   }
 
+  public findPreclinicalTrialsByUserDocumentNumber(documentNumber: string): Observable<any> {
+    const url = this.rootHost +
+      Endpoints.findPreclinicalTrialsByUserDocumentNumber.replace("{documentNumber}", documentNumber);
+    return this.client.get(url, {observe: "response"})
+  }
+
   public findClinicalTrialsByUserDocumentNumber(documentNumber: string): Observable<any> {
     const url = this.rootHost +
       Endpoints.findClinicalTrialsByUserDocumentNumber.replace("{documentNumber}", documentNumber);

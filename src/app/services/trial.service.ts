@@ -44,6 +44,12 @@ export class TrialService {
     return this.httpClient.post(url, animalStudy, {observe: "response"});
   }
 
+  public findAnimalStudyEvaluation(trialId: any, advanceId: any):Observable<any> {
+    const url = this.rootHost +
+      Endpoints.findAnimalStudyEvaluation.replace("{tid}", trialId).replace("{aid}", advanceId);
+    return this.httpClient.get(url, {observe: "response"});
+  }
+
   public saveClinicalStudy(trialId: any, request: CreateClinicalDesignRequest) {
     const url = this.rootHost + Endpoints.saveClinicalStudyDesign.replace("{tid}", trialId);
     return this.httpClient.post(url, request, {observe: "response"});
